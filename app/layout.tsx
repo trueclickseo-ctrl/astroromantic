@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "AstroRomantic - Retro Love & Astrology Tools",
   description: "Calculate your Life Path, Chaldean Numerology, Love compatibility percentage, Wedding date, and get custom AI vows or letters.",
   metadataBase: new URL("https://astroromantic.com"),
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +33,7 @@ export default function RootLayout({
           {/* Macintosh Footer Info Panel */}
           <footer className="bg-white border-3 border-black rounded-xl flex items-center justify-between px-4 py-2 text-xs font-bold select-none shadow-[4px_4px_0px_#000000] font-mono">
             <div className="flex items-center space-x-2">
-              <span>System: Macintosh Classic (Finder 7.1)</span>
+              <span>System: AstroRomantic v1.0</span>
               <span className="text-zinc-400">|</span>
               <span>Memory: 4096K OK</span>
             </div>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Background circle -->
+  <rect width="32" height="32" rx="6" fill="#1a1a2e"/>
+  <!-- Heart shape -->
+  <path d="M16 26 L6 16 C3 12 3 8 7 6 C11 4 14 7 16 10 C18 7 21 4 25 6 C29 8 29 12 26 16 Z" fill="#e91e63"/>
+  <!-- Star sparkle top-right -->
+  <path d="M24 4 L25 7 L28 8 L25 9 L24 12 L23 9 L20 8 L23 7 Z" fill="#ffd700"/>
+  <!-- Small star sparkle -->
+  <path d="M8 3 L8.6 5 L10.5 5.5 L8.6 6 L8 8 L7.4 6 L5.5 5.5 L7.4 5 Z" fill="#ffd700" opacity="0.7"/>
+</svg>
