@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f3ef; /* Premium Warm Gray/Parchment */
+  --foreground: #000000;
+  --mac-border: #000000;
+  --card-bg: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-mac-border: var(--mac-border);
+}
+
+body {
+  background-color: var(--background);
+  /* Premium Dotted Grid Layout */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 8px;
+}
+
+/* Macintosh Classic Windows - Premium Neobrutalist Hybrid */
+.win-outset {
+  background: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.win-inset {
+  background: #f8f7f4;
+  border: 2px dashed #000000;
+  border-radius: 8px;
+}
+
+/* Macintosh Classic Aero Hybrid (Glass) */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.96);
+  border: 3px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+  border-radius: 20px;
+}
+
+.glass-panel-hover {
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.15s ease;
+}
+
+.glass-panel-hover:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 12px 12px 0px #000000;
+}
+
+/* Retro Macintosh Buttons */
+.win-btn {
+  background: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 9999px; /* Pill shape buttons */
+  color: #000000;
+  font-weight: 800;
+  font-family: monospace;
+  padding: 8px 24px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #000000;
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  outline: none;
+}
+
+.win-btn:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.win-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px 0px #000000;
+}
+
+/* Classic Mac Window Striped Drag Handles */
+.mac-drag-stripes {
+  background: repeating-linear-gradient(
+    90deg,
+    #000000,
+    #000000 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  height: 12px;
+  width: 100%;
+}
+
+/* Custom Text styles */
+.text-glow-rose {
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+.text-glow-gold {
+  color: #000000;
+  font-weight: 900;
+  border-bottom: 3px double #000000;
+}
+
+/* Macintosh Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-left: 3px solid #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border: 3px solid #ffffff;
+}
+
+/* Global High-Contrast Text Overrides for Macintosh Light Theme */
+.text-zinc-500, .text-zinc-400, .text-zinc-300, .text-zinc-600 {
+  color: #1a1a1a !important;
+}
+.text-zinc-100, .text-zinc-200 {
+  color: #000000 !important;
+}
+.text-white, .text-zinc-300 {
+  color: #000000 !important;
+}
+.text-amber-400, .text-rose-400, .text-purple-400 {
+  color: #000000 !important;
+  font-weight: bold;
+}
+.bg-white\/5, .bg-white\/10, .bg-black\/20 {
+  background-color: #f0efe9 !important;
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+}
+input, select, textarea {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 2px 2px 0px #000000 !important;
+  border-radius: 4px !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #000000 !important;
+  outline: 2px solid #000000 !important;
+}
+
+/* Global Font Size Upgrades */
+html {
+  font-size: 17px !important;
+}
+body {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+.text-xs {
+  font-size: 0.85rem !important; /* ~14.5px */
+}
+.text-sm {
+  font-size: 0.95rem !important; /* ~16px */
+}
+.text-base, .text-md {
+  font-size: 1.05rem !important; /* ~18px */
+}
+.text-lg {
+  font-size: 1.2rem !important; /* ~20px */
+}
+.text-xl {
+  font-size: 1.4rem !important; /* ~24px */
+}
+.text-2xl {
+  font-size: 1.7rem !important; /* ~29px */
+}
+.text-4xl {
+  font-size: 2.2rem !important; /* ~37px */
+}
+.text-5xl {
+  font-size: 2.8rem !important; /* ~47px */
+}
+
+/* Ensure form elements and labels are thick and readable */
+input, select, textarea {
+  font-size: 1rem !important;
+  padding: 10px 14px !important;
+}
+label {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+}
+.win-btn {
+  font-size: 0.9rem !important;
+}
+
+.padded-input {
+  padding-left: 44px !important;
+}
+
+.desktop-label {
+  color: #ffffff !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+a:hover .desktop-label, .group:hover .desktop-label {
+  background-color: #000080 !important;
+  color: #ffffff !important;
+}
+
+
