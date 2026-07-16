@@ -87,19 +87,19 @@ export default function ToolLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://numerology-love-calc.example.com"
+        "item": "https://astroromantic.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": category.charAt(0).toUpperCase() + category.slice(1),
-        "item": `https://numerology-love-calc.example.com/${category}`
+        "item": `https://astroromantic.com/${category}`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": title,
-        "item": `https://numerology-love-calc.example.com/${category}/${toolSlug}`
+        "item": `https://astroromantic.com/${category}/${toolSlug}`
       }
     ]
   };

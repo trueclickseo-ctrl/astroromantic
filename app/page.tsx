@@ -43,6 +43,11 @@ export default function Home() {
 
   return (
     <div className="flex-1 flex flex-col relative py-8 px-4">
+      {/* SEO H1 — clear topical signal */}
+      <h1 className="text-2xl sm:text-3xl font-bold font-mono mb-6 text-black">
+        Free Love, Numerology &amp; Astrology Calculators
+      </h1>
+
       {/* Desktop Icon Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-8 max-w-4xl">
         {desktopIcons.map((icon, idx) => (

@@ -1,6 +1,56 @@
 import React from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Sparkles, Heart, Star, Compass, Layers, Users } from "lucide-react";
+
+const SITE_URL = "https://astroromantic.com";
+
+const categoryMeta: Record<string, { title: string; description: string }> = {
+  numerology: {
+    title: "Numerology Calculators — Life Path, Destiny & More | AstroRomantic",
+    description: "Free online numerology calculators: Life Path, Name Numerology, Chaldean, Destiny Number, Soul Urge, Lucky Number, and more. Instant results with detailed interpretations.",
+  },
+  love: {
+    title: "Love & Compatibility Calculators — Free Match Tests | AstroRomantic",
+    description: "Calculate your love compatibility, zodiac match, soulmate score, and relationship chemistry. Free tools powered by numerology and astrology.",
+  },
+  "couple-names": {
+    title: "Couple Name Generators — Ship Names & Hashtags | AstroRomantic",
+    description: "Generate couple names, ship names, nicknames, hashtags, and matching usernames. Fun tools for couples and social media.",
+  },
+  wedding: {
+    title: "Wedding Planning Tools — Date, Budget & Countdown | AstroRomantic",
+    description: "Free wedding planning calculators: hashtag generator, date numerology, countdown timer, and budget planner. Plan your perfect day.",
+  },
+  relationship: {
+    title: "Relationship Quizzes & Calculators | AstroRomantic",
+    description: "Take relationship quizzes: love language, relationship health score, anniversary calculator, and duration tracker. Free instant results.",
+  },
+  "ai-generators": {
+    title: "AI Love Letter & Vow Generators — Free Templates | AstroRomantic",
+    description: "Generate love letters, romantic messages, wedding vows, anniversary wishes, and proposal speeches with AI-powered templates. Free and instant.",
+  },
+};
+
+export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const { category } = await params;
+  const meta = categoryMeta[category];
+  if (!meta) return {};
+  const canonicalUrl = `${SITE_URL}/${category}/`;
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonicalUrl,
+      siteName: "AstroRomantic",
+      type: "website",
+    },
+    twitter: { card: "summary", title: meta.title, description: meta.description },
+  };
+}
 
 interface CategoryPageProps {
   params: Promise<{

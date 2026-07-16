@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { toolRegistry } from "@/lib/tool-registry";
 import ToolLayout from "@/components/tool-layout";
@@ -16,6 +17,49 @@ interface PageProps {
     category: string;
     tool: string;
   }>;
+}
+
+const SITE_URL = "https://astroromantic.com";
+
+const categoryLabels: Record<string, string> = {
+  numerology: "Numerology",
+  love: "Love & Compatibility",
+  "couple-names": "Couple Names",
+  wedding: "Wedding Tools",
+  relationship: "Relationship",
+  "ai-generators": "AI Generators",
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { category, tool } = await params;
+  const toolConfig = toolRegistry[tool];
+  const toolTitle = toolConfig
+    ? toolConfig.title
+    : tool.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  const toolDesc = toolConfig
+    ? toolConfig.description
+    : `Free online ${toolTitle} tool. Get instant results.`;
+  const catLabel = categoryLabels[category] || category;
+  const pageTitle = `${toolTitle} — Free ${catLabel} Tool | AstroRomantic`;
+  const canonicalUrl = `${SITE_URL}/${category}/${tool}/`;
+
+  return {
+    title: pageTitle,
+    description: toolDesc,
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title: pageTitle,
+      description: toolDesc,
+      url: canonicalUrl,
+      siteName: "AstroRomantic",
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: pageTitle,
+      description: toolDesc,
+    },
+  };
 }
 
 export function generateStaticParams() {
