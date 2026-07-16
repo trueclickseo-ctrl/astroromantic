@@ -55,6 +55,12 @@ const categoryToolsMap: Record<string, { title: string; desc: string; slug: stri
   ]
 };
 
+export function generateStaticParams() {
+  return Object.keys(categoryToolsMap).map((category) => ({
+    category,
+  }));
+}
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const resolvedParams = await params;
   const category = resolvedParams.category;

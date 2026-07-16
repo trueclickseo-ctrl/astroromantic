@@ -390,7 +390,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
           ];
         }
       } else {
-        const inputStr = inputs.keyword || inputs.name1 || inputs.name2 || "AstroLove";
+        const inputStr = inputs.keyword || inputs.name1 || inputs.name2 || "AstroRomantic";
         const cleanStr = inputStr.toLowerCase().replace(/[^a-z]/g, "");
         let sum = 0;
         for (let i = 0; i < cleanStr.length; i++) {
@@ -626,19 +626,47 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
     setLoading(true);
     setOutput("");
 
-    try {
-      const response = await fetch("/api/ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, sender, recipient, tone, keywords })
-      });
-      const data = await response.json();
-      setOutput(data.result);
-    } catch (err) {
-      setOutput("Could not reach generator. Here is a sweet pre-written template: \n\nMy Dearest " + (recipient || "Love") + ",\n\nEvery moment with you is a treasure. You fill my world with warmth, laughter, and light. Yours always,\n" + (sender || "Me"));
-    } finally {
-      setLoading(false);
-    }
+    // Client-side template generation (static export compatible)
+    const fallbackTemplates: Record<string, string[]> = {
+      "love-letter-generator": [
+        `My Dearest {recipient},\n\nEvery day with you feels like a chapter in a story I never want to end. When I think of {keywords}, I am reminded of how lucky I am to have you. Your presence fills my days with meaning, warmth, and light.\n\nWith all my love,\n{sender}`,
+        `Dearest {recipient},\n\nI wanted to write you something that captures what my heart feels every time you enter the room. I cherish our moments together, especially {keywords}. You are my anchor, my joy, and my favorite part of every day.\n\nForever yours,\n{sender}`
+      ],
+      "romantic-message-generator": [
+        `Good morning, {recipient}! Just thinking of {keywords} and sending you a little warmth to start your day. Love you! - {sender}`,
+        `Hey {recipient}, just wanted to remind you how much you mean to me. {keywords} is on my mind, and I can't wait to see you later. - {sender}`
+      ],
+      "wedding-vow-generator": [
+        `I, {sender}, take you, {recipient}, to be my partner in life. I promise to support your dreams, laugh with you during the good times, and stand by you in the storms. Our memories of {keywords} will always be the bedrock of our union. I choose you today and every day.`,
+        `{recipient}, from the moment we shared {keywords}, I knew our paths were bound. I vow to love you without reservation, to respect you, and to grow with you through all the years ahead.`
+      ],
+      "anniversary-wish-generator": [
+        `Happy Anniversary, {recipient}! It's been an incredible journey since we started. Thinking back to {keywords} makes me appreciate how far we've come. Here's to many more years of laughter and love. - {sender}`,
+        `To my favorite person, {recipient}: Happy Anniversary. Thank you for being my rock, my partner, and the one who laughs at my jokes. I'll always cherish {keywords}. With love, {sender}`
+      ],
+      "proposal-speech-generator": [
+        `{recipient}, when we first met, I never imagined how completely you would change my world. Looking back at {keywords}, I realize that every step of my life led me to you. I want to build a lifetime of these moments with you. Will you marry me?`,
+        `{recipient}, you make me laugh harder, think deeper, and love more than I ever thought possible. Our journey, especially {keywords}, has been the greatest adventure of my life. I want this adventure to last forever. Will you do me the honor of becoming my spouse?`
+      ]
+    };
+
+    // Simulate a small delay for UX
+    await new Promise((r) => setTimeout(r, 800));
+
+    const templates = fallbackTemplates[slug] || fallbackTemplates["love-letter-generator"];
+    const senderStr = sender || "Me";
+    const recipientStr = recipient || "Love";
+    const keywordsStr = keywords || "the laughter we share";
+    const seed = (senderStr.length + recipientStr.length + keywordsStr.length) % templates.length;
+    let result = templates[seed];
+
+    result = result
+      .replace(/{recipient}/g, recipientStr)
+      .replace(/{sender}/g, senderStr)
+      .replace(/{keywords}/g, keywordsStr);
+
+    setOutput(result);
+    setLoading(false);
   };
 
   return (

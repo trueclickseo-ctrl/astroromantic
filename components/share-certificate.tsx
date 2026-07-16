@@ -105,7 +105,7 @@ export default function ShareCertificate({ name1, name2, score }: CertificatePro
       });
 
       // Footer
-      page.drawText("Calculated via AstroLove Cosmic Numerology Engine", {
+      page.drawText("Calculated via AstroRomantic Cosmic Numerology Engine", {
         x: 170,
         y: 70,
         size: 10,
@@ -192,7 +192,7 @@ export default function ShareCertificate({ name1, name2, score }: CertificatePro
             
             {/* Right side: Registrar Signature Line */}
             <div className="text-right flex flex-col items-end">
-              <span className="font-serif italic text-xs text-black border-b border-black px-4 py-0.5">AstroLove Finder</span>
+              <span className="font-serif italic text-xs text-black border-b border-black px-4 py-0.5">AstroRomantic Finder</span>
               <span className="text-[6px] font-mono text-zinc-500 uppercase tracking-widest mt-0.5">Cosmic Registrar</span>
             </div>
           </div>
@@ -223,7 +223,7 @@ export default function ShareCertificate({ name1, name2, score }: CertificatePro
 
         <button
           onClick={() => {
-            navigator.clipboard.writeText(`We scored a ${score}% compatibility match on AstroLove! Calculate yours at: ${window.location.href}`);
+            navigator.clipboard.writeText(`We scored a ${score}% compatibility match on AstroRomantic! Calculate yours at: ${window.location.href}`);
             alert("Share snippet copied to clipboard!");
           }}
           className="win-btn text-[10px] py-2 px-4 font-bold flex items-center space-x-1.5 transition-all text-black bg-white"

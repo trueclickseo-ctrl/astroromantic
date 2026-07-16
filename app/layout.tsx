@@ -5,9 +5,9 @@ import RetroAudioInitializer from "@/components/retro-audio-initializer";
 import Header from "@/components/header";
 
 export const metadata: Metadata = {
-  title: "AstroLove & Numerology Tools - Macintosh Edition",
+  title: "AstroRomantic - Retro Love & Astrology Tools",
   description: "Calculate your Life Path, Chaldean Numerology, Love compatibility percentage, Wedding date, and get custom AI vows or letters.",
-  metadataBase: new URL("https://numerology-love-calc.example.com"),
+  metadataBase: new URL("https://astroromantic.com"),
 };
 
 export default function RootLayout({

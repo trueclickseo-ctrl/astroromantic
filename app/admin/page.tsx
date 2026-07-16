@@ -258,7 +258,7 @@ export default function AdminDashboard() {
               <span>Desktop Themes</span>
             </h2>
             <p className="text-xs text-zinc-400">
-              Select a custom background theme for your AstroLove desktop workspace.
+              Select a custom background theme for your AstroRomantic desktop workspace.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-2">
               <button
@@ -395,7 +395,7 @@ export default function AdminDashboard() {
             <div className="flex items-center space-x-4 bg-black/20 p-3 rounded-xl border border-white/5">
               <Heart className="w-10 h-10 text-rose-600 fill-rose-600 animate-pulse select-none flex-shrink-0" />
               <div className="space-y-0.5 flex-1 text-left">
-                <h3 className="font-bold text-sm text-zinc-100 leading-tight">AstroLove Finder</h3>
+                <h3 className="font-bold text-sm text-zinc-100 leading-tight">AstroRomantic Finder</h3>
                 <p className="text-[9px] text-zinc-500 font-mono">System Software v7.1.3</p>
                 <p className="text-[9px] text-zinc-500 font-mono">Astro-Calculations Engine v1.0.4</p>
               </div>

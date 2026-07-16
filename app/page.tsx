@@ -86,7 +86,7 @@ export default function Home() {
         </div>
         {/* Content Area */}
         <div className="bg-white p-4 text-xs font-mono space-y-3 leading-relaxed text-black">
-          <p className="font-bold border-b border-black/10 pb-1 text-sm">AstroLove Finder</p>
+          <p className="font-bold border-b border-black/10 pb-1 text-sm">AstroRomantic Finder</p>
           <p>
             Double-click or open any folder icon to initialize cosmic calculation scripts.
           </p>

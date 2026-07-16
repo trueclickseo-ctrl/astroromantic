@@ -18,6 +18,50 @@ interface PageProps {
   }>;
 }
 
+export function generateStaticParams() {
+  const allRoutes: { category: string; tool: string }[] = [
+    // Numerology
+    { category: "numerology", tool: "life-path-calculator" },
+    { category: "numerology", tool: "name-numerology-calculator" },
+    { category: "numerology", tool: "chaldean-numerology-calculator" },
+    { category: "numerology", tool: "destiny-number-calculator" },
+    { category: "numerology", tool: "soul-urge-number-calculator" },
+    { category: "numerology", tool: "baby-name-numerology-calculator" },
+    { category: "numerology", tool: "marriage-numerology-calculator" },
+    { category: "numerology", tool: "lucky-number-calculator" },
+    // Love
+    { category: "love", tool: "love-calculator" },
+    { category: "love", tool: "love-percentage-calculator" },
+    { category: "love", tool: "zodiac-love-calculator" },
+    { category: "love", tool: "relationship-compatibility-calculator" },
+    { category: "love", tool: "marriage-compatibility-calculator" },
+    { category: "love", tool: "soulmate-calculator" },
+    // Couple Names
+    { category: "couple-names", tool: "couple-name-combiner" },
+    { category: "couple-names", tool: "ship-name-generator" },
+    { category: "couple-names", tool: "nickname-generator" },
+    { category: "couple-names", tool: "couple-hashtag-generator" },
+    { category: "couple-names", tool: "couple-username-generator" },
+    // Wedding
+    { category: "wedding", tool: "wedding-hashtag-generator" },
+    { category: "wedding", tool: "wedding-date-numerology" },
+    { category: "wedding", tool: "wedding-countdown" },
+    { category: "wedding", tool: "wedding-budget" },
+    // Relationship
+    { category: "relationship", tool: "anniversary-calculator" },
+    { category: "relationship", tool: "relationship-duration" },
+    { category: "relationship", tool: "love-language-quiz" },
+    { category: "relationship", tool: "relationship-health-score" },
+    // AI Generators
+    { category: "ai-generators", tool: "love-letter-generator" },
+    { category: "ai-generators", tool: "romantic-message-generator" },
+    { category: "ai-generators", tool: "wedding-vow-generator" },
+    { category: "ai-generators", tool: "anniversary-wish-generator" },
+    { category: "ai-generators", tool: "proposal-speech-generator" },
+  ];
+  return allRoutes;
+}
+
 export default async function ToolPage({ params }: PageProps) {
   const resolvedParams = await params;
   const toolSlug = resolvedParams.tool;

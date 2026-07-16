@@ -10,7 +10,7 @@ export default function Header() {
           href="/"
           className="hover:bg-black hover:text-white px-2 py-0.5 transition-all text-sm font-bold font-mono outline-none cursor-pointer"
         >
-           AstroLove
+           AstroRomantic
         </a>
         <nav className="hidden md:flex items-center space-x-2">
           <a href="/numerology" className="hover:bg-black hover:text-white px-2 py-0.5">Numerology</a>
