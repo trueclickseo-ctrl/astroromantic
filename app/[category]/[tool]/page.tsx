@@ -113,6 +113,16 @@ export default async function ToolPage({ params }: PageProps) {
 
   const toolConfig = toolRegistry[toolSlug];
 
+  const isLoveCompatibilityTool = (slug: string) => {
+    return (
+      slug === "love-calculator" ||
+      slug === "love-percentage-calculator" ||
+      slug === "relationship-compatibility-calculator" ||
+      slug === "marriage-compatibility-calculator" ||
+      slug === "soulmate-calculator"
+    );
+  };
+
   if (!toolConfig || toolConfig.category !== category) {
     // If not in static registry, let's make a virtual configuration so that *all* 35 tools work automatically!
     // This allows complete crawlability and indexability.
@@ -223,7 +233,7 @@ export default async function ToolPage({ params }: PageProps) {
         {category === "ai-generators" ? (
           <AiGeneratorComponent slug={toolSlug} />
         ) : (
-          toolSlug.includes("love") || toolSlug.includes("compat") || toolSlug.includes("couple") || toolSlug.includes("soulmate") ? (
+          isLoveCompatibilityTool(toolSlug) ? (
             <LoveCalculatorComponent />
           ) : (
             <GenericCalculatorComponent slug={toolSlug} />
@@ -241,7 +251,7 @@ export default async function ToolPage({ params }: PageProps) {
     calculatorNode = <NameNumerologyCalculator />;
   } else if (toolSlug === "chaldean-numerology-calculator") {
     calculatorNode = <ChaldeanCalculator />;
-  } else if (toolSlug.includes("love") || toolSlug.includes("compat") || toolSlug.includes("couple") || toolSlug.includes("soulmate")) {
+  } else if (toolSlug === "love-calculator" || toolSlug === "love-percentage-calculator") {
     calculatorNode = <LoveCalculatorComponent />;
   } else if (toolSlug === "zodiac-love-calculator") {
     calculatorNode = <ZodiacLoveCalculatorComponent />;
@@ -262,7 +272,7 @@ export default async function ToolPage({ params }: PageProps) {
       educationalContent={
         <div className="space-y-4">
           <h3 className="text-lg font-serif font-bold text-zinc-200">{toolConfig.educationalTitle}</h3>
-          <p>{toolConfig.educationalBody}</p>
+          <div>{toolConfig.educationalBody}</div>
         </div>
       }
     >

@@ -3,6 +3,8 @@ import "./globals.css";
 import RetroMascot from "@/components/retro-mascot";
 import RetroAudioInitializer from "@/components/retro-audio-initializer";
 import Header from "@/components/header";
+import FooterClient from "@/components/footer-client";
+import { LanguageProvider } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: {
@@ -74,40 +76,29 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#f4f3ef] text-black">
-        {/* Organization + WebSite Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
+        <LanguageProvider>
+          {/* Organization + WebSite Schema */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          />
 
-        <div className="flex-1 flex flex-col max-w-7xl w-full mx-auto p-4 space-y-4">
-          <Header />
+          <div className="flex-1 flex flex-col max-w-7xl w-full mx-auto p-4 space-y-4">
+            <Header />
 
-          {/* Main Content */}
-          <main className="flex-1 flex flex-col">{children}</main>
+            {/* Main Content */}
+            <main className="flex-1 flex flex-col">{children}</main>
 
-          {/* Footer */}
-          <footer className="bg-white border-3 border-black rounded-xl flex items-center justify-between px-4 py-2 text-xs font-bold select-none shadow-[4px_4px_0px_#000000] font-mono">
-            <div className="flex items-center space-x-2">
-              <span>© 2026 AstroRomantic</span>
-              <span className="text-zinc-400">|</span>
-              <a href="/about/" className="hover:underline">About</a>
-              <span className="text-zinc-400">|</span>
-              <a href="/privacy-policy/" className="hover:underline">Privacy</a>
-              <span className="text-zinc-400">|</span>
-              <a href="/contact/" className="hover:underline">Contact</a>
-            </div>
-            <div className="font-mono">
-              {new Date().toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
-            </div>
-          </footer>
-        </div>
-        <RetroMascot />
-        <RetroAudioInitializer />
+            {/* Footer */}
+            <FooterClient />
+          </div>
+          <RetroMascot />
+          <RetroAudioInitializer />
+        </LanguageProvider>
       </body>
     </html>
   );

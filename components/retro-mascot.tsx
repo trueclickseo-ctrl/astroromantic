@@ -2,24 +2,26 @@
 
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 export default function RetroMascot() {
-  const [message, setMessage] = useState("Hi! I'm Merlin. I can help you decode cosmic energy. Need some advice?");
+  const { t } = useLanguage();
+  const [messageKey, setMessageKey] = useState<string>("mascotIntro");
   const [visible, setVisible] = useState(true);
 
   // Cycle through some cute retro tips every 15 seconds
   useEffect(() => {
     const tips = [
-      "Tip: Pythagorean numerology is great for modern names!",
-      "Did you know? Chaldean numerology ignores the number 9 as it's sacred.",
-      "Check your Love Score to print a custom alignment certificate!",
-      "Need a romantic letter? Our AI generator runs Claude.exe!",
-      "Welcome back! System resources are operating at 100% efficiency."
+      "mascotTip1",
+      "mascotTip2",
+      "mascotTip3",
+      "mascotTip4",
+      "mascotTip5"
     ];
 
     const interval = setInterval(() => {
-      const randomTip = tips[Math.floor(Math.random() * tips.length)];
-      setMessage(randomTip);
+      const randomKey = tips[Math.floor(Math.random() * tips.length)];
+      setMessageKey(randomKey);
     }, 15000);
 
     return () => clearInterval(interval);
@@ -38,7 +40,7 @@ export default function RetroMascot() {
         >
           <X className="w-4 h-4 text-zinc-500" />
         </button>
-        <p className="pr-4 leading-relaxed">{message}</p>
+        <p className="pr-4 leading-relaxed">{(t as any)[messageKey] || t.mascotIntro}</p>
         
         {/* Speech Bubble Arrow Indicator */}
         <div 

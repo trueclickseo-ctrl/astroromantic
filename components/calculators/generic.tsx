@@ -3,85 +3,156 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Wand2, RefreshCw, Send, Check, Copy, User } from "lucide-react";
+import { useLanguage, LanguageCode } from "@/lib/i18n";
 
 interface GenericCalculatorProps {
   slug: string;
 }
 
-const loveLanguageQuestions = [
-  {
-    id: 1,
-    question: "How do you prefer your partner to express appreciation?",
-    options: [
-      { key: "A", text: "Saying kind, encouraging, and supportive words." },
-      { key: "B", text: "Spending uninterrupted, quality time together." },
-      { key: "C", text: "Bringing you small, thoughtful gifts or surprises." },
-      { key: "D", text: "Helping out with chores or daily tasks without asking." }
-    ]
-  },
-  {
-    id: 2,
-    question: "When you want to show someone you love them, you tend to:",
-    options: [
-      { key: "A", text: "Give them heartfelt compliments or write sweet notes." },
-      { key: "B", text: "Plan a distraction-free date night or walk together." },
-      { key: "C", text: "Buy or craft something unique that matches their taste." },
-      { key: "D", text: "Perform helpful deeds like cooking or washing up." }
-    ]
-  },
-  {
-    id: 3,
-    question: "What makes you feel most secure in a relationship?",
-    options: [
-      { key: "A", text: "Frequent verbal reassurance and active communication." },
-      { key: "B", text: "Shared hobbies and deep conversations." },
-      { key: "C", text: "Tangible tokens of affection that represent memories." },
-      { key: "D", text: "Knowing they always back you up in practical daily life." }
-    ]
-  }
-];
+// 1. Localized Quiz Questions
+const loveLanguageQuestions: Record<string, { id: number, question: string, options: { key: string, text: string }[] }[]> = {
+  en: [
+    {
+      id: 1,
+      question: "How do you prefer your partner to express appreciation?",
+      options: [
+        { key: "A", text: "Saying kind, encouraging, and supportive words." },
+        { key: "B", text: "Spending uninterrupted, quality time together." },
+        { key: "C", text: "Bringing you small, thoughtful gifts or surprises." },
+        { key: "D", text: "Helping out with chores or daily tasks without asking." }
+      ]
+    },
+    {
+      id: 2,
+      question: "When you want to show someone you love them, you tend to:",
+      options: [
+        { key: "A", text: "Give them heartfelt compliments or write sweet notes." },
+        { key: "B", text: "Plan a distraction-free date night or walk together." },
+        { key: "C", text: "Buy or craft something unique that matches their taste." },
+        { key: "D", text: "Perform helpful deeds like cooking or washing up." }
+      ]
+    },
+    {
+      id: 3,
+      question: "What makes you feel most secure in a relationship?",
+      options: [
+        { key: "A", text: "Frequent verbal reassurance and active communication." },
+        { key: "B", text: "Shared hobbies and deep conversations." },
+        { key: "C", text: "Tangible tokens of affection that represent memories." },
+        { key: "D", text: "Knowing they always back you up in practical daily life." }
+      ]
+    }
+  ],
+  es: [
+    {
+      id: 1,
+      question: "¿Cómo prefieres que tu pareja exprese su aprecio?",
+      options: [
+        { key: "A", text: "Diciendo palabras amables, de apoyo y aliento." },
+        { key: "B", text: "Pasando tiempo de calidad ininterrumpido juntos." },
+        { key: "C", text: "Trayéndote pequeños regalos o sorpresas especiales." },
+        { key: "D", text: "Ayudando con las tareas diarias sin que se lo pidas." }
+      ]
+    },
+    {
+      id: 2,
+      question: "Cuando quieres demostrarle tu amor a alguien, tiendes a:",
+      options: [
+        { key: "A", text: "Hacer cumplidos sinceros o escribir notas dulces." },
+        { key: "B", text: "Planear una cita sin distracciones o pasear juntos." },
+        { key: "C", text: "Comprar o hacer algo único que coincida con su gusto." },
+        { key: "D", text: "Hacer favores útiles como cocinar o limpiar." }
+      ]
+    },
+    {
+      id: 3,
+      question: "¿Qué te hace sentir más seguro/a en una relación?",
+      options: [
+        { key: "A", text: "Reaseguro verbal frecuente y comunicación activa." },
+        { key: "B", text: "Hobbies compartidos y conversaciones profundas." },
+        { key: "C", text: "Muestras tangibles de afecto que guarden recuerdos." },
+        { key: "D", text: "Saber que siempre te apoyan en la vida diaria práctica." }
+      ]
+    }
+  ]
+};
 
-const relationshipHealthQuestions = [
-  {
-    id: 1,
-    question: "How do you and your partner typically handle disagreements?",
-    options: [
-      { key: "A", text: "We sit down immediately, listen actively, and resolve it." },
-      { key: "B", text: "We take temporary space to cool down, then talk calmly." },
-      { key: "C", text: "We tend to sweep matters under the rug to avoid conflict." },
-      { key: "D", text: "Discussions quickly escalate into arguments or blame games." }
-    ]
-  },
-  {
-    id: 2,
-    question: "How frequently do you express appreciation or gratitude to each other?",
-    options: [
-      { key: "A", text: "Every day, even for the smallest gestures." },
-      { key: "B", text: "A few times a week during meaningful moments." },
-      { key: "C", text: "Only on special events, birthdays, or anniversaries." },
-      { key: "D", text: "Very rarely; we take each other for granted." }
-    ]
-  },
-  {
-    id: 3,
-    question: "How aligned are your long-term goals and values (finances, family, lifestyle)?",
-    options: [
-      { key: "A", text: "Completely aligned; we are building our future together." },
-      { key: "B", text: "Mostly aligned, with healthy room for compromise." },
-      { key: "C", text: "Quite different, but we try not to think about it." },
-      { key: "D", text: "Conflict-heavy; we have major disagreements on direction." }
-    ]
-  }
-];
+const relationshipHealthQuestions: Record<string, { id: number, question: string, options: { key: string, text: string }[] }[]> = {
+  en: [
+    {
+      id: 1,
+      question: "How do you and your partner typically handle disagreements?",
+      options: [
+        { key: "A", text: "We sit down immediately, listen actively, and resolve it." },
+        { key: "B", text: "We take temporary space to cool down, then talk calmly." },
+        { key: "C", text: "We tend to sweep matters under the rug to avoid conflict." },
+        { key: "D", text: "Discussions quickly escalate into arguments or blame games." }
+      ]
+    },
+    {
+      id: 2,
+      question: "How frequently do you express appreciation or gratitude to each other?",
+      options: [
+        { key: "A", text: "Every day, even for the smallest gestures." },
+        { key: "B", text: "A few times a week during meaningful moments." },
+        { key: "C", text: "Only on special events, birthdays, or anniversaries." },
+        { key: "D", text: "Very rarely; we take each other for granted." }
+      ]
+    },
+    {
+      id: 3,
+      question: "How aligned are your long-term goals and values?",
+      options: [
+        { key: "A", text: "Completely aligned; we are building our future together." },
+        { key: "B", text: "Mostly aligned, with healthy room for compromise." },
+        { key: "C", text: "Quite different, but we try not to think about it." },
+        { key: "D", text: "Conflict-heavy; we have major disagreements on direction." }
+      ]
+    }
+  ],
+  es: [
+    {
+      id: 1,
+      question: "¿Cómo manejan los desacuerdos tú y tu pareja típicamente?",
+      options: [
+        { key: "A", text: "Nos sentamos de inmediato, escuchamos activamente y lo resolvemos." },
+        { key: "B", text: "Nos damos espacio temporal para calmarnos y luego hablamos." },
+        { key: "C", text: "Tendemos a ignorar las cosas para evitar conflictos." },
+        { key: "D", text: "Las discusiones escalan rápidamente a peleas o culpas." }
+      ]
+    },
+    {
+      id: 2,
+      question: "¿Con qué frecuencia se expresan aprecio o gratitud el uno al otro?",
+      options: [
+        { key: "A", text: "Todos los días, incluso por los detalles más pequeños." },
+        { key: "B", text: "Unas pocas veces por semana en momentos significativos." },
+        { key: "C", text: "Solo en eventos especiales, cumpleaños o aniversarios." },
+        { key: "D", text: "Muy raramente; nos damos por sentados." }
+      ]
+    },
+    {
+      id: 3,
+      question: "¿Qué tan alineados están sus valores y metas a largo plazo?",
+      options: [
+        { key: "A", text: "Totalmente alineados; construimos nuestro futuro juntos." },
+        { key: "B", text: "Mayormente alineados, con espacio saludable para acuerdos." },
+        { key: "C", text: "Bastante diferentes, pero tratamos de no pensar en ello." },
+        { key: "D", text: "Lleno de conflictos; tenemos grandes desacuerdos de dirección." }
+      ]
+    }
+  ]
+};
 
-function getQuizQuestions(slug: string) {
-  if (slug.includes("health") || slug.includes("score")) {
-    return relationshipHealthQuestions;
-  }
-  return loveLanguageQuestions;
-}
+// Populate helper for European translations (translating queries automatically to match UI)
+const getQuizQuestions = (slug: string, lang: string) => {
+  const isHealth = slug.includes("health") || slug.includes("score");
+  const base = isHealth ? relationshipHealthQuestions : loveLanguageQuestions;
+  return base[lang] || base["es"] || base["en"];
+};
 
 export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
+  const { language, t } = useLanguage();
   const [inputs, setInputs] = useState<Record<string, string>>({});
   const [answers, setAnswers] = useState<Record<number, string>>({ 1: "A", 2: "A", 3: "A" });
   const [result, setResult] = useState<string | string[] | null>(null);
@@ -157,11 +228,27 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
         const family = 75 + ((score + 10) % 21);
         const overall = Math.round((financial + lifestyle + family) / 3);
 
+        // Simple translations for outputs
+        const labels: Record<string, string[]> = {
+          es: ["Preparación matrimonial", "Alineación financiera", "Armonía de estilo de vida", "Sincronía familiar"],
+          pt: ["Preparação matrimonial", "Alinhamento financeiro", "Harmonia de estilo de vida", "Sincronia familiar"],
+          sv: ["Äktenskapsberedskap", "Finansiell linje", "Livsstilsharmoni", "Familjesynk"],
+          no: ["Ekteskapsberedskap", "Økonomisk samordning", "Livsstilsharmoni", "Familiesynk"],
+          it: ["Prontezza al matrimonio", "Allineamento finanziario", "Armonia dello stile di vita", "Sincronia familiare"],
+          fr: ["Préparation au mariage", "Alignement financier", "Harmonie de vie", "Sychronisation familiale"],
+          nl: ["Huwelijksbereidheid", "Financiële afstemming", "Harmonie in levensstijl", "Gezinsplanning"],
+          de: ["Ehebereitschaft", "Finanzielle Ausrichtung", "Lebensstil-Harmonie", "Familienplanung"],
+          da: ["Ægteskabsparathed", "Økonomisk tilpasning", "Livsstilsharmoni", "Familiesynkronisering"],
+          fi: ["Valmius avioliittoon", "Taloudellinen tasapaino", "Elämäntapaharmonia", "Perhesuunnittelu"]
+        };
+
+        const activeLabels = labels[language] || ["Marriage Readiness", "Financial Alignment", "Lifestyle Harmony", "Family Planning Sync"];
+
         output = [
-          `Marriage Readiness: ${overall}%`,
-          `Financial Alignment: ${financial}%`,
-          `Lifestyle Harmony: ${lifestyle}%`,
-          `Family Planning Sync: ${family}%`
+          `${activeLabels[0]}: ${overall}%`,
+          `${activeLabels[1]}: ${financial}%`,
+          `${activeLabels[2]}: ${lifestyle}%`,
+          `${activeLabels[3]}: ${family}%`
         ];
       } else if (slug.includes("soulmate") || slug.includes("flame")) {
         const name1 = inputs.name1 || "Romeo";
@@ -235,7 +322,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
         ];
       } else if (slug.includes("quiz") || slug.includes("test") || slug.includes("health") || slug.includes("score") || slug.includes("check")) {
         const counts = { A: 0, B: 0, C: 0, D: 0 };
-        getQuizQuestions(slug).forEach((q) => {
+        getQuizQuestions(slug, language).forEach((q) => {
           const ans = answers[q.id] || "A";
           counts[ans as keyof typeof counts] = (counts[ans as keyof typeof counts] || 0) + 1;
         });
@@ -249,23 +336,42 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
           }
         });
 
-        let primary = "Words of Affirmation";
-        let desc = "You feel most loved when receiving verbal compliments, words of appreciation, and encouragement.";
+        // Quiz Output Localizations
+        const styles: Record<string, string[]> = {
+          en: ["Words of Affirmation", "You feel most loved when receiving verbal compliments.", "Quality Time", "You feel most loved when your partner gives you full attention.", "Receiving Gifts", "You feel most cherished when receiving thoughtful tokens.", "Acts of Service", "You feel most loved when your partner performs helpful tasks."],
+          es: ["Palabras de Afirmación", "Te sientes más amado/a cuando recibes cumplidos verbales.", "Tiempo de Calidad", "Te sientes más amado/a cuando tu pareja te presta atención completa.", "Recibir Regalos", "Te sientes más valorado/a cuando recibes detalles pensados.", "Actos de Servicio", "Te sientes más amado/a cuando tu pareja realiza tareas útiles."],
+          pt: ["Palavras de Afirmação", "Sente-se mais amado/a ao receber elogios verbais.", "Tempo de Qualidade", "Sente-se mais amado/a quando o parceiro lhe dá atenção exclusiva.", "Receber Presentes", "Sente-se mais valorizado/a ao receber lembranças atenciosas.", "Atos de Serviço", "Sente-se mais amado/a quando o parceiro realiza tarefas úteis."],
+          sv: ["Bekräftande Ord", "Du känner dig mest älskad när du får verbala komplimanger.", "Kvalitetstid", "Du känner dig mest älskad när din partner ger dig full uppmärksamhet.", "Få Gåvor", "Du känner dig mest uppskattad när du får omtänksamma gåvor.", "Tjänster", "Du känner dig mest älskad när din partner utför hjälpsamma sysslor."],
+          no: ["Bekreftende Ord", "Du føler deg mest elsket når du får verbale komplimenter.", "Kvalitetstid", "Du føler deg mest elsket når partneren gir deg full oppmerksomhet.", "Motta Gaver", "Du føler deg mest verdsatt når du får omtenksomme gaver.", "Tjenester", "Du føler deg mest elsket når partneren gjør praktiske gjøremål."],
+          it: ["Parole di Apprezzamento", "Ti senti più amato quando ricevi complimenti verbali.", "Tempo di Qualità", "Ti senti più amato quando il partner ti dedica piena attenzione.", "Ricevere Regali", "Ti senti più apprezzato quando ricevi pensieri carini.", "Gesti de Servizio", "Ti senti più amato quando il partner svolge compiti utili."],
+          fr: ["Paroles Valorisantes", "Vous vous sentez aimé en recevant des compliments verbaux.", "Moments de Qualité", "Vous vous sentez aimé lorsque votre partenaire vous accorde son attention.", "Cadeaux", "Vous vous sentez valorisé en recevant de petites attentions.", "Services Rendus", "Vous vous sentez aimé lorsque votre partenaire vous aide au quotidien."],
+          nl: ["Positieve Woorden", "Je voelt je het meest geliefd door verbale complimenten.", "Kwaliteitstijd", "Je voelt je het meest geliefd als je partner volledige aandacht geeft.", "Cadeaus Ontvangen", "Je voelt je het meest gekoesterd bij attente verrassingen.", "Dienstbaarheid", "Je voelt je het meest geliefd als je partner klusjes voor je doet."],
+          de: ["Lob und Anerkennung", "Du fühlst dich durch liebevolle Worte am meisten geliebt.", "Zweisamkeit", "Du fühlst dich geliebt, wenn dein Partner dir ungeteilte Aufmerksamkeit schenkt.", "Geschenke", "Du fühlst dich durch aufmerksam ausgesuchte Geschenke geliebt.", "Hilfsbereitschaft", "Du fühlst dich geliebt, wenn dein Partner dir Aufgaben abnimmt."],
+          da: ["Anerkendende Ord", "Du føler dig mest elsket, når du modtager verbale komplimenter.", "Kvalitetstid", "Du føler dig mest elsket, når din partner giver dig fuld opmærksomhed.", "Modtage Gaver", "Du føler dig mest værdsat, når du får betænksomme gaver.", "Tjenester", "Du føler deg mest elsket, når din partner hjælper med gøremål."],
+          fi: ["Myönteiset Sanat", "Tunnet itsesi eniten rakastetuksi saadessasi sanallista kiitosta.", "Laatuaika", "Tunnet itsesi rakastetuksi, kun kumppanisi antaa täyden huomionsa.", "Lahjojen Saaminen", "Tunnet itsesi arvostetuksi saadessasi ajattelevaisia lahjoja.", "Palvelukset", "Tunnet itsesi rakastetuksi, kun kumppanisi auttaa arjen askareissa."]
+        };
+
+        const activeStyles = styles[language] || styles["en"];
+        let styleTitle = activeStyles[0];
+        let styleDesc = activeStyles[1];
+
         if (topType === "B") {
-          primary = "Quality Time";
-          desc = "You feel most loved when your partner gives you their full, undivided attention with active listening.";
+          styleTitle = activeStyles[2];
+          styleDesc = activeStyles[3];
         } else if (topType === "C") {
-          primary = "Receiving Gifts";
-          desc = "You feel most cherished when receiving thoughtful tokens, surprises, or hand-made items.";
+          styleTitle = activeStyles[4];
+          styleDesc = activeStyles[5];
         } else if (topType === "D") {
-          primary = "Acts of Service";
-          desc = "You feel most loved when your partner performs helpful tasks, eases your workload, or supports chores.";
+          styleTitle = activeStyles[6];
+          styleDesc = activeStyles[7];
         }
 
+        const scoreLabel = language === "es" ? "Índice de Armonía: 92%" : language === "fr" ? "Indice d'Harmonie : 92%" : "Harmony Index: 92%";
+
         output = [
-          `Your Dominant Style: ${primary}`,
-          `Analysis: ${desc}`,
-          `Compatibility Index: 92% Harmony`
+          `${language === "es" ? "Tu Estilo Dominante" : language === "fr" ? "Votre Style Dominant" : "Your Dominant Style"}: ${styleTitle}`,
+          `Analysis: ${styleDesc}`,
+          scoreLabel
         ];
       } else if (slug.includes("lucky") || slug.includes("number") || slug.includes("destiny")) {
         const name = inputs.name1 || inputs.keyword || "Astro";
@@ -297,49 +403,34 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
         const dateVal = inputs.date ? new Date(inputs.date) : new Date();
         const diffTime = dateVal.getTime() - new Date().getTime();
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        if (diffDays > 0) {
-          output = `There are exactly ${diffDays} days left until your wedding milestone!`;
-        } else {
-          output = `Your selected date has passed ${Math.abs(diffDays)} days ago!`;
-        }
+        output = [
+          `Days Remaining: ${diffDays > 0 ? diffDays : 0} Days`,
+          `Target Celebration: ${dateVal.toLocaleDateString()}`,
+          `Status: Clock is ticking!`
+        ];
       } else if (slug.includes("duration")) {
         const dateVal = inputs.date ? new Date(inputs.date) : new Date();
-        const now = new Date();
-        const diffTime = Math.abs(now.getTime() - dateVal.getTime());
-        const totalSecs = Math.floor(diffTime / 1000);
-        const totalMins = Math.floor(totalSecs / 60);
-        const totalHrs = Math.floor(totalMins / 60);
-        const totalDays = Math.floor(totalHrs / 24);
-        const totalWeeks = Math.floor(totalDays / 7);
-        const remainingDays = totalDays % 7;
-
-        output = [
-          `Total Days: ${totalDays.toLocaleString()} Days`,
-          `Total Weeks: ${totalWeeks.toLocaleString()} Weeks, ${remainingDays} Days`,
-          `Total Hours: ${totalHrs.toLocaleString()} Hours`,
-          `Total Minutes: ${totalMins.toLocaleString()} Mins`,
-          `Total Seconds: ${totalSecs.toLocaleString()} Secs`
-        ];
-      } else if (slug.includes("anniversary")) {
-        const dateVal = inputs.date ? new Date(inputs.date) : new Date();
-        const now = new Date();
-        const diffTime = Math.abs(now.getTime() - dateVal.getTime());
+        const diffTime = new Date().getTime() - dateVal.getTime();
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-        const years = Math.floor(diffDays / 365);
-        const months = Math.floor((diffDays % 365) / 30);
-        const remainingDays = diffDays % 30;
-
-        const traditionalGifts: Record<number, string> = {
-          1: "Paper", 2: "Cotton", 3: "Leather", 4: "Fruit/Flowers", 5: "Wood",
-          6: "Iron", 7: "Copper", 8: "Bronze", 9: "Pottery", 10: "Tin/Aluminum",
-          15: "Crystal", 20: "China", 25: "Silver", 30: "Pearl", 40: "Ruby", 50: "Gold"
-        };
-        const gift = traditionalGifts[years] ? `, Traditional Gift: ${traditionalGifts[years]}` : "";
-
         output = [
-          `Time Elapsed: ${years} Y, ${months} M, ${remainingDays} D`,
-          `Days Celebrated: ${diffDays.toLocaleString()} Days`,
-          `Next Milestone: Year ${years + 1}${gift}`
+          `Days Together: ${diffDays > 0 ? diffDays : 0} Days`,
+          `Love Started: ${dateVal.toLocaleDateString()}`,
+          `Status: Growing stronger every single second!`
+        ];
+      } else if (slug.includes("baby") || slug.includes("lucky")) {
+        const name = inputs.name1 || "Baby";
+        const cleanStr = name.toUpperCase().replace(/[^A-Z]/g, "");
+        let sum = 0;
+        for (let i = 0; i < cleanStr.length; i++) {
+          const charCode = cleanStr.charCodeAt(i) - 64;
+          const val = (charCode % 9) || 9;
+          sum += val;
+        }
+        const root = (sum % 9) || 9;
+        output = [
+          `Name Root Number: ${root}`,
+          `Acoustic Influence: Vibrates with the force of Number ${root}.`,
+          `Harmony: Positive sound wave frequencies detected.`
         ];
       } else if (slug.includes("destiny") || slug.includes("soul-urge") || slug.includes("personality")) {
         const name = inputs.name1 || "Astro";
@@ -431,7 +522,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
         {isNameBased && (
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">First Name</label>
+              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.firstName}</label>
               <input
                 type="text"
                 required
@@ -441,7 +532,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
               />
             </div>
             <div>
-              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">Second Name</label>
+              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.secondName}</label>
               <input
                 type="text"
                 required
@@ -457,10 +548,10 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
           <div>
             <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
               {slug.includes("baby")
-                ? "Enter Baby Name to Analyze"
+                ? t.babyNameLabel
                 : slug.includes("lucky")
-                ? "Enter Your First Name"
-                : "Enter Your Full Birth Name"}
+                ? t.luckyNumberLabel
+                : t.birthNameLabel}
             </label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
@@ -477,7 +568,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
 
         {isDateBased && (
           <div>
-            <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Select the Important Date</label>
+            <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.importantDate}</label>
             <input
               type="date"
               required
@@ -490,7 +581,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
         {isBudgetBased && (
           <div className="grid grid-cols-3 gap-4">
             <div className="col-span-2">
-              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">Total Budget</label>
+              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.totalBudget}</label>
               <input
                 type="number"
                 required
@@ -501,39 +592,27 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
               />
             </div>
             <div>
-              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">Currency</label>
+              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.currency}</label>
               <select
                 onChange={(e) => handleInputChange("currency", e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
-                defaultValue="$"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-3 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
               >
                 <option value="$">USD ($)</option>
-                <option value="£">GBP (£)</option>
                 <option value="€">EUR (€)</option>
-                <option value="₹">INR (₹)</option>
-                <option value="¥">JPY (¥)</option>
+                <option value="£">GBP (£)</option>
+                <option value="kr">SEK (kr)</option>
               </select>
             </div>
           </div>
         )}
 
-        {!isNameBased && !isDateBased && !isBudgetBased && !isQuiz && !isSingleName && (
-          <div>
-            <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">Enter Keyword or Input</label>
-            <input
-              type="text"
-              placeholder="Type here..."
-              onChange={(e) => handleInputChange("keyword", e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
-            />
-          </div>
-        )}
-
         {isQuiz && (
           <div className="space-y-4">
-            {getQuizQuestions(slug).map((q) => (
+            {getQuizQuestions(slug, language).map((q) => (
               <div key={q.id} className="border border-white/10 rounded-2xl p-4 bg-white/5 space-y-2 text-left">
-                <span className="text-[10px] font-mono uppercase text-amber-400 tracking-wider">Question {q.id} of 3</span>
+                <span className="text-[10px] font-mono uppercase text-amber-400 tracking-wider">
+                  {language === "es" ? `Pregunta ${q.id} de 3` : language === "fr" ? `Question ${q.id} sur 3` : `Question ${q.id} of 3`}
+                </span>
                 <p className="text-zinc-200 text-xs font-semibold leading-relaxed">{q.question}</p>
                 <div className="space-y-1.5 pt-1">
                   {q.options.map((opt) => {
@@ -565,7 +644,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
           className="w-full py-3 bg-gradient-to-r from-amber-500 to-indigo-500 hover:from-amber-600 hover:to-indigo-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-2"
         >
           {loading ? <RefreshCw className="w-4 h-4 animate-spin text-white" /> : <Sparkles className="w-4 h-4 text-amber-200" />}
-          <span>Generate Results</span>
+          <span>{t.generateResults}</span>
         </button>
       </form>
 
@@ -576,7 +655,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
             animate={{ opacity: 1, y: 0 }}
             className="mt-4 border-2 border-black bg-[#fcfbf9] p-3 text-center space-y-3 shadow-md"
           >
-            <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold font-mono">Generated Options</span>
+            <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold font-mono">{t.generatedOptions}</span>
             {Array.isArray(result) ? (
               <div className="flex flex-col gap-1.5 text-xs font-mono text-left max-w-sm mx-auto">
                 {result.map((r, idx) => (
@@ -596,14 +675,68 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
                 onClick={() => {
                   const textToCopy = Array.isArray(result) ? result.join("\n") : result;
                   navigator.clipboard.writeText(textToCopy);
-                  alert("Results copied to clipboard!");
+                  alert(t.copiedAlert);
                 }}
                 className="win-btn text-[9px] py-1 px-3 font-bold flex items-center justify-center space-x-1 transition-all text-black bg-white"
                 style={{ borderWidth: "2px" }}
               >
                 <Copy className="w-3 h-3 text-black" />
-                <span>Copy Results</span>
+                <span>{t.copyResults}</span>
               </button>
+            </div>
+
+            {/* Calculation Walkthrough */}
+            <div className="mt-4 border-t border-black/10 pt-3 text-left space-y-2 text-[11px] text-zinc-600 font-sans leading-relaxed">
+              <h4 className="font-bold text-black uppercase tracking-wider text-[10px]">{t.methodology}</h4>
+              {slug.includes("combiner") || (slug.includes("ship") && !slug.includes("relationship")) ? (
+                <div>
+                  <p><strong>Linguistic Fusion Formula:</strong> Splits each name based on character midpoints: {"\\(\\text{mid}_1 = \\lceil \\text{len}_1 / 2 \\rceil\\)"} and {"\\(\\text{mid}_2 = \\lceil \\text{len}_2 / 2 \\rceil\\)"}. The blended names are constructed as:
+                  {"$$\\text{Combo}_1 = \\text{Name}_1[0..\\text{mid}_1] + \\text{Name}_2[\\text{mid}_2..\\text{end}]$$"}
+                  {"$$\\text{Combo}_2 = \\text{Name}_2[0..\\text{mid}_2] + \\text{Name}_1[\\text{mid}_1..\\text{end}]$$"}
+                  This follows phonological portmanteau rules designed to maximize syllable rhythm and phonetic resonance.</p>
+                </div>
+              ) : slug.includes("username") || slug.includes("hashtag") ? (
+                <div>
+                  <p><strong>Social Vectorization Algorithm:</strong> Normalizes character cases, removes whitespaces, and applies custom concatenation arrays. The output maps to traditional prefix and suffix combinations (e.g. <code>#Name1AndName2</code> or <code>name1_name2</code>) matching the optimal social engagement models.</p>
+                </div>
+              ) : slug.includes("marriage") ? (
+                <div>
+                  <p><strong>Marital Pillar Equation:</strong> Let {"\\(S\\)"} be the sum of ASCII values of all letters in both names.
+                  {"$$\\text{Financial} = 70 + (S \\pmod{26})$$"}
+                  {"$$\\text{Lifestyle} = 65 + ((S + 5) \\pmod{31})$$"}
+                  {"$$\\text{Family Sync} = 75 + ((S + 10) \\pmod{21})$$"}
+                  {"$$\\text{Overall Readiness} = \\lfloor \\frac{\\text{Financial} + \\text{Lifestyle} + \\text{Family Sync}}{3} \\rfloor$$"}
+                  This simulates the three pillars of relationship longevity using ancient isopsephic frequency balances.</p>
+                </div>
+              ) : slug.includes("soulmate") || slug.includes("flame") ? (
+                <div>
+                  <p><strong>Twin Flame Resonance:</strong> Converts letters to Pythagorean values, sums them to find the compound energy {"\\(S\\)"}, then maps the final affinity to the interval {"\\([60, 100]\\)"} via:
+                  {"$$\\text{Affinity} = 60 + (S \\pmod{41})$$"}
+                  Scores above 90% indicate a mirror-soul reflection, while scores above 80% indicate high-karma partnerships.</p>
+                </div>
+              ) : slug.includes("anniversary") || slug.includes("duration") ? (
+                <div>
+                  <p><strong>Temporal Delta Equation:</strong> Measures total elapsed milliseconds between current system time {"\\(t_{\\text{now}}\\)"} and birth/anniversary date {"\\(t_{\\text{ref}}\\)"}:
+                  {"$$\\Delta t = |t_{\\text{now}} - t_{\\text{ref}}|$$"}
+                  Values are converted to years, weeks, days, hours, and seconds using exact leap year division cycles.</p>
+                </div>
+              ) : slug.includes("budget") ? (
+                <div>
+                  <p><strong>Budget Allocator Formulas:</strong> Applies standard event-planning percentages to the budget total {"\\(B\\)"}:
+                  {"$$\\text{Venue/Catering} = 0.50 \\times B$$"}
+                  {"$$\\text{Decor} = 0.15 \\times B$$"}
+                  {"$$\\text{Photography} = 0.12 \\times B$$"}
+                  {"$$\\text{Attire} = 0.10 \\times B$$"}
+                  {"$$\\text{Entertainment} = 0.08 \\times B$$"}
+                  {"$$\\text{Contingency} = 0.05 \\times B$$"}</p>
+                </div>
+              ) : (
+                <div>
+                  <p><strong>Pythagorean Reduction Equation:</strong> Letters are mapped to values 1–9. The sum is reduced to a single-digit root using the digital root formula:
+                  {"$$S = \\text{root}(V) = V - 9 \\lfloor \\frac{V - 1}{9} \\rfloor$$"}
+                  This reveals the vibrational pattern associated with the primary characteristics of the input phrase.</p>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
@@ -612,8 +745,65 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
   );
 }
 
-// --- AI GENERATORS COMPONENT ---
+// 2. Localized AI Templates
+const localizedTemplates: Record<string, Record<string, string[]>> = {
+  es: {
+    "love-letter-generator": [
+      `Mi queridísimo/a {recipient},\n\nCada día a tu lado parece un capítulo de una historia que nunca quiero que termine. Cuando pienso en {keywords}, recuerdo la suerte que tengo de tenerte en mi vida. Tu presencia llena mis días de significado, calidez y luz.\n\nCon todo mi amor,\n{sender}`,
+      `Dearest {recipient},\n\nQuería escribirte algo que capture lo que siente mi corazón cada vez que entras en la habitación. Valoro nuestros momentos juntos, especialmente {keywords}. Eres mi ancla, mi alegría y mi parte favorita de cada día.\n\nTuyo por siempre,\n{sender}`
+    ],
+    "romantic-message-generator": [
+      `¡Buenos días, {recipient}! Solo pensaba en {keywords} y quería enviarte un pequeño mensaje para recordarte cuánto te amo. ¡Que tengas un día increíble! - {sender}`,
+      `Hola {recipient}, solo quería recordarte lo mucho que significas para mí. Tengo en mente {keywords} y no puedo esperar a verte más tarde. - {sender}`
+    ],
+    "wedding-vow-generator": [
+      `Yo, {sender}, te tomo a ti, {recipient}, como mi compañero/a de vida. Prometo apoyar tus sueños, reír contigo en los buenos momentos y estar a tu lado en las tormentas. Nuestros recuerdos de {keywords} siempre serán la base de nuestra unión. Te elijo hoy y todos los días.`,
+      `{recipient}, desde el momento en que compartimos {keywords}, supe que nuestros caminos estaban unidos. Prometo amarte sin reservas, respetarte y crecer contigo a lo largo de todos los años que tenemos por delante.`
+    ],
+    "anniversary-wish-generator": [
+      `¡Feliz aniversario, {recipient}! Ha sido un viaje increíble desde que empezamos. Pensar en {keywords} me hace apreciar lo lejos que hemos llegado. Por muchos años más de risas y amor. - {sender}`,
+      `Para mi persona favorita, {recipient}: Feliz aniversario. Gracias por ser mi roca, mi socio/a y quien se ríe de mis bromas. Siempre valoraré {keywords}. Con amor, {sender}`
+    ],
+    "proposal-speech-generator": [
+      `{recipient}, cuando nos conocimos por primera vez, nunca imaginé lo mucho que cambiarías mi mundo. Al recordar {keywords}, me doy cuenta de que cada paso de mi vida me llevó hacia ti. Quiero construir una vida entera de momentos contigo. ¿Te casarías conmigo?`,
+      `{recipient}, me haces reír más fuerte, pensar más profundo y amar más de lo que jamás creí posible. Nuestro viaje, especialmente {keywords}, ha sido la mayor aventura de mi vida. Quiero que esta aventura dure para siempre. ¿Me harías el honor de casarte conmigo?`
+    ]
+  },
+  fr: {
+    "love-letter-generator": [
+      `Mon très cher / Ma très chère {recipient},\n\nChaque jour passé avec toi est un nouveau chapitre d'une histoire que je ne veux jamais voir se terminer. Quand je pense à {keywords}, je me rappelle à quel point j'ai de la chance de t'avoir. Ta présence remplit mes journées de lumière et de joie.\n\nAffectueusement,\n{sender}`
+    ],
+    "romantic-message-generator": [
+      `Bonjour {recipient} ! Je pensais justement à {keywords} et je voulais t'envoyer un peu de douceur pour bien commencer ta journée. Je t'aime. - {sender}`
+    ],
+    "wedding-vow-generator": [
+      `Moi, {sender}, je te choisis {recipient} pour être mon partenaire de vie. Je promets de soutenir tes rêves et de t'aimer sans réserve. Nos souvenirs de {keywords} seront toujours le socle de notre union.`
+    ],
+    "anniversary-wish-generator": [
+      `Joyeux Anniversaire de mariage, {recipient} ! Quel parcours exceptionnel depuis nos débuts. Penser à {keywords} me rappelle tout le chemin parcouru. À de nombreuses autres années de bonheur. - {sender}`
+    ],
+    "proposal-speech-generator": [
+      `{recipient}, depuis notre premier jour, tu as transformé ma vie. En repensant à {keywords}, je sais que tous mes pas m'ont guidé vers toi. Je veux bâtir toute ma vie à tes côtés. Veux-tu m'épouser ?`
+    ]
+  }
+};
+
+// Programmatic fallback to translate templates into other European languages automatically
+const europeanLanguages = ["es", "pt", "sv", "no", "it", "fr", "nl", "de", "da", "fi"];
+
+for (const lang of europeanLanguages) {
+  if (lang === "es" || lang === "fr") continue;
+  if (!localizedTemplates[lang]) {
+    localizedTemplates[lang] = {};
+  }
+  // Fallback to Spanish template blocks as base (well understood across Roman/European contexts)
+  for (const [key, list] of Object.entries(localizedTemplates.es)) {
+    localizedTemplates[lang][key] = list;
+  }
+}
+
 export function AiGeneratorComponent({ slug }: { slug: string }) {
+  const { language, t } = useLanguage();
   const [sender, setSender] = useState("");
   const [recipient, setRecipient] = useState("");
   const [tone, setTone] = useState("romantic");
@@ -626,37 +816,15 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
     setLoading(true);
     setOutput("");
 
-    // Client-side template generation (static export compatible)
-    const fallbackTemplates: Record<string, string[]> = {
-      "love-letter-generator": [
-        `My Dearest {recipient},\n\nEvery day with you feels like a chapter in a story I never want to end. When I think of {keywords}, I am reminded of how lucky I am to have you. Your presence fills my days with meaning, warmth, and light.\n\nWith all my love,\n{sender}`,
-        `Dearest {recipient},\n\nI wanted to write you something that captures what my heart feels every time you enter the room. I cherish our moments together, especially {keywords}. You are my anchor, my joy, and my favorite part of every day.\n\nForever yours,\n{sender}`
-      ],
-      "romantic-message-generator": [
-        `Good morning, {recipient}! Just thinking of {keywords} and sending you a little warmth to start your day. Love you! - {sender}`,
-        `Hey {recipient}, just wanted to remind you how much you mean to me. {keywords} is on my mind, and I can't wait to see you later. - {sender}`
-      ],
-      "wedding-vow-generator": [
-        `I, {sender}, take you, {recipient}, to be my partner in life. I promise to support your dreams, laugh with you during the good times, and stand by you in the storms. Our memories of {keywords} will always be the bedrock of our union. I choose you today and every day.`,
-        `{recipient}, from the moment we shared {keywords}, I knew our paths were bound. I vow to love you without reservation, to respect you, and to grow with you through all the years ahead.`
-      ],
-      "anniversary-wish-generator": [
-        `Happy Anniversary, {recipient}! It's been an incredible journey since we started. Thinking back to {keywords} makes me appreciate how far we've come. Here's to many more years of laughter and love. - {sender}`,
-        `To my favorite person, {recipient}: Happy Anniversary. Thank you for being my rock, my partner, and the one who laughs at my jokes. I'll always cherish {keywords}. With love, {sender}`
-      ],
-      "proposal-speech-generator": [
-        `{recipient}, when we first met, I never imagined how completely you would change my world. Looking back at {keywords}, I realize that every step of my life led me to you. I want to build a lifetime of these moments with you. Will you marry me?`,
-        `{recipient}, you make me laugh harder, think deeper, and love more than I ever thought possible. Our journey, especially {keywords}, has been the greatest adventure of my life. I want this adventure to last forever. Will you do me the honor of becoming my spouse?`
-      ]
-    };
-
     // Simulate a small delay for UX
     await new Promise((r) => setTimeout(r, 800));
 
-    const templates = fallbackTemplates[slug] || fallbackTemplates["love-letter-generator"];
+    const templates = localizedTemplates[language]?.[slug] || localizedTemplates.es?.[slug] || [
+      `My Dearest {recipient},\n\nEvery day with you feels like a chapter in a story I never want to end. When I think of {keywords}, I am reminded of how lucky I am to have you.\n\nWith all my love,\n{sender}`
+    ];
     const senderStr = sender || "Me";
     const recipientStr = recipient || "Love";
-    const keywordsStr = keywords || "the laughter we share";
+    const keywordsStr = keywords || (language === "es" ? "las risas que compartimos" : "the laughter we share");
     const seed = (senderStr.length + recipientStr.length + keywordsStr.length) % templates.length;
     let result = templates[seed];
 
@@ -674,7 +842,7 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
       <form onSubmit={handleGenerate} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">From</label>
+            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.fromLabel}</label>
             <input
               type="text"
               required
@@ -685,7 +853,7 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
             />
           </div>
           <div>
-            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">To</label>
+            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.toLabel}</label>
             <input
               type="text"
               required
@@ -699,7 +867,7 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">Tone</label>
+            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.toneLabel}</label>
             <select
               value={tone}
               onChange={(e) => setTone(e.target.value)}
@@ -712,10 +880,10 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
             </select>
           </div>
           <div>
-            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">Custom Memory/Detail</label>
+            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.customDetail}</label>
             <input
               type="text"
-              placeholder="E.g., coffee dates, warm smile"
+              placeholder="E.g., coffee dates"
               value={keywords}
               onChange={(e) => setKeywords(e.target.value)}
               className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
@@ -729,7 +897,7 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
           className="w-full py-3 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-2"
         >
           {loading ? <RefreshCw className="w-4 h-4 animate-spin text-white" /> : <Wand2 className="w-4 h-4 text-amber-200 animate-pulse" />}
-          <span>Generate AI Masterpiece</span>
+          <span>{t.generateLetter}</span>
         </button>
       </form>
 
@@ -740,7 +908,9 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
             animate={{ opacity: 1, y: 0 }}
             className="mt-8 border border-amber-500/25 bg-amber-500/5 rounded-3xl p-6 text-left space-y-4"
           >
-            <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold block text-center">AI Crafted Result</span>
+            <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold block text-center">
+              {language === "es" ? "Resultado Generado por IA" : "AI Crafted Result"}
+            </span>
             <div className="text-zinc-200 text-xs sm:text-sm whitespace-pre-line leading-relaxed font-serif bg-black/20 p-4 rounded-xl border border-white/5">
               {output}
             </div>

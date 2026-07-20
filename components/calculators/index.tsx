@@ -11,9 +11,11 @@ import {
 } from "@/lib/calculations";
 import { Sparkles, Heart, Star, Calendar, User, Zap } from "lucide-react";
 import ShareCertificate from "../share-certificate";
+import { useLanguage } from "@/lib/i18n";
 
 // --- LIFE PATH CALCULATOR ---
 export function LifePathCalculator() {
+  const { t } = useLanguage();
   const [birthdate, setBirthdate] = useState("");
   const [result, setResult] = useState<{ lifePath: number; explanation: string } | null>(null);
 
@@ -29,7 +31,7 @@ export function LifePathCalculator() {
       <form onSubmit={handleCalculate} className="space-y-4">
         <div>
           <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-            Select Your Date of Birth
+            {t.birthdate}
           </label>
           <div className="relative">
             <input
@@ -46,7 +48,7 @@ export function LifePathCalculator() {
           className="w-full py-3 bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg shadow-rose-500/20 active:scale-95 flex items-center justify-center space-x-2"
         >
           <Sparkles className="w-4 h-4 text-amber-200" />
-          <span>Calculate Life Path</span>
+          <span>{t.calculateLifePath}</span>
         </button>
       </form>
 
@@ -58,7 +60,7 @@ export function LifePathCalculator() {
             exit={{ opacity: 0, y: -15 }}
             className="mt-8 border border-amber-500/25 bg-amber-500/5 rounded-3xl p-6 text-center space-y-4"
           >
-            <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Your Life Path Number</span>
+            <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Life Path Number</span>
             <div className="text-6xl sm:text-7xl font-bold font-serif text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-400 to-amber-600 text-glow-gold">
               {result.lifePath}
             </div>
@@ -72,6 +74,7 @@ export function LifePathCalculator() {
 
 // --- NAME NUMEROLOGY CALCULATOR ---
 export function NameNumerologyCalculator() {
+  const { t } = useLanguage();
   const [name, setName] = useState("");
   const [result, setResult] = useState<{ destiny: number; soulUrge: number; personality: number } | null>(null);
 
@@ -87,7 +90,7 @@ export function NameNumerologyCalculator() {
       <form onSubmit={handleCalculate} className="space-y-4">
         <div>
           <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-            Enter Your Full Birth Name
+            {t.birthNameLabel}
           </label>
           <div className="relative">
             <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
@@ -106,7 +109,7 @@ export function NameNumerologyCalculator() {
           className="w-full py-3 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-2"
         >
           <Zap className="w-4 h-4 text-purple-200" />
-          <span>Decode My Name</span>
+          <span>{t.decodeName}</span>
         </button>
       </form>
 
@@ -141,6 +144,7 @@ export function NameNumerologyCalculator() {
 
 // --- CHALDEAN NUMEROLOGY CALCULATOR ---
 export function ChaldeanCalculator() {
+  const { t } = useLanguage();
   const [name, setName] = useState("");
   const [result, setResult] = useState<{ compound: number; single: number } | null>(null);
 
@@ -156,7 +160,7 @@ export function ChaldeanCalculator() {
       <form onSubmit={handleCalculate} className="space-y-4">
         <div>
           <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-            Enter Name or Phrase
+            {t.yourName}
           </label>
           <div className="relative">
             <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
@@ -175,7 +179,7 @@ export function ChaldeanCalculator() {
           className="w-full py-3 bg-gradient-to-r from-amber-500 to-indigo-500 hover:from-amber-600 hover:to-indigo-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-2"
         >
           <Star className="w-4 h-4 text-amber-200" />
-          <span>Decode Chaldean Numbers</span>
+          <span>{t.decodeChaldean}</span>
         </button>
       </form>
 
@@ -208,6 +212,7 @@ export function ChaldeanCalculator() {
 
 // --- LOVE COMPATIBILITY CALCULATOR ---
 export function LoveCalculatorComponent() {
+  const { t } = useLanguage();
   const [name1, setName1] = useState("");
   const [name2, setName2] = useState("");
   const [result, setResult] = useState<number | null>(null);
@@ -278,7 +283,7 @@ export function LoveCalculatorComponent() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-              Your Name
+              {t.yourName}
             </label>
             <input
               type="text"
@@ -291,7 +296,7 @@ export function LoveCalculatorComponent() {
           </div>
           <div>
             <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-              Partner's Name
+              {t.partnerName}
             </label>
             <input
               type="text"
@@ -308,7 +313,7 @@ export function LoveCalculatorComponent() {
           className="w-full py-3 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg shadow-pink-500/20 active:scale-95 flex items-center justify-center space-x-2"
         >
           <Heart className="w-4 h-4 text-white fill-white/20 animate-pulse" />
-          <span>Check Compatibility</span>
+          <span>{t.checkCompatibility}</span>
         </button>
       </form>
 
@@ -331,6 +336,7 @@ export function LoveCalculatorComponent() {
 
 // --- ZODIAC LOVE CALCULATOR ---
 export function ZodiacLoveCalculatorComponent() {
+  const { t } = useLanguage();
   const [birthdate1, setBirthdate1] = useState("");
   const [birthdate2, setBirthdate2] = useState("");
   const [result, setResult] = useState<{ sign1: string; sign2: string; compatibility: number } | null>(null);
@@ -340,7 +346,6 @@ export function ZodiacLoveCalculatorComponent() {
     if (!birthdate1 || !birthdate2) return;
     const sign1 = getZodiacSign(birthdate1);
     const sign2 = getZodiacSign(birthdate2);
-    // Simple zodiac calculation
     const loveScore = calculateLoveCompatibility(sign1, sign2);
     setResult({ sign1, sign2, compatibility: loveScore });
   };
@@ -348,38 +353,37 @@ export function ZodiacLoveCalculatorComponent() {
   return (
     <div className="space-y-6 max-w-md mx-auto">
       <form onSubmit={handleCalculate} className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-              Your Birthdate
-            </label>
-            <input
-              type="date"
-              required
-              value={birthdate1}
-              onChange={(e) => setBirthdate1(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-rose-500/50 transition-all text-sm"
-            />
-          </div>
-          <div>
-            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-              Partner's Birthdate
-            </label>
-            <input
-              type="date"
-              required
-              value={birthdate2}
-              onChange={(e) => setBirthdate2(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-rose-500/50 transition-all text-sm"
-            />
-          </div>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-left">
+          {/* Row 1: Labels */}
+          <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider flex items-end min-h-[24px]">
+            {t.birthdate}
+          </label>
+          <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider flex items-end min-h-[24px]">
+            {t.partnerBirthdate}
+          </label>
+
+          {/* Row 2: Inputs */}
+          <input
+            type="date"
+            required
+            value={birthdate1}
+            onChange={(e) => setBirthdate1(e.target.value)}
+            className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-rose-500/50 transition-all text-sm"
+          />
+          <input
+            type="date"
+            required
+            value={birthdate2}
+            onChange={(e) => setBirthdate2(e.target.value)}
+            className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-rose-500/50 transition-all text-sm"
+          />
         </div>
         <button
           type="submit"
           className="w-full py-3 bg-gradient-to-r from-indigo-500 to-rose-500 hover:from-indigo-600 hover:to-rose-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-2"
         >
           <Star className="w-4 h-4 text-amber-200" />
-          <span>Calculate Astrological Match</span>
+          <span>{t.calculateAstrology}</span>
         </button>
       </form>
 

@@ -9,7 +9,7 @@ export interface ToolConfig {
   howItWorks: { name: string; text: string }[];
   faqs: { question: string; answer: string }[];
   educationalTitle: string;
-  educationalBody: string;
+  educationalBody: React.ReactNode;
   relatedTools: { name: string; href: string }[];
 }
 
@@ -23,8 +23,8 @@ export const toolRegistry: Record<string, ToolConfig> = {
     toolSlug: "life-path-calculator",
     howItWorks: [
       { name: "Enter Date of Birth", text: "Select your month, day, and year of birth in the calculator input form." },
-      { name: "Sum the Digits", text: "The calculator reduces the month, day, and year individually to single digits (or Master Numbers), then sums those three numbers." },
-      { name: "Get Your Result", text: "Receive your final Life Path number alongside an in-depth breakdown of your traits, careers, and compatibility." }
+      { name: "Reduce to Single Digits", text: "The calculator reduces the month, day, and year individually to single digits (or Master Numbers: 11, 22, 33) according to Pythagorean standards." },
+      { name: "Sum and Reduce", text: "Add the reduced values together and reduce the sum once more to get your final Life Path number." }
     ],
     faqs: [
       { question: "What is a Life Path Number?", answer: "It is the most significant number in your numerology chart, determined by your birthdate. It outlines your natural talents, challenges, and life's primary mission." },
@@ -33,8 +33,21 @@ export const toolRegistry: Record<string, ToolConfig> = {
       { question: "How do I calculate it manually?", answer: "Reduce month, day, and year to single digits. Add them together. If the sum is a double digit (excluding 11, 22, or 33), add those digits together to get a single number." },
       { question: "Which Life Path numbers are most compatible?", answer: "Generally, numbers with similar vibrational frequencies align best (e.g., intellectual 1, 5, and 7; or emotional/nurturing 2, 4, 8, and 6)." }
     ],
-    educationalTitle: "The Power of Your Life Path Vibration",
-    educationalBody: "In numerology, the date you entered this world is not a random coincidence. It carries a unique vibrational signature that acts as a blueprint for your entire life journey. The Life Path number is widely considered the most critical factor in your personal chart. It represents your native abilities, lessons to learn, and the overall rhythm of your life. Whether you are an independent leader (Life Path 1) or a master builder (Life Path 22), understanding this number helps you align with your natural strengths and navigate personal relationships and career choices with clarity and confidence.",
+    educationalTitle: "The Mathematical Blueprint of Your Life Path Number",
+    educationalBody: (
+      <span>
+        In Pythagorean numerology, the date of birth is not considered a random occurrence, but a key to an individual's cosmic frequency. Pythagoras of Samos (c. 570 – c. 495 BC), the ancient Greek philosopher, taught that "all things are numbers" and that numbers represent the spiritual qualities of the universe. According to Pythagorean theory, the cosmos is governed by mathematical ratios resembling the musical intervals of the "Music of the Spheres". To learn more about Pythagoras and the history of mathematics, see the{" "}
+        <a
+          href="https://www.britannica.com/biography/Pythagoras"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-amber-400 hover:text-amber-300 font-semibold"
+        >
+          Encyclopaedia Britannica article on Pythagoras
+        </a>
+        . The Life Path calculation utilizes a linear addition method: let {"\\(D\\)"} be the day, {"\\(M\\)"} the month, and {"\\(Y\\)"} the year. We compute {"\\(L = f(f(D) + f(M) + f(Y))\\)"} where {"\\(f(n)\\)"} is the digital root function that sums digits repeatedly until a single digit or a Master Number is reached. This process strips away the layers of time to reveal the core vibrational essence of your birth.
+      </span>
+    ),
     relatedTools: [
       { name: "Name Numerology Calculator", href: "/numerology/name-numerology-calculator" },
       { name: "Chaldean Numerology Calculator", href: "/numerology/chaldean-numerology-calculator" },
@@ -49,8 +62,8 @@ export const toolRegistry: Record<string, ToolConfig> = {
     toolSlug: "name-numerology-calculator",
     howItWorks: [
       { name: "Enter Full Name", text: "Provide your birth name exactly as it appears on your birth certificate." },
-      { name: "Pythagorean Value Summation", text: "Letters are converted to numbers (A=1, B=2, etc.) and added up." },
-      { name: "Receive Triple Report", text: "Get your Destiny Number, Soul Urge (vowels), and Personality Number (consonants)." }
+      { name: "Pythagorean Value Summation", text: "Letters are converted to numbers (A=1, B=2, ... I=9, J=1, etc.) and added up." },
+      { name: "Receive Triple Report", text: "Get your Destiny Number (all letters), Soul Urge (vowels), and Personality Number (consonants)." }
     ],
     faqs: [
       { question: "What name should I use?", answer: "Always use your full name at birth as recorded on your birth certificate for the most accurate foundation." },
@@ -59,8 +72,21 @@ export const toolRegistry: Record<string, ToolConfig> = {
       { question: "How is the Personality number calculated?", answer: "It is calculated by summing only the consonants in your name, representing how others perceive you." },
       { question: "Can a name change affect my numerology?", answer: "Yes, a new legal or nickname changes your secondary vibration, but the birth name remain the core blueprint." }
     ],
-    educationalTitle: "Deciphering the Vibrational Frequency of Your Name",
-    educationalBody: "Every letter in your name has a sound frequency that resonates with specific numbers. In Pythagorean numerology, the 26 letters of the alphabet are mapped to numbers from 1 to 9. By analyzing your name, we can extract three key indicators: the Destiny Number (your outer path), the Soul Urge Number (your inner desires), and the Personality Number (your social mask). Combining these values gives a comprehensive portrait of your psychological traits and destiny.",
+    educationalTitle: "Acoustic Resonance & Letter Mapping in Pythagorean Gematria",
+    educationalBody: (
+      <span>
+        Pythagorean name numerology operates on the premise that letters are symbols of phonetic frequencies. The Greek system of isopsephy and the Hebrew system of Gematria are the direct historical ancestors of modern name calculators. By assigning numerical values (1 through 9) to letters, we convert alphabetical patterns into quantitative variables. Under this system, the Destiny Number representing the 'outer self' is computed by summing the value of all characters in the full name, while the Soul Urge (inner motivations) sums only the vowels, and the Personality (social mask) sums the consonants. These calculations trace back to the study of harmonics and acoustics popularized by early Greek academies. For historical context on the development of alphabets and numerical values, see the{" "}
+        <a
+          href="https://www.britannica.com/topic/gematria"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-amber-400 hover:text-amber-300 font-semibold"
+        >
+          Encyclopaedia Britannica's history of Gematria
+        </a>
+        .
+      </span>
+    ),
     relatedTools: [
       { name: "Life Path Calculator", href: "/numerology/life-path-calculator" },
       { name: "Destiny Number Calculator", href: "/numerology/destiny-number-calculator" },
@@ -75,7 +101,7 @@ export const toolRegistry: Record<string, ToolConfig> = {
     toolSlug: "chaldean-numerology-calculator",
     howItWorks: [
       { name: "Enter Name", text: "Enter your first name, last name, or full name." },
-      { name: "Sound-Vibration Translation", text: "The letters are mapped to values 1-8 based on Chaldean charts." },
+      { name: "Sound-Vibration Translation", text: "The letters are mapped to values 1-8 based on Chaldean phonetics." },
       { name: "Compound Number Interpretation", text: "Analyze both the single-digit root and the double-digit compound number." }
     ],
     faqs: [
@@ -85,8 +111,21 @@ export const toolRegistry: Record<string, ToolConfig> = {
       { question: "How do I interpret compound number 10?", answer: "Known as the 'Wheel of Fortune', it indicates success, honor, and carrying out planned ambitions." },
       { question: "Which name should I enter?", answer: "For Chaldean, calculate the name you are most commonly called or use daily, as it represents your current active energy." }
     ],
-    educationalTitle: "Ancient Wisdom: The Sound Vibrations of Chaldea",
-    educationalBody: "Originating in ancient Babylon, Chaldean numerology is one of the oldest forms of vibrational science. Unlike the Pythagorean system, which assigns numbers sequentially, the Chaldean system is based on the phonetics and sound waves of letters. Because of this, it is considered highly personal and spiritually indicative of a person's karma. By studying both the compound (double digit) and single root numbers, you can gain insights into hidden obstacles and opportunities.",
+    educationalTitle: "Ancient Babylonian Sound Science and Chaldean Astrology",
+    educationalBody: (
+      <span>
+        The Chaldean system originated in ancient Mesopotamia (Chaldea/Babylon) and was heavily integrated with astronomical observations. Unlike the sequential Pythagorean system, Chaldean letter assignments are determined entirely by the sound frequency and acoustic vibration of spoken phonemes. This system focuses on compound double-digit numbers (10 through 52) which represent external forces, luck, and karmic destiny. The single digit (1 to 8) represents the inner person. The number 9 was held as sacred, representing the infinite divine boundary, and was never assigned to any individual letter, though it can appear as a final reduced sum. The historical Chaldean Empire and its advanced mathematics and astronomy laid the foundation for modern Western astrology and numerological tables. Read more about the history of the Chaldeans at the{" "}
+        <a
+          href="https://www.britannica.com/place/Chaldea"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-amber-400 hover:text-amber-300 font-semibold"
+        >
+          Encyclopaedia Britannica article on Chaldea
+        </a>
+        .
+      </span>
+    ),
     relatedTools: [
       { name: "Name Numerology Calculator", href: "/numerology/name-numerology-calculator" },
       { name: "Life Path Calculator", href: "/numerology/life-path-calculator" },
@@ -113,8 +152,21 @@ export const toolRegistry: Record<string, ToolConfig> = {
       { question: "What does a score below 50% mean?", answer: "It suggests contrasting styles or friction, which can actually prompt growth and learning if handled with care." },
       { question: "Can I calculate compatibility for friends?", answer: "Absolutely! The tool works for assessing friendly connection and general energetic alignment." }
     ],
-    educationalTitle: "Name Synergy: How Sound Waves Align in Love",
-    educationalBody: "According to ancient name vibration principles, the names we answer to define a large part of our energetic output. When two people come together, their names interact. Some names clash, while others harmonize smoothly. Our Love Calculator uses a deterministic algorithm that sums up letters and uses a formula to compute their affinity index, showing how naturally your names flow together.",
+    educationalTitle: "Interpersonal Vibrational Sync: The Mathematics of Name Compatibility",
+    educationalBody: (
+      <span>
+        Name compatibility calculations utilize alphabetical character frequencies to model compatibility. By summing the Pythagorean gematria values of each name, we generate two distinct numeric arrays. The compatibility score is calculated using a deterministic mod-based algorithm: let {"\\(V_1\\)"} and {"\\(V_2\\)"} be the total integer sums of the names. The final index is determined by {"\\(C = 45 + ((V_1 \\times 7 + V_2 \\times 13) \\pmod{51})\\)"}, ensuring a balanced, consistent, and repeatable compatibility score between 45% and 95%. Historically, compatibility calculations find roots in ancient wedding match-making systems, where scholars assessed the phonetic compatibility of couples to ensure family harmony. For modern research into name phonetics, social linguistics, and name choices, refer to studies on{" "}
+        <a
+          href="https://www.linguisticsociety.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-amber-400 hover:text-amber-300 font-semibold"
+        >
+          social linguistics and sound symbolism
+        </a>
+        .
+      </span>
+    ),
     relatedTools: [
       { name: "Zodiac Love Calculator", href: "/love/zodiac-love-calculator" },
       { name: "Relationship Compatibility Calculator", href: "/love/relationship-compatibility-calculator" },
@@ -139,8 +191,21 @@ export const toolRegistry: Record<string, ToolConfig> = {
       { question: "What is an element match?", answer: "Matching signs of the same element (e.g. Taurus and Virgo, both Earth) creates an easy, stable understanding." },
       { question: "What are the fire signs?", answer: "Aries, Leo, and Sagittarius are the Fire signs, characterized by passion, energy, and directness." }
     ],
-    educationalTitle: "Element Compatibility in Astrology",
-    educationalBody: "In astrology, the twelve zodiac signs are grouped into four elements: Fire, Earth, Air, and Water. These elements represent primary temperament styles. When two people of compatible elements pair up (like Earth and Water, or Fire and Air), they find it easy to support and validate each other. By mapping your sun signs, this calculator details the elements at play in your dynamic, helping you work with your cosmological currents.",
+    educationalTitle: "Astrological Elements and Harmonic Geometric Aspects",
+    educationalBody: (
+      <span>
+        Classical astrology categorizes the twelve zodiac signs into four primary elements: Fire, Earth, Air, and Water. The compatibility score is determined by element interaction and angular aspects (trine, sextile, square, opposition) on the 360-degree ecliptic plane. Signs of the same element (trine aspects, 120° apart) share a harmonious vibrational link, while opposing signs (180° apart) can create high-tension/high-attraction dynamics. Fire and Air elements fuel one another, while Earth and Water nurture growth. Read about the history of the zodiac signs and elements in the{" "}
+        <a
+          href="https://www.britannica.com/topic/astrology"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-amber-400 hover:text-amber-300 font-semibold"
+        >
+          Encyclopaedia Britannica's guide on Astrology
+        </a>
+        .
+      </span>
+    ),
     relatedTools: [
       { name: "Love Calculator", href: "/love/love-calculator" },
       { name: "Relationship Compatibility Calculator", href: "/love/relationship-compatibility-calculator" },

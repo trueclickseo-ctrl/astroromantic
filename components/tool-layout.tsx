@@ -3,6 +3,8 @@
 import React from "react";
 import Head from "next/head";
 import WinDialog from "./win-dialog";
+import { useLanguage } from "@/lib/i18n";
+import { toolTranslations } from "@/lib/tool-translations";
 
 export interface FAQItem {
   question: string;
@@ -40,11 +42,24 @@ export default function ToolLayout({
   educationalContent,
   children
 }: ToolLayoutProps) {
+  const { language, t } = useLanguage();
+
+  // Load translations dynamically for this specific tool at runtime on client side
+  const localized = toolTranslations[language]?.[toolSlug];
+
+  const displayTitle = localized?.title || title;
+  const displayDesc = localized?.desc || description;
+  const displayDirectAnswer = localized?.directAnswer || directAnswer;
+  const displayHowItWorks = localized?.howItWorks || howItWorks;
+  const displayFaqs = localized?.faqs || faqs;
+  const displayEducationalBody = localized?.educationalBody || null;
+  const displayEducationalTitle = localized?.educationalTitle || null;
+
   // Generate Schema JSON-LD objects
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": title,
+    "name": displayTitle,
     "operatingSystem": "All",
     "applicationCategory": "Application",
     "offers": {
@@ -57,7 +72,7 @@ export default function ToolLayout({
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map((faq) => ({
+    "mainEntity": displayFaqs.map((faq) => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {
@@ -70,8 +85,8 @@ export default function ToolLayout({
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": `How to use the ${title}`,
-    "step": howItWorks.map((step, idx) => ({
+    "name": `How to use the ${displayTitle}`,
+    "step": displayHowItWorks.map((step, idx) => ({
       "@type": "HowToStep",
       "position": idx + 1,
       "name": step.name,
@@ -98,11 +113,21 @@ export default function ToolLayout({
       {
         "@type": "ListItem",
         "position": 3,
-        "name": title,
+        "name": displayTitle,
         "item": `https://astroromantic.com/${category}/${toolSlug}`
       }
     ]
   };
+
+  // Localize related tool names if available
+  const localizedRelatedTools = relatedTools.map((tool) => {
+    const slug = tool.href.split("/").pop() || "";
+    const nameTranslation = toolTranslations[language]?.[slug]?.title;
+    return {
+      name: nameTranslation || tool.name,
+      href: tool.href
+    };
+  });
 
   return (
     <>
@@ -131,13 +156,13 @@ export default function ToolLayout({
           <span>/</span>
           <a href={`/${category}`} className="hover:text-zinc-300 capitalize">{category.replace("-", " ")}</a>
           <span>/</span>
-          <span className="text-zinc-400 font-semibold">{title}</span>
+          <span className="text-zinc-400 font-semibold">{displayTitle}</span>
         </nav>
 
         {/* 3 & 4. The Interactive Tool & Results Section */}
         <div className="w-full">
           <WinDialog
-            title={`${title}.exe`}
+            title={`${displayTitle}.exe`}
             onClose={() => window.location.href = `/${category}`}
             positionMode="relative"
           >
@@ -148,24 +173,26 @@ export default function ToolLayout({
         {/* 1. H1 Header */}
         <div className="text-center space-y-4 pt-4 border-t border-white/5">
           <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-rose-300 to-purple-400 bg-clip-text text-transparent">
-            {title}
+            {displayTitle}
           </h1>
-          <p className="text-sm text-zinc-400 max-w-xl mx-auto">{description}</p>
+          <p className="text-sm text-zinc-400 max-w-xl mx-auto">{displayDesc}</p>
         </div>
 
         {/* 2. Direct Answer Block */}
         <div className="border border-amber-500/20 bg-amber-500/5 rounded-2xl p-6 text-zinc-300 text-sm leading-relaxed max-w-2xl mx-auto shadow-inner text-center">
-          <span className="font-semibold text-amber-400 block mb-1 text-xs tracking-widest uppercase">Quick Answer</span>
-          <p>{directAnswer}</p>
+          <span className="font-semibold text-amber-400 block mb-1 text-xs tracking-widest uppercase">
+            {t.sectionQuickAnswer}
+          </span>
+          <p>{displayDirectAnswer}</p>
         </div>
 
         {/* 5. How It Works */}
         <div className="space-y-6">
           <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200">
-            How It Works: Step-by-Step
+            {t.sectionHowItWorks}
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
-            {howItWorks.map((step, idx) => (
+            {displayHowItWorks.map((step, idx) => (
               <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5 relative">
                 <div className="absolute top-4 right-4 text-3xl font-bold text-white/5 font-serif">
                   {idx + 1}
@@ -179,16 +206,22 @@ export default function ToolLayout({
 
         {/* 8. Educational Content (EEAT) */}
         <div className="prose prose-invert max-w-none text-zinc-400 text-xs sm:text-sm leading-relaxed space-y-4">
-          {educationalContent}
+          {displayEducationalTitle && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-serif font-bold text-zinc-200">{displayEducationalTitle}</h3>
+              <div>{displayEducationalBody}</div>
+            </div>
+          )}
+          {!displayEducationalTitle && educationalContent}
         </div>
 
         {/* 6. FAQ Section */}
         <div className="space-y-6">
           <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200">
-            Frequently Asked Questions
+            {t.sectionFaq}
           </h2>
           <div className="space-y-4">
-            {faqs.map((faq, idx) => (
+            {displayFaqs.map((faq, idx) => (
               <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5">
                 <h3 className="font-medium text-zinc-200 text-sm mb-2 flex items-start">
                   <span className="text-rose-400 mr-2">Q:</span>
@@ -204,9 +237,11 @@ export default function ToolLayout({
 
         {/* 7. Related Tools */}
         <div className="border-t border-white/5 pt-8">
-          <h2 className="font-serif text-lg font-semibold text-zinc-300 mb-4">Related Tools You Might Like</h2>
+          <h2 className="font-serif text-lg font-semibold text-zinc-300 mb-4">
+            {t.sectionRelatedTools}
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {relatedTools.map((tool, idx) => (
+            {localizedRelatedTools.map((tool, idx) => (
               <a
                 key={idx}
                 href={tool.href}
