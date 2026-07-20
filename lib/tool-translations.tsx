@@ -269,7 +269,7 @@ export const toolTranslations: Record<string, Record<string, ToolTranslation>> =
 };
 
 // Auto-populate helper to copy Spanish translations to other languages if they don't have explicit overrides
-const languages = ["es", "pt", "sv", "no", "it", "fr", "nl", "de", "da", "fi"];
+const languages = ["es", "pt", "sv", "no", "it", "fr", "nl", "de", "da", "fi", "el", "tr"];
 
 const localizedTitles: Record<string, Record<string, string>> = {
   pt: {
@@ -451,6 +451,46 @@ const localizedTitles: Record<string, Record<string, string>> = {
     "wedding-vow-generator": "Häävalageneraattori",
     "anniversary-wish-generator": "Vuosipäiväonnittelut",
     "proposal-speech-generator": "Kosintapuhegeneraattori"
+  },
+  el: {
+    "love-percentage-calculator": "Ποσοστό Αγάπης",
+    "relationship-compatibility-calculator": "Συμβατότητα Σχέσης",
+    "marriage-compatibility-calculator": "Συμβατότητα Γάμου",
+    "soulmate-calculator": "Υπολογιστής Αδελφής Ψυχής",
+    "couple-name-combiner": "Συνδυασμός Ονομάτων",
+    "ship-name-generator": "Γεννήτρια Ship Names",
+    "nickname-generator": "Γεννήτρια Ψευδωνύμων",
+    "couple-hashtag-generator": "Hashtags Ζευγαριών",
+    "couple-username-generator": "Usernames Ζευγαριών",
+    "anniversary-calculator": "Υπολογιστής Επετείου",
+    "relationship-duration": "Διάρκεια Σχέσης",
+    "love-language-quiz": "Κουίζ Γλωσσών Αγάπης",
+    "relationship-health-score": "Υγεία Σχέσης",
+    "love-letter-generator": "Γεννήτρια Ερωτικών Επιστολών",
+    "romantic-message-generator": "Ρομαντικά Μηνύματα",
+    "wedding-vow-generator": "Γεννήτρια Όρκων Γάμου",
+    "anniversary-wish-generator": "Ευχές Επετείου",
+    "proposal-speech-generator": "Διάλογος Πρότασης Γάμου"
+  },
+  tr: {
+    "love-percentage-calculator": "Aşk Yüzdesi",
+    "relationship-compatibility-calculator": "İlişki Uyumluluğu",
+    "marriage-compatibility-calculator": "Evlilik Uyumluluğu",
+    "soulmate-calculator": "Ruh İkizi Hesaplayıcı",
+    "couple-name-combiner": "İsim Birleştirici",
+    "ship-name-generator": "Ship İsmi Üretici",
+    "nickname-generator": "Lakap Üretici",
+    "couple-hashtag-generator": "Çift Hashtagleri",
+    "couple-username-generator": "Çift Kullanıcı Adları",
+    "anniversary-calculator": "Yıl Dönümü Hesaplayıcı",
+    "relationship-duration": "İlişki Süresi",
+    "love-language-quiz": "Sevgi Dili Testi",
+    "relationship-health-score": "İlişki Sağlığı Puanı",
+    "love-letter-generator": "Aşk Mektubu Üretici",
+    "romantic-message-generator": "Romantik Mesajlar",
+    "wedding-vow-generator": "Evlilik Yemini Üretici",
+    "anniversary-wish-generator": "Yıl Dönümü Dilekleri",
+    "proposal-speech-generator": "Evlilik Teklifi Konuşması"
   }
 };
 

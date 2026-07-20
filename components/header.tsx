@@ -41,6 +41,8 @@ export default function Header() {
           <option value="de">🇩🇪 DE</option>
           <option value="da">🇩🇰 DA</option>
           <option value="fi">🇫🇮 FI</option>
+          <option value="el">🇬🇷 EL</option>
+          <option value="tr">🇹🇷 TR</option>
         </select>
         <a
           href="/admin"
