@@ -13,7 +13,7 @@ const path = require('path');
 
 // ─── Configuration ──────────────────────────────────────────────────────────────
 const BING_API_KEY = '6e3c1440e2bd49e6a8394ebd8eb8a89c';
-const SITE_URL = 'https://astroromantic.com';
+const SITE_URL = 'https://www.astroromantic.com';
 const SITEMAP_PATH = path.join(__dirname, '..', 'public', 'sitemap.xml');
 // ─────────────────────────────────────────────────────────────────────────────────
 
