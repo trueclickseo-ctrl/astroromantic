@@ -16,12 +16,12 @@ export default function Header() {
            AstroRomantic
         </a>
         <nav className="hidden md:flex items-center space-x-2">
-          <a href="/numerology" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuNumerology}</a>
-          <a href="/love" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuLove}</a>
-          <a href="/couple-names" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuCoupleNames}</a>
-          <a href="/wedding" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuWedding}</a>
-          <a href="/relationship" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuRelationship}</a>
-          <a href="/ai-generators" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuAi}</a>
+          <a href="/numerology/" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuNumerology}</a>
+          <a href="/love/" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuLove}</a>
+          <a href="/couple-names/" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuCoupleNames}</a>
+          <a href="/wedding/" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuWedding}</a>
+          <a href="/relationship/" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuRelationship}</a>
+          <a href="/ai-generators/" className="hover:bg-black hover:text-white px-2 py-0.5">{t.menuAi}</a>
         </nav>
       </div>
       <div className="flex items-center space-x-3">
@@ -44,13 +44,6 @@ export default function Header() {
           <option value="el">🇬🇷 EL</option>
           <option value="tr">🇹🇷 TR</option>
         </select>
-        <a
-          href="/admin"
-          className="win-btn text-xs font-bold font-mono"
-          style={{ padding: "4px 14px" }}
-        >
-          {t.controlPanel}
-        </a>
       </div>
     </header>
   );

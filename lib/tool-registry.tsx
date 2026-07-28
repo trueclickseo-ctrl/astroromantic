@@ -49,9 +49,9 @@ export const toolRegistry: Record<string, ToolConfig> = {
       </span>
     ),
     relatedTools: [
-      { name: "Name Numerology Calculator", href: "/numerology/name-numerology-calculator" },
-      { name: "Chaldean Numerology Calculator", href: "/numerology/chaldean-numerology-calculator" },
-      { name: "Lucky Number Calculator", href: "/numerology/lucky-number-calculator" }
+      { name: "Name Numerology Calculator", href: "/numerology/name-numerology-calculator/" },
+      { name: "Chaldean Numerology Calculator", href: "/numerology/chaldean-numerology-calculator/" },
+      { name: "Lucky Number Calculator", href: "/numerology/lucky-number-calculator/" }
     ]
   },
   "name-numerology-calculator": {
@@ -88,9 +88,9 @@ export const toolRegistry: Record<string, ToolConfig> = {
       </span>
     ),
     relatedTools: [
-      { name: "Life Path Calculator", href: "/numerology/life-path-calculator" },
-      { name: "Destiny Number Calculator", href: "/numerology/destiny-number-calculator" },
-      { name: "Soul Urge Calculator", href: "/numerology/soul-urge-number-calculator" }
+      { name: "Life Path Calculator", href: "/numerology/life-path-calculator/" },
+      { name: "Destiny Number Calculator", href: "/numerology/destiny-number-calculator/" },
+      { name: "Soul Urge Calculator", href: "/numerology/soul-urge-number-calculator/" }
     ]
   },
   "chaldean-numerology-calculator": {
@@ -127,9 +127,9 @@ export const toolRegistry: Record<string, ToolConfig> = {
       </span>
     ),
     relatedTools: [
-      { name: "Name Numerology Calculator", href: "/numerology/name-numerology-calculator" },
-      { name: "Life Path Calculator", href: "/numerology/life-path-calculator" },
-      { name: "Lucky Number Calculator", href: "/numerology/lucky-number-calculator" }
+      { name: "Name Numerology Calculator", href: "/numerology/name-numerology-calculator/" },
+      { name: "Life Path Calculator", href: "/numerology/life-path-calculator/" },
+      { name: "Lucky Number Calculator", href: "/numerology/lucky-number-calculator/" }
     ]
   },
 
@@ -168,9 +168,9 @@ export const toolRegistry: Record<string, ToolConfig> = {
       </span>
     ),
     relatedTools: [
-      { name: "Zodiac Love Calculator", href: "/love/zodiac-love-calculator" },
-      { name: "Relationship Compatibility Calculator", href: "/love/relationship-compatibility-calculator" },
-      { name: "Soulmate Calculator", href: "/love/soulmate-calculator" }
+      { name: "Zodiac Love Calculator", href: "/love/zodiac-love-calculator/" },
+      { name: "Relationship Compatibility Calculator", href: "/love/relationship-compatibility-calculator/" },
+      { name: "Soulmate Calculator", href: "/love/soulmate-calculator/" }
     ]
   },
   "zodiac-love-calculator": {
@@ -207,9 +207,9 @@ export const toolRegistry: Record<string, ToolConfig> = {
       </span>
     ),
     relatedTools: [
-      { name: "Love Calculator", href: "/love/love-calculator" },
-      { name: "Relationship Compatibility Calculator", href: "/love/relationship-compatibility-calculator" },
-      { name: "Soulmate Calculator", href: "/love/soulmate-calculator" }
+      { name: "Love Calculator", href: "/love/love-calculator/" },
+      { name: "Relationship Compatibility Calculator", href: "/love/relationship-compatibility-calculator/" },
+      { name: "Soulmate Calculator", href: "/love/soulmate-calculator/" }
     ]
   }
 };

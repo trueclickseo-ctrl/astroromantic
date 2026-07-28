@@ -19,7 +19,7 @@ interface PageProps {
   }>;
 }
 
-const SITE_URL = "https://astroromantic.com";
+const SITE_URL = "https://www.astroromantic.com";
 
 const categoryLabels: Record<string, string> = {
   numerology: "Numerology",
@@ -208,8 +208,8 @@ export default async function ToolPage({ params }: PageProps) {
       educationalTitle: `Understanding the Science behind ${title}`,
       educationalBody,
       relatedTools: [
-        { name: "Life Path Calculator", href: "/numerology/life-path-calculator" },
-        { name: "Love Calculator", href: "/love/love-calculator" }
+        { name: "Life Path Calculator", href: "/numerology/life-path-calculator/" },
+        { name: "Love Calculator", href: "/love/love-calculator/" }
       ]
     };
 

@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description: "Free retro-themed love calculators, numerology tools, compatibility tests, couple name generators, and AI-powered romantic content. Instant results.",
-  metadataBase: new URL("https://astroromantic.com"),
-  alternates: { canonical: "https://astroromantic.com/" },
+  metadataBase: new URL("https://www.astroromantic.com"),
+  alternates: { canonical: "https://www.astroromantic.com/" },
   icons: { icon: "/icon.svg" },
   openGraph: {
     title: "AstroRomantic — Free Love, Numerology & Astrology Calculators",
     description: "Free retro-themed love calculators, numerology tools, compatibility tests, couple name generators, and AI-powered romantic content.",
-    url: "https://astroromantic.com/",
+    url: "https://www.astroromantic.com/",
     siteName: "AstroRomantic",
     type: "website",
     locale: "en_US",
@@ -39,8 +39,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "AstroRomantic",
-  url: "https://astroromantic.com",
-  logo: "https://astroromantic.com/icon.svg",
+  url: "https://www.astroromantic.com",
+  logo: "https://www.astroromantic.com/icon.svg",
   description: "Free retro-themed love calculators, numerology tools, and AI-powered romantic content generators.",
   sameAs: [],
 };
@@ -49,7 +49,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "AstroRomantic",
-  url: "https://astroromantic.com",
+  url: "https://www.astroromantic.com",
 };
 
 export default function RootLayout({

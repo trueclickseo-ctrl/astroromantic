@@ -102,19 +102,19 @@ export default function ToolLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://astroromantic.com"
+        "item": "https://www.astroromantic.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": category.charAt(0).toUpperCase() + category.slice(1),
-        "item": `https://astroromantic.com/${category}`
+        "item": `https://www.astroromantic.com/${category}/`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": displayTitle,
-        "item": `https://astroromantic.com/${category}/${toolSlug}`
+        "item": `https://www.astroromantic.com/${category}/${toolSlug}/`
       }
     ]
   };
@@ -154,7 +154,7 @@ export default function ToolLayout({
         <nav className="text-xs text-zinc-500 flex items-center space-x-2">
           <a href="/" className="hover:text-zinc-300">Home</a>
           <span>/</span>
-          <a href={`/${category}`} className="hover:text-zinc-300 capitalize">{category.replace("-", " ")}</a>
+          <a href={`/${category}/`} className="hover:text-zinc-300 capitalize">{category.replace("-", " ")}</a>
           <span>/</span>
           <span className="text-zinc-400 font-semibold">{displayTitle}</span>
         </nav>
@@ -163,7 +163,7 @@ export default function ToolLayout({
         <div className="w-full">
           <WinDialog
             title={`${displayTitle}.exe`}
-            onClose={() => window.location.href = `/${category}`}
+            onClose={() => window.location.href = `/${category}/`}
             positionMode="relative"
           >
             {children}

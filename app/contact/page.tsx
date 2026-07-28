@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us | AstroRomantic",
   description: "Get in touch with the AstroRomantic team. Questions, feedback, or partnership inquiries welcome.",
-  alternates: { canonical: "https://astroromantic.com/contact/" },
+  alternates: { canonical: "https://www.astroromantic.com/contact/" },
 };
 
 export default function ContactPage() {

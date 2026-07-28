@@ -74,7 +74,7 @@ export default function CategoryHubClient({ category, tools }: CategoryHubClient
           return (
             <a
               key={idx}
-              href={`/${category}/${tool.slug}`}
+              href={`/${category}/${tool.slug}/`}
               className="glass-panel glass-panel-hover rounded-3xl p-6 flex flex-col justify-between group h-48 relative overflow-hidden"
             >
               <div className="space-y-2">

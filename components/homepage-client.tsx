@@ -11,37 +11,37 @@ export default function HomepageClient() {
     {
       name: t.iconNumerology,
       desc: t.iconNumerologyDesc,
-      href: "/numerology",
+      href: "/numerology/",
       icon: <Compass className="w-10 h-10 text-amber-700" />
     },
     {
       name: t.iconLove,
       desc: t.iconLoveDesc,
-      href: "/love",
+      href: "/love/",
       icon: <FolderHeart className="w-10 h-10 text-rose-700" />
     },
     {
       name: t.iconCoupleNames,
       desc: t.iconCoupleNamesDesc,
-      href: "/couple-names",
+      href: "/couple-names/",
       icon: <FileText className="w-10 h-10 text-blue-700" />
     },
     {
       name: t.iconWedding,
       desc: t.iconWeddingDesc,
-      href: "/wedding",
+      href: "/wedding/",
       icon: <HeartHandshake className="w-10 h-10 text-emerald-700" />
     },
     {
       name: t.iconAi,
       desc: t.iconAiDesc,
-      href: "/ai-generators",
+      href: "/ai-generators/",
       icon: <Sparkles className="w-10 h-10 text-purple-700" />
     },
     {
       name: t.iconRecycleBin,
       desc: t.iconRecycleBinDesc,
-      href: "/relationship/relationship-health-score",
+      href: "/relationship/relationship-health-score/",
       icon: <AlertCircle className="w-10 h-10 text-zinc-500" />
     }
   ];
