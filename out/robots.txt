@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /out/admin
-Disallow: /out/
 
 User-agent: GPTBot
 Allow: /
