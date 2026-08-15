@@ -141,7 +141,7 @@ export const toolRegistry: Record<string, ToolConfig> = {
 
   "destiny-number-calculator": {
     title: "Destiny Number Calculator",
-    description: "Free online Destiny Number Calculator tool. Get instant results and calculations.",
+    description: "Calculate your destiny (or expression) number from your full birth name and discover the natural talents, career instincts, and life purpose it reveals.",
     category: "numerology",
     toolSlug: "destiny-number-calculator",
     educationalBody: (
@@ -394,7 +394,7 @@ export const toolRegistry: Record<string, ToolConfig> = {
     educationalBody: (
       <div className="space-y-6">
         <p>
-          Almost everyone who's ever had a crush has done the mental math — same interests, same sense of humor, same weird sleep schedule, surely that means something. A love compatibility calculator takes that instinct and gives it a framework, using birth dates, names, zodiac signs, or a mix of all three to estimate how naturally two people's energies align.
+          Almost everyone who's ever had a crush has done the mental math — same interests, same sense of humor, same weird sleep schedule, surely that means something. A love compatibility calculator takes that instinct and gives it a framework — some tools use full birth dates and zodiac placements, others (like the one above) use pure name-vibration numerology — to estimate how naturally two people's energies align.
         </p>
         <p>
           It won't replace a real conversation, and no serious numerologist or astrologer would claim it can predict the future of a relationship. What it can do is highlight patterns — the places where two people are likely to click without effort, and the places where a relationship might need a little more patience and communication to thrive.
@@ -404,7 +404,7 @@ export const toolRegistry: Record<string, ToolConfig> = {
           How a Love Compatibility Calculator Actually Works
         </h2>
         <p>
-          Most compatibility tools blend two or three different systems, and understanding each one helps you read your results more accurately.
+          Most compatibility tools blend two or three different systems, and understanding each one helps you read your results more accurately. The calculator above focuses on the third method below — pure name-vibration numerology — while the other two are worth understanding as you explore compatibility more broadly.
         </p>
         <p>
           <strong>1. Zodiac (astrological) compatibility</strong><br />
@@ -457,9 +457,9 @@ export const toolRegistry: Record<string, ToolConfig> = {
           A few things genuinely improve the accuracy of any love compatibility calculator:
         </p>
         <ul className="list-disc pl-6 space-y-2 text-zinc-300">
-          <li><strong>Use full, accurate birth dates</strong> for both people whenever possible — numerology-based results depend entirely on this.</li>
-          <li><strong>Use birth names rather than nicknames</strong> if the tool incorporates name-based numerology, since nicknames carry a different vibrational value.</li>
-          <li><strong>Add birth times and locations</strong> if the calculator supports full synastry — this unlocks moon sign and rising sign comparisons, which often explain emotional and instinctive compatibility far better than sun sign alone.</li>
+          <li><strong>Use full birth names rather than nicknames</strong> — this tool calculates compatibility from name-vibration numerology, and a nickname carries a different vibrational value than your full birth name.</li>
+          <li><strong>Enter both names exactly as they're spelled</strong> — small spelling differences change the underlying numbers, so double-check before calculating.</li>
+          <li><strong>Want a birth-date-based reading too?</strong> Pair this result with the life path calculator and a life path compatibility comparison for a fuller numerology picture.</li>
           <li><strong>Treat the result as a conversation starter, not a verdict</strong> — the most useful compatibility readings are the ones that spark an honest conversation between two people about the dynamics the results point to.</li>
         </ul>
       </div>
@@ -510,7 +510,7 @@ export const toolRegistry: Record<string, ToolConfig> = {
     educationalBody: (
       <div className="space-y-6">
         <p>
-          Some connections feel calm and easy. Others feel like they've cracked something open in you — familiar in a way you can't explain, intense in a way that's almost uncomfortable, and impossible to shake even when the relationship itself is complicated. If you've ever found yourself wondering <em>what even is this bond</em>, a karmic soulmate twin flame calculator is built to help answer exactly that question, using birth dates and names to sort a connection into one of three categories: soulmate, twin flame, or karmic bond.
+          Some connections feel calm and easy. Others feel like they've cracked something open in you — familiar in a way you can't explain, intense in a way that's almost uncomfortable, and impossible to shake even when the relationship itself is complicated. If you've ever found yourself wondering <em>what even is this bond</em>, a karmic soulmate twin flame calculator is built to help answer exactly that question, using name-vibration numerology (and, on some tools, birth dates as well) to sort a connection into one of three categories: soulmate, twin flame, or karmic bond.
         </p>
 
         <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200 mt-8 mb-4">
@@ -539,16 +539,13 @@ export const toolRegistry: Record<string, ToolConfig> = {
           A karmic soulmate twin flame calculator draws on the same core numerology used throughout the rest of a numerology chart, applied to two people at once instead of one.
         </p>
         <p>
-          <strong>Step 1: Life path numbers.</strong> Each person's birth date is reduced to a life path number using the standard numerology method — month, day, and year each reduced separately, then combined.
+          <strong>Step 1: Name-based numerology.</strong> Each person's full name is converted into a numerological value using the same Pythagorean letter system used throughout numerology — the same method behind a destiny number calculation.
         </p>
         <p>
-          <strong>Step 2: Name-based numerology.</strong> If names are included, each is converted into its own numerological value, adding a second layer to the comparison beyond birth date alone.
+          <strong>Step 2: Comparing the numbers.</strong> The calculator looks at how the two name-based numbers interact — whether they mirror each other, sit in natural harmony, or create the kind of charged contrast associated with karmic or twin flame dynamics. (Calculators that also collect birth dates layer in life path numbers for an even deeper comparison.)
         </p>
         <p>
-          <strong>Step 3: Comparing the numbers.</strong> The calculator looks at how the two life path numbers (and, where included, name numbers) interact — whether they mirror each other, sit in natural harmony, or create the kind of charged contrast associated with karmic or twin flame dynamics.
-        </p>
-        <p>
-          <strong>Step 4: The result.</strong> Most calculators translate this comparison into a percentage score and a connection type, often across a small number of tiers — for example, a very high alignment might read as a "mirror soul" or twin flame connection, a strong but gentler alignment as soulmate, and a more challenging, lesson-heavy alignment as karmic.
+          <strong>Step 3: The result.</strong> Most calculators translate this comparison into a percentage score and a connection type, often across a small number of tiers — for example, a very high alignment might read as a "mirror soul" or twin flame connection, a strong but gentler alignment as soulmate, and a more challenging, lesson-heavy alignment as karmic.
         </p>
 
         <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200 mt-8 mb-4">
