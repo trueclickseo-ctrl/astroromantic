@@ -270,11 +270,16 @@ export default async function ToolPage({ params }: PageProps) {
       faqs={toolConfig.faqs}
       relatedTools={toolConfig.relatedTools}
       educationalContent={
-        <div className="space-y-4">
-          <h3 className="text-lg font-serif font-bold text-zinc-200">{toolConfig.educationalTitle}</h3>
-          <div>{toolConfig.educationalBody}</div>
-        </div>
+        toolConfig.educationalTitle ? (
+          <div className="space-y-4">
+            <h3 className="text-lg font-serif font-bold text-zinc-200">{toolConfig.educationalTitle}</h3>
+            <div>{toolConfig.educationalBody}</div>
+          </div>
+        ) : (
+          toolConfig.educationalBody
+        )
       }
+      closingContent={(toolConfig as any).closingBody}
     >
       {calculatorNode}
     </ToolLayout>

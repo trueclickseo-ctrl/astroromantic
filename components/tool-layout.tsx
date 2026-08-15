@@ -20,13 +20,14 @@ export interface HowToStep {
 export interface ToolLayoutProps {
   title: string;
   description: string;
-  directAnswer: string;
+  directAnswer?: string;
   category: "numerology" | "love" | "couple-names" | "wedding" | "relationship" | "ai-generators";
   toolSlug: string;
-  howItWorks: HowToStep[];
-  faqs: FAQItem[];
-  relatedTools: { name: string; href: string }[];
-  educationalContent: React.ReactNode;
+  howItWorks?: HowToStep[];
+  faqs?: FAQItem[];
+  relatedTools?: { name: string; href: string }[];
+  educationalContent?: React.ReactNode;
+  closingContent?: React.ReactNode;
   children: React.ReactNode; // The interactive tool goes here
 }
 
@@ -38,8 +39,9 @@ export default function ToolLayout({
   toolSlug,
   howItWorks,
   faqs,
-  relatedTools,
+  relatedTools = [],
   educationalContent,
+  closingContent,
   children
 }: ToolLayoutProps) {
   const { language, t } = useLanguage();
@@ -72,7 +74,7 @@ export default function ToolLayout({
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": displayFaqs.map((faq) => ({
+    "mainEntity": (displayFaqs || []).map((faq) => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {
@@ -86,7 +88,7 @@ export default function ToolLayout({
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": `How to use the ${displayTitle}`,
-    "step": displayHowItWorks.map((step, idx) => ({
+    "step": (displayHowItWorks || []).map((step, idx) => ({
       "@type": "HowToStep",
       "position": idx + 1,
       "name": step.name,
@@ -120,7 +122,7 @@ export default function ToolLayout({
   };
 
   // Localize related tool names if available
-  const localizedRelatedTools = relatedTools.map((tool) => {
+  const localizedRelatedTools = (relatedTools || []).map((tool) => {
     const slug = tool.href.split("/").pop() || "";
     const nameTranslation = toolTranslations[language]?.[slug]?.title;
     return {
@@ -136,14 +138,18 @@ export default function ToolLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
+      {displayFaqs && displayFaqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {displayHowItWorks && displayHowItWorks.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -179,81 +185,99 @@ export default function ToolLayout({
         </div>
 
         {/* 2. Direct Answer Block */}
-        <div className="border border-amber-500/20 bg-amber-500/5 rounded-2xl p-6 text-zinc-300 text-sm leading-relaxed max-w-2xl mx-auto shadow-inner text-center">
-          <span className="font-semibold text-amber-400 block mb-1 text-xs tracking-widest uppercase">
-            {t.sectionQuickAnswer}
-          </span>
-          <p>{displayDirectAnswer}</p>
-        </div>
+        {displayDirectAnswer ? (
+          <div className="border border-amber-500/20 bg-amber-500/5 rounded-2xl p-6 text-zinc-300 text-sm leading-relaxed max-w-2xl mx-auto shadow-inner text-center">
+            <span className="font-semibold text-amber-400 block mb-1 text-xs tracking-widest uppercase">
+              {t.sectionQuickAnswer}
+            </span>
+            <p>{displayDirectAnswer}</p>
+          </div>
+        ) : null}
 
         {/* 5. How It Works */}
-        <div className="space-y-6">
-          <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200">
-            {t.sectionHowItWorks}
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {displayHowItWorks.map((step, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5 relative">
-                <div className="absolute top-4 right-4 text-3xl font-bold text-white/5 font-serif">
-                  {idx + 1}
+        {displayHowItWorks && displayHowItWorks.length > 0 ? (
+          <div className="space-y-6">
+            <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200">
+              {t.sectionHowItWorks}
+            </h2>
+            <div className="grid sm:grid-cols-3 gap-6">
+              {displayHowItWorks.map((step, idx) => (
+                <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5 relative">
+                  <div className="absolute top-4 right-4 text-3xl font-bold text-white/5 font-serif">
+                    {idx + 1}
+                  </div>
+                  <h3 className="font-medium text-amber-400 mb-2 text-sm">{step.name}</h3>
+                  <p className="text-zinc-400 text-xs leading-relaxed">{step.text}</p>
                 </div>
-                <h3 className="font-medium text-amber-400 mb-2 text-sm">{step.name}</h3>
-                <p className="text-zinc-400 text-xs leading-relaxed">{step.text}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
 
         {/* 8. Educational Content (EEAT) */}
-        <div className="prose prose-invert max-w-none text-zinc-400 text-xs sm:text-sm leading-relaxed space-y-4">
-          {displayEducationalTitle && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-serif font-bold text-zinc-200">{displayEducationalTitle}</h3>
-              <div>{displayEducationalBody}</div>
-            </div>
-          )}
-          {!displayEducationalTitle && educationalContent}
-        </div>
+        {(displayEducationalBody || educationalContent) && (
+          <div className="prose prose-invert max-w-none text-zinc-300 text-sm sm:text-base leading-relaxed space-y-4">
+            {displayEducationalTitle && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-serif font-bold text-zinc-200">{displayEducationalTitle}</h3>
+                <div>{displayEducationalBody}</div>
+              </div>
+            )}
+            {!displayEducationalTitle && educationalContent}
+          </div>
+        )}
 
         {/* 6. FAQ Section */}
-        <div className="space-y-6">
-          <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200">
-            {t.sectionFaq}
-          </h2>
-          <div className="space-y-4">
-            {displayFaqs.map((faq, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5">
-                <h3 className="font-medium text-zinc-200 text-sm mb-2 flex items-start">
-                  <span className="text-rose-400 mr-2">Q:</span>
-                  {faq.question}
-                </h3>
-                <p className="text-zinc-400 text-xs sm:text-sm pl-6 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
+        {displayFaqs && displayFaqs.length > 0 ? (
+          <div className="space-y-6">
+            <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-4">
+              {displayFaqs.map((faq, idx) => (
+                <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5">
+                  <h3 className="font-medium text-zinc-200 text-sm sm:text-base mb-2 flex items-start">
+                    <span className="text-rose-400 mr-2 font-bold">Q:</span>
+                    {faq.question}
+                  </h3>
+                  <p className="text-zinc-300 text-xs sm:text-sm pl-6 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
+
+        {/* Closing Paragraph (with internal links) */}
+        {closingContent ? (
+          <div className="prose prose-invert max-w-none text-zinc-300 text-sm sm:text-base leading-relaxed pt-2">
+            {closingContent}
+          </div>
+        ) : null}
 
         {/* 7. Related Tools */}
-        <div className="border-t border-white/5 pt-8">
-          <h2 className="font-serif text-lg font-semibold text-zinc-300 mb-4">
-            {t.sectionRelatedTools}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {localizedRelatedTools.map((tool, idx) => (
-              <a
-                key={idx}
-                href={tool.href}
-                className="bg-white/5 border border-white/5 hover:border-amber-500/30 hover:bg-white/10 rounded-2xl p-4 transition-all text-sm font-medium text-zinc-300 hover:text-amber-400 flex items-center justify-between"
-              >
-                <span>{tool.name}</span>
-                <span className="text-xs text-zinc-500">&rarr;</span>
-              </a>
-            ))}
+        {localizedRelatedTools && localizedRelatedTools.length > 0 ? (
+          <div className="border-t border-white/5 pt-8">
+            <h2 className="font-serif text-lg font-semibold text-zinc-300 mb-4">
+              {t.sectionRelatedTools}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {localizedRelatedTools.map((tool, idx) => (
+                <a
+                  key={idx}
+                  href={tool.href}
+                  className="bg-white/5 border border-white/5 hover:border-amber-500/30 hover:bg-white/10 rounded-2xl p-4 transition-all text-sm font-medium text-zinc-300 hover:text-amber-400 flex items-center justify-between"
+                >
+                  <span>{tool.name}</span>
+                  <span className="text-xs text-zinc-500">&rarr;</span>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </>
   );
 }
+
