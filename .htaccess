@@ -1,39 +1,23 @@
 RewriteEngine On
 
-# 1. Strip /out/ and force canonical HTTPS + WWW + trailing slash (if directory/page)
-# For files (assets with file extensions), do not append trailing slash
-RewriteCond %{ENV:OUT_INTERNAL} ^$
-RewriteCond %{ENV:REDIRECT_OUT_INTERNAL} ^$
-RewriteCond %{REQUEST_URI} ^/out/(.*[^/])\.[^/]+$
+# 1. Force HTTPS and www.astroromantic.com domain
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\.astroromantic\.com$ [NC]
+RewriteRule ^(.*)$ https://www.astroromantic.com/$1 [R=301,L]
+
+# 2. Prevent direct client access to /out/ directory (SEO canonicalization)
+# Uses %{THE_REQUEST} so it ONLY matches external client requests, NEVER internal rewrites or mod_dir lookups
+RewriteCond %{THE_REQUEST} \s/out/([^\s\?]*) [NC]
 RewriteRule ^out/(.*)$ https://www.astroromantic.com/$1 [R=301,L]
 
-# For directories/pages, strip /out/ and ensure trailing slash
-RewriteCond %{ENV:OUT_INTERNAL} ^$
-RewriteCond %{ENV:REDIRECT_OUT_INTERNAL} ^$
-RewriteCond %{REQUEST_URI} ^/out/
-RewriteRule ^out/(.*?)/?$ https://www.astroromantic.com/$1/ [R=301,L]
-
-# 2. Redirect clean URLs missing trailing slash (excluding physical files/directories in /out/)
-# Checks if the file/folder exists relative to root or inside the physical /out/ directory to protect static assets
-RewriteCond %{ENV:OUT_INTERNAL} ^$
-RewriteCond %{ENV:REDIRECT_OUT_INTERNAL} ^$
-RewriteCond %{REQUEST_URI} !^/out/
+# 3. Force trailing slashes on clean page/directory URLs (excluding files with extensions)
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/out/$1 !-f
-RewriteCond %{DOCUMENT_ROOT}/out/$1 !-d
 RewriteCond %{REQUEST_URI} !/[^/]+\.[^/]+$
 RewriteCond %{REQUEST_URI} !(.*)/$
 RewriteRule ^(.*)$ https://www.astroromantic.com/$1/ [R=301,L]
 
-# 3. Redirect clean URLs that have trailing slash (or are files) but miss HTTPS or WWW
-RewriteCond %{ENV:OUT_INTERNAL} ^$
-RewriteCond %{ENV:REDIRECT_OUT_INTERNAL} ^$
+# 4. Internal Rewrite: Route clean URLs to the static export in /out/
 RewriteCond %{REQUEST_URI} !^/out/
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^www\.astroromantic\.com$ [NC]
-RewriteRule ^(.*)$ https://www.astroromantic.com%{REQUEST_URI} [R=301,L]
+RewriteRule ^(.*)$ /out/$1 [L]
 
-# 4. Internal Rewrite: Map root-level requests to /out/ internally, and set environment variable
-RewriteCond %{REQUEST_URI} !^/out/
-RewriteRule ^(.*)$ /out/$1 [E=OUT_INTERNAL:1,L]
