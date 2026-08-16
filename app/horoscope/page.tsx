@@ -7,7 +7,7 @@ import { HOROSCOPE_DATA } from "@/lib/horoscope-data";
 export const metadata = {
   title: "Daily Horoscope & Astrology Predictions 2026 | AstroRomantic",
   description: "Read your free daily horoscope and Vedic astrology predictions for all 12 zodiac signs: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces.",
-  canonical: "https://www.astroromantic.com/horoscope/"
+  alternates: { canonical: "https://www.astroromantic.com/horoscope/" }
 };
 
 export default function HoroscopeHubPage() {
