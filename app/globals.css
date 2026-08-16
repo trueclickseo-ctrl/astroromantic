@@ -261,10 +261,11 @@ body {
   font-size: 2.8rem !important;
 }
 
-/* Form elements and labels */
+/* Form elements and labels - High Legibility & Zero Text Clipping */
 input, select, textarea {
-  font-size: 1rem !important;
-  padding: 10px 14px;
+  font-size: 0.95rem !important;
+  line-height: 1.4 !important;
+  box-sizing: border-box !important;
 }
 label {
   font-size: 0.9rem !important;
@@ -274,10 +275,10 @@ label {
   font-size: 0.9rem !important;
 }
 
-.padded-input,
-.pl-11, .pl-12, .pl-14, .pl-16,
 .has-search-icon {
-  padding-left: 3.8rem !important;
+  padding-left: 2.75rem !important; /* 44px left padding gives search icon clean room without clipping text */
+  padding-right: 1rem !important;
+  line-height: 1.4 !important;
 }
 
 .desktop-label {

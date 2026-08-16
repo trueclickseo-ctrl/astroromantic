@@ -49,15 +49,15 @@ export default function CalculatorsHubClient() {
           Access our suite of {allCalculators.length} original astronomical, Vedic astrology, and numerology calculation tools. Get instant calculations, detailed interpretations, and actionable insights.
         </p>
 
-        {/* Real-time Search Bar (With Generous 60px Left Padding to Prevent Icon-Text Overlap) */}
-        <div className="max-w-md mx-auto relative w-full box-border mt-3">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 w-5 h-5 pointer-events-none z-10" />
+        {/* Real-time Search Bar */}
+        <div className="max-w-xl mx-auto relative w-full box-border mt-3">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-600 w-5 h-5 pointer-events-none z-10" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search calculators (e.g. Moon Sign, Kundli, Life Path)..."
-            className="w-full bg-[#f4f3ef] border-2 border-black rounded-xl py-3 pl-14 pr-4 text-sm font-mono text-black outline-none focus:bg-white transition-colors box-border relative z-0 has-search-icon"
+            placeholder="Search all calculators (e.g. Chaldean, Moon Sign, Kundli)..."
+            className="w-full bg-[#f4f3ef] border-2 border-black rounded-xl py-3.5 pl-11 pr-4 text-sm font-mono text-black outline-none focus:bg-white transition-colors box-border relative z-0 has-search-icon"
           />
         </div>
       </section>
@@ -107,7 +107,7 @@ export default function CalculatorsHubClient() {
               </div>
 
               <a
-                href={`/calculators/${calc.slug}/`}
+                href={calc.customHref || `/calculators/${calc.slug}/`}
                 className="calculator-card-btn w-full py-3 px-4 rounded-xl font-mono font-bold text-xs uppercase text-center flex items-center justify-center space-x-2 mt-auto"
               >
                 <span>Calculate Now</span>

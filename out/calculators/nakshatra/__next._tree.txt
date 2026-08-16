@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/3zec-rnklhbzn.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"calculators","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"nakshatra","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"KdxBsnbK368qNo0Z9I6QT"}
+:HL["/_next/static/chunks/1fnt_n5txtn1a.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"calculators","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"nakshatra","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"rMtapD-EjtpSF2Mrq94hk"}
