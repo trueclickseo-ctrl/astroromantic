@@ -225,7 +225,7 @@ export default async function ToolPage({ params }: PageProps) {
         relatedTools={virtualConfig.relatedTools}
         educationalContent={
           <div className="space-y-4">
-            <h3 className="text-lg font-serif font-bold text-zinc-200">{virtualConfig.educationalTitle}</h3>
+            <h3 className="text-xl sm:text-2xl font-mono font-extrabold text-black border-b-2 border-black pb-2">{virtualConfig.educationalTitle}</h3>
             <p>{virtualConfig.educationalBody}</p>
           </div>
         }
@@ -272,7 +272,7 @@ export default async function ToolPage({ params }: PageProps) {
       educationalContent={
         toolConfig.educationalTitle ? (
           <div className="space-y-4">
-            <h3 className="text-lg font-serif font-bold text-zinc-200">{toolConfig.educationalTitle}</h3>
+            <h3 className="text-xl sm:text-2xl font-mono font-extrabold text-black border-b-2 border-black pb-2">{toolConfig.educationalTitle}</h3>
             <div>{toolConfig.educationalBody}</div>
           </div>
         ) : (

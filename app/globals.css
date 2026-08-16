@@ -126,25 +126,96 @@ body {
   border: 3px solid #ffffff;
 }
 
-/* Global High-Contrast Text Overrides for Macintosh Light Theme */
-.text-zinc-500, .text-zinc-400, .text-zinc-300, .text-zinc-600 {
-  color: #1a1a1a !important;
+/* ─────────────────────────────────────────────────────────────────────────────
+   WCAG AAA COMPLIANT HIGH-CONTRAST LIGHT THEME TEXT RULES
+   Ensures zero low-contrast text across Numerology and all Calculator pages
+   ───────────────────────────────────────────────────────────────────────────── */
+.text-zinc-300,
+.text-zinc-400,
+.text-gray-300,
+.text-gray-400,
+.text-zinc-500,
+.text-gray-500 {
+  color: #27272a !important; /* Dark Charcoal #27272a provides >7.5:1 WCAG contrast on cream/white */
 }
-.text-zinc-100, .text-zinc-200 {
+
+.text-zinc-600,
+.text-zinc-700,
+.text-gray-600,
+.text-gray-700 {
+  color: #18181b !important; /* Rich Dark #18181b provides >9.5:1 WCAG contrast */
+}
+
+.text-zinc-100,
+.text-zinc-200,
+.text-gray-100,
+.text-gray-200 {
+  color: #000000 !important; /* Pure Black for Headings & Titles */
+}
+
+/* Overrides for Tailwind Typography Prose Elements on Light Themes */
+.prose, .prose-invert, .prose-zinc {
+  color: #18181b !important;
+}
+.prose p, .prose-invert p,
+.prose span, .prose-invert span,
+.prose li, .prose-invert li,
+.prose div, .prose-invert div {
+  color: #27272a !important;
+}
+.prose h1, .prose-invert h1,
+.prose h2, .prose-invert h2,
+.prose h3, .prose-invert h3,
+.prose h4, .prose-invert h4,
+.prose strong, .prose-invert strong {
   color: #000000 !important;
 }
-.text-white, .text-zinc-300 {
+
+/* Shared Gold/Amber (#F5A623) Calculate CTA Button Style */
+.calculator-card-btn,
+.calculator-submit-btn,
+button[type="submit"] {
+  background-color: #F5A623 !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
+  font-family: monospace, monospace !important;
+  text-transform: uppercase !important;
+  border: 3px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+  border-radius: 14px !important;
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.calculator-card-btn:hover,
+.calculator-submit-btn:hover,
+button[type="submit"]:hover {
+  background-color: #f59e0b !important;
+  color: #000000 !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px #000000 !important;
+}
+
+.calculator-card-btn:active,
+.calculator-submit-btn:active,
+button[type="submit"]:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px #000000 !important;
+}
+
+.calculator-card-btn *,
+.calculator-card-btn svg,
+.calculator-card-btn span,
+.calculator-submit-btn *,
+.calculator-submit-btn svg,
+.calculator-submit-btn span,
+button[type="submit"] *,
+button[type="submit"] svg,
+button[type="submit"] span {
   color: #000000 !important;
 }
-.text-amber-400, .text-rose-400, .text-purple-400 {
-  color: #000000 !important;
-  font-weight: bold;
-}
-.bg-white\/5, .bg-white\/10, .bg-black\/20 {
-  background-color: #f0efe9 !important;
-  border: 2px solid #000000 !important;
-  color: #000000 !important;
-}
+
 input, select, textarea {
   color: #000000 !important;
   background-color: #ffffff !important;
@@ -166,34 +237,34 @@ body {
   line-height: 1.6 !important;
 }
 .text-xs {
-  font-size: 0.85rem !important; /* ~14.5px */
+  font-size: 0.85rem !important;
 }
 .text-sm {
-  font-size: 0.95rem !important; /* ~16px */
+  font-size: 0.95rem !important;
 }
 .text-base, .text-md {
-  font-size: 1.05rem !important; /* ~18px */
+  font-size: 1.05rem !important;
 }
 .text-lg {
-  font-size: 1.2rem !important; /* ~20px */
+  font-size: 1.2rem !important;
 }
 .text-xl {
-  font-size: 1.4rem !important; /* ~24px */
+  font-size: 1.4rem !important;
 }
 .text-2xl {
-  font-size: 1.7rem !important; /* ~29px */
+  font-size: 1.7rem !important;
 }
 .text-4xl {
-  font-size: 2.2rem !important; /* ~37px */
+  font-size: 2.2rem !important;
 }
 .text-5xl {
-  font-size: 2.8rem !important; /* ~47px */
+  font-size: 2.8rem !important;
 }
 
-/* Ensure form elements and labels are thick and readable */
+/* Form elements and labels */
 input, select, textarea {
   font-size: 1rem !important;
-  padding: 10px 14px !important;
+  padding: 10px 14px;
 }
 label {
   font-size: 0.9rem !important;
@@ -203,8 +274,10 @@ label {
   font-size: 0.9rem !important;
 }
 
-.padded-input {
-  padding-left: 44px !important;
+.padded-input,
+.pl-11, .pl-12, .pl-14, .pl-16,
+.has-search-icon {
+  padding-left: 3.8rem !important;
 }
 
 .desktop-label {
@@ -215,5 +288,3 @@ a:hover .desktop-label, .group:hover .desktop-label {
   background-color: #000080 !important;
   color: #ffffff !important;
 }
-
-

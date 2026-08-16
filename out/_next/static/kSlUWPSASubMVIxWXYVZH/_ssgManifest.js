@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002F[category]","\u002F[category]\u002F[tool]","\u002Fcalculators\u002F[slug]","\u002Fhoroscope\u002F[sign]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

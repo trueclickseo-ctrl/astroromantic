@@ -155,17 +155,17 @@ export default function ToolLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10 space-y-10 text-black">
         {/* Breadcrumbs (Visual) */}
-        <nav className="text-xs text-zinc-500 flex items-center space-x-2">
-          <a href="/" className="hover:text-zinc-300">Home</a>
+        <nav className="text-xs font-mono font-bold text-zinc-700 flex items-center space-x-2">
+          <a href="/" className="hover:text-black transition-colors">Home</a>
           <span>/</span>
-          <a href={`/${category}/`} className="hover:text-zinc-300 capitalize">{category.replace("-", " ")}</a>
+          <a href={`/${category}/`} className="hover:text-black transition-colors capitalize">{category.replace("-", " ")}</a>
           <span>/</span>
-          <span className="text-zinc-400 font-semibold">{displayTitle}</span>
+          <span className="text-black font-extrabold">{displayTitle}</span>
         </nav>
 
-        {/* 3 & 4. The Interactive Tool & Results Section */}
+        {/* The Interactive Tool Container */}
         <div className="w-full">
           <WinDialog
             title={`${displayTitle}.exe`}
@@ -176,71 +176,79 @@ export default function ToolLayout({
           </WinDialog>
         </div>
 
-        {/* 1. H1 Header */}
-        <div className="text-center space-y-4 pt-4 border-t border-white/5">
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-rose-300 to-purple-400 bg-clip-text text-transparent">
+        {/* H1 Header */}
+        <div className="text-center space-y-3 pt-4 border-t-2 border-black">
+          <h1 className="font-mono text-3xl sm:text-5xl font-extrabold tracking-tight text-black">
             {displayTitle}
           </h1>
-          <p className="text-sm text-zinc-400 max-w-xl mx-auto">{displayDesc}</p>
+          <p className="text-sm sm:text-base text-zinc-800 max-w-2xl mx-auto font-sans leading-relaxed font-medium">
+            {displayDesc}
+          </p>
         </div>
 
-        {/* 2. Direct Answer Block */}
+        {/* Direct Answer / Quick Overview Block */}
         {displayDirectAnswer ? (
-          <div className="border border-amber-500/20 bg-amber-500/5 rounded-2xl p-6 text-zinc-300 text-sm leading-relaxed max-w-2xl mx-auto shadow-inner text-center">
-            <span className="font-semibold text-amber-400 block mb-1 text-xs tracking-widest uppercase">
+          <div className="bg-amber-100 border-3 border-black rounded-2xl p-6 shadow-[4px_4px_0px_#000000] text-center space-y-2 max-w-3xl mx-auto">
+            <span className="font-mono font-bold text-amber-900 text-xs tracking-widest uppercase block">
               {t.sectionQuickAnswer}
             </span>
-            <p>{displayDirectAnswer}</p>
+            <p className="text-sm sm:text-base text-zinc-900 font-sans leading-relaxed font-medium">
+              {displayDirectAnswer}
+            </p>
           </div>
         ) : null}
 
-        {/* 5. How It Works */}
+        {/* How It Works Steps */}
         {displayHowItWorks && displayHowItWorks.length > 0 ? (
-          <div className="space-y-6">
-            <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200">
+          <div className="space-y-6 bg-white border-3 border-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_#000000]">
+            <h2 className="font-mono text-xl sm:text-2xl font-extrabold border-b-2 border-black pb-3 text-black">
               {t.sectionHowItWorks}
             </h2>
             <div className="grid sm:grid-cols-3 gap-6">
               {displayHowItWorks.map((step, idx) => (
-                <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5 relative">
-                  <div className="absolute top-4 right-4 text-3xl font-bold text-white/5 font-serif">
+                <div key={idx} className="bg-[#FAF7F2] border-2 border-black rounded-xl p-5 relative shadow-[2px_2px_0px_#000000] space-y-2">
+                  <div className="w-8 h-8 rounded-full bg-black text-white font-mono font-bold flex items-center justify-center text-sm">
                     {idx + 1}
                   </div>
-                  <h3 className="font-medium text-amber-400 mb-2 text-sm">{step.name}</h3>
-                  <p className="text-zinc-400 text-xs leading-relaxed">{step.text}</p>
+                  <h3 className="font-mono font-bold text-black text-sm sm:text-base">{step.name}</h3>
+                  <p className="text-zinc-800 text-xs sm:text-sm font-sans leading-relaxed">{step.text}</p>
                 </div>
               ))}
             </div>
           </div>
         ) : null}
 
-        {/* 8. Educational Content (EEAT) */}
+        {/* Educational Content Section */}
         {(displayEducationalBody || educationalContent) && (
-          <div className="prose prose-invert max-w-none text-zinc-300 text-sm sm:text-base leading-relaxed space-y-4">
+          <div className="bg-white border-3 border-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_#000000] space-y-4 text-black font-sans leading-relaxed">
             {displayEducationalTitle && (
               <div className="space-y-4">
-                <h3 className="text-lg font-serif font-bold text-zinc-200">{displayEducationalTitle}</h3>
-                <div>{displayEducationalBody}</div>
+                <h3 className="text-xl sm:text-2xl font-mono font-extrabold text-black border-b-2 border-black pb-3">
+                  {displayEducationalTitle}
+                </h3>
+                <div className="text-sm sm:text-base text-zinc-800 space-y-4 leading-relaxed">{displayEducationalBody}</div>
               </div>
             )}
-            {!displayEducationalTitle && educationalContent}
+            {!displayEducationalTitle && (
+              <div className="text-sm sm:text-base text-zinc-800 space-y-4 leading-relaxed">{educationalContent}</div>
+            )}
           </div>
         )}
 
-        {/* 6. FAQ Section */}
+        {/* FAQ Section */}
         {displayFaqs && displayFaqs.length > 0 ? (
-          <div className="space-y-6">
-            <h2 className="font-serif text-2xl font-semibold border-b border-white/5 pb-2 text-zinc-200">
+          <div className="bg-white border-3 border-black rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_#000000] space-y-6">
+            <h2 className="font-mono text-xl sm:text-2xl font-extrabold border-b-2 border-black pb-3 text-black">
               Frequently Asked Questions
             </h2>
             <div className="space-y-4">
               {displayFaqs.map((faq, idx) => (
-                <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl p-5">
-                  <h3 className="font-medium text-zinc-200 text-sm sm:text-base mb-2 flex items-start">
-                    <span className="text-rose-400 mr-2 font-bold">Q:</span>
+                <div key={idx} className="bg-[#FAF7F2] border-2 border-black rounded-xl p-5 space-y-2 shadow-[2px_2px_0px_#000000]">
+                  <h3 className="font-mono font-bold text-black text-sm sm:text-base flex items-start">
+                    <span className="text-rose-600 mr-2 font-extrabold">Q:</span>
                     {faq.question}
                   </h3>
-                  <p className="text-zinc-300 text-xs sm:text-sm pl-6 leading-relaxed">
+                  <p className="text-zinc-800 text-xs sm:text-sm pl-6 font-sans leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -249,17 +257,17 @@ export default function ToolLayout({
           </div>
         ) : null}
 
-        {/* Closing Paragraph (with internal links) */}
+        {/* Closing Paragraph */}
         {closingContent ? (
-          <div className="prose prose-invert max-w-none text-zinc-300 text-sm sm:text-base leading-relaxed pt-2">
+          <div className="bg-white border-3 border-black rounded-2xl p-6 text-zinc-800 text-sm sm:text-base leading-relaxed shadow-[4px_4px_0px_#000000]">
             {closingContent}
           </div>
         ) : null}
 
-        {/* 7. Related Tools */}
+        {/* Related Tools */}
         {localizedRelatedTools && localizedRelatedTools.length > 0 ? (
-          <div className="border-t border-white/5 pt-8">
-            <h2 className="font-serif text-lg font-semibold text-zinc-300 mb-4">
+          <div className="bg-white border-3 border-black rounded-2xl p-6 shadow-[4px_4px_0px_#000000] space-y-4">
+            <h2 className="font-mono text-base sm:text-lg font-bold text-black">
               {t.sectionRelatedTools}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -267,10 +275,10 @@ export default function ToolLayout({
                 <a
                   key={idx}
                   href={tool.href}
-                  className="bg-white/5 border border-white/5 hover:border-amber-500/30 hover:bg-white/10 rounded-2xl p-4 transition-all text-sm font-medium text-zinc-300 hover:text-amber-400 flex items-center justify-between"
+                  className="bg-[#FAF7F2] hover:bg-black hover:text-white border-2 border-black rounded-xl p-4 transition-all text-xs sm:text-sm font-mono font-bold text-black flex items-center justify-between shadow-[2px_2px_0px_#000000]"
                 >
                   <span>{tool.name}</span>
-                  <span className="text-xs text-zinc-500">&rarr;</span>
+                  <span className="text-xs">&rarr;</span>
                 </a>
               ))}
             </div>
@@ -280,4 +288,3 @@ export default function ToolLayout({
     </>
   );
 }
-

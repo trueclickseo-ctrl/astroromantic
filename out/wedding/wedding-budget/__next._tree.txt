@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/31uw46f7zanlg.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"category","param":{"type":"d","key":"wedding","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"tool","param":{"type":"d","key":"wedding-budget","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"r33D0i2MLCc8-LMtUm3l3"}
+:HL["/_next/static/chunks/0sme0oepvdsy5.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"category","param":{"type":"d","key":"wedding","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"tool","param":{"type":"d","key":"wedding-budget","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"kSlUWPSASubMVIxWXYVZH"}

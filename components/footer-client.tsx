@@ -11,14 +11,16 @@ export default function FooterClient() {
       <div className="flex items-center space-x-2">
         <span>© 2026 AstroRomantic</span>
         <span className="text-zinc-400">|</span>
+        <a href="/calculators/" className="hover:underline">{t.menuCalculators}</a>
+        <span className="text-zinc-400">|</span>
         <a href="/about/" className="hover:underline">{t.about}</a>
         <span className="text-zinc-400">|</span>
         <a href="/privacy-policy/" className="hover:underline">{t.privacy}</a>
         <span className="text-zinc-400">|</span>
         <a href="/contact/" className="hover:underline">{t.contact}</a>
       </div>
-      <div className="font-mono">
-        {new Date().toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
+      <div className="font-mono" suppressHydrationWarning>
+        {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
       </div>
     </footer>
   );
