@@ -47,7 +47,7 @@ export default function ExploreAstrologyPanel() {
             {vedicGuides.map((guide) => (
               <a
                 key={guide.id}
-                href={`${guide.slug}/`}
+                href={guide.slug.endsWith('/') ? guide.slug : `${guide.slug}/`}
                 className="group block bg-[#f4f3ef] border-2 border-black rounded-xl p-3 hover:bg-amber-100 hover:-translate-y-0.5 transition-all shadow-[2px_2px_0px_#000000]"
               >
                 <div className="flex items-center justify-between">
@@ -74,7 +74,7 @@ export default function ExploreAstrologyPanel() {
             {westernGuides.map((guide) => (
               <a
                 key={guide.id}
-                href={`${guide.slug}/`}
+                href={guide.slug.endsWith('/') ? guide.slug : `${guide.slug}/`}
                 className="group block bg-[#f4f3ef] border-2 border-black rounded-xl p-3 hover:bg-amber-100 hover:-translate-y-0.5 transition-all shadow-[2px_2px_0px_#000000]"
               >
                 <div className="flex items-center justify-between">
@@ -101,7 +101,7 @@ export default function ExploreAstrologyPanel() {
             {reportGuides.map((guide) => (
               <a
                 key={guide.id}
-                href={`${guide.slug}/`}
+                href={guide.slug.endsWith('/') ? guide.slug : `${guide.slug}/`}
                 className="group block bg-[#f4f3ef] border-2 border-black rounded-xl p-2.5 hover:bg-amber-100 hover:-translate-y-0.5 transition-all shadow-[2px_2px_0px_#000000]"
               >
                 <div className="flex items-center justify-between">
@@ -126,7 +126,7 @@ export default function ExploreAstrologyPanel() {
           {FOOTER_LINKS.map((link) => (
             <a
               key={link.slug}
-              href={`${link.slug}/`}
+              href={link.slug.endsWith('/') ? link.slug : `${link.slug}/`}
               className="bg-white border-2 border-black rounded-lg px-3 py-1.5 text-black hover:bg-amber-300 transition-colors shadow-[2px_2px_0px_#000000]"
             >
               {link.title}

@@ -26,7 +26,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Vedic",
     slug: "/vedic/planets",
     shortDesc: "The Navagraha planetary powers and cosmic energies.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "vedic-houses",
@@ -35,7 +35,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Vedic",
     slug: "/vedic/houses",
     shortDesc: "The 12 Bhavas and life domain areas in Kundli astrology.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "vedic-numerology",
@@ -44,7 +44,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Vedic",
     slug: "/vedic/numerology",
     shortDesc: "Ank Jyotish number vibrations and planetary associations.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "vedic-kp-astrology",
@@ -53,7 +53,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Vedic",
     slug: "/vedic/kp-astrology",
     shortDesc: "Krishnamurti Padhdhati precision stellar sub-lord system.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
 
   // --- WESTERN ASTROLOGY (5) ---
@@ -64,7 +64,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Western",
     slug: "/western/overview",
     shortDesc: "Fundamental principles of Western tropical sun-sign astrology.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "western-zodiac-signs",
@@ -82,7 +82,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Western",
     slug: "/western/planets",
     shortDesc: "Sun, Moon, and planetary Archetypes in modern Western charts.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "western-houses",
@@ -91,7 +91,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Western",
     slug: "/western/houses",
     shortDesc: "The 12 astrological houses of personal life experience.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "western-aspects",
@@ -100,7 +100,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Western",
     slug: "/western/aspects",
     shortDesc: "Geometric angles, trines, squares, and planetary synastry.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
 
   // --- REPORT GUIDES (10) ---
@@ -120,7 +120,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/dasha",
     shortDesc: "Vimshottari Dasha timeline guide for timing major life transitions.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "reports-love-marriage",
@@ -129,7 +129,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/love-marriage",
     shortDesc: "Kundli matching and marital compatibility report guide.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "reports-saturn",
@@ -138,7 +138,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/saturn",
     shortDesc: "Sade Sati, Shani Dhaiya, and Saturn transit remedies.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "reports-mangal-dosha",
@@ -147,7 +147,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/mangal-dosha",
     shortDesc: "3-chart Mars placement analysis, cancellations, and remedies.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "reports-kalsarp-dosha",
@@ -156,7 +156,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/kalsarp-dosha",
     shortDesc: "Rahu-Ketu axis cordoning guide and Kundli remedies.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "reports-pitra-dosha",
@@ -165,7 +165,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/pitra-dosha",
     shortDesc: "Ancestral Karma karmic debt analysis and peace rituals.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "reports-raj-yoga",
@@ -174,7 +174,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/raj-yoga",
     shortDesc: "Kendra-Trikona lord royal combinations for success and power.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "reports-gemstone",
@@ -183,7 +183,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/gemstone",
     shortDesc: "Anukul-Graha gemstone recommendations for chart activation.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
   {
     id: "reports-videsh-yoga",
@@ -192,7 +192,7 @@ export const ASTROLOGY_GUIDES: AstrologyGuideItem[] = [
     columnLabel: "Report Guides",
     slug: "/reports/videsh-yoga",
     shortDesc: "Foreign settlement and overseas travel indicators in birth chart.",
-    hasFullContent: false,
+    hasFullContent: true,
   },
 ];
 
