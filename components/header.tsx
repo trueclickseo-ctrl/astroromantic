@@ -42,6 +42,10 @@ export default function Header() {
             </a>
           </div>
 
+          <a href="/astrology-guides/" className="hover:text-rose-600 font-semibold py-1 transition-colors flex items-center space-x-1 text-black">
+            <span>Explore Astrology</span>
+          </a>
+
           <a href="/numerology/" className="hover:text-rose-600 py-1 transition-colors">
             Numerology
           </a>

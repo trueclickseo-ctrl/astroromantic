@@ -11,6 +11,8 @@ export default function FooterClient() {
       <div className="flex items-center space-x-2">
         <span>© 2026 AstroRomantic</span>
         <span className="text-zinc-400">|</span>
+        <a href="/astrology-guides/" className="hover:underline text-rose-600 font-bold">Explore Astrology</a>
+        <span className="text-zinc-400">|</span>
         <a href="/calculators/" className="hover:underline">{t.menuCalculators}</a>
         <span className="text-zinc-400">|</span>
         <a href="/about/" className="hover:underline">{t.about}</a>

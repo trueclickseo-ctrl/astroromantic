@@ -1,0 +1,15 @@
+/* AWAITING FINAL COPY */
+import React from "react";
+import type { Metadata } from "next";
+import PlaceholderGuideShell, { generatePlaceholderMetadata } from "@/components/placeholder-guide-shell";
+
+const ID = "vedic-planets";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generatePlaceholderMetadata(ID);
+}
+
+export default function VedicPlanetsPage() {
+  /* AWAITING FINAL COPY */
+  return <PlaceholderGuideShell id={ID} />;
+}
