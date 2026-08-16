@@ -97,28 +97,30 @@ async function main() {
     console.log(`   ⚠️  ${err.message}\n`);
   }
 
-  // 3. Submit in batches of 500
-  const BATCH_SIZE = 500;
-  const batches = [];
-  for (let i = 0; i < urls.length; i += BATCH_SIZE) {
-    batches.push(urls.slice(i, i + BATCH_SIZE));
-  }
-
-  console.log(`🚀 Submitting ${urls.length} URLs in ${batches.length} batch(es)...\n`);
-
-  for (let i = 0; i < batches.length; i++) {
-    const batch = batches[i];
-    console.log(`── Batch ${i + 1}/${batches.length} (${batch.length} URLs) ──`);
-    try {
-      const res = await submitBatch(batch);
-      if (res.statusCode === 200) {
-        console.log(`   ✅ Submitted successfully!`);
-      } else {
-        console.log(`   ❌ HTTP ${res.statusCode}: ${res.body}`);
+  // 3. Submit respecting remaining daily quota (max 500 per batch)
+  let quotaLimit = 500;
+  try {
+    const qRes = await getQuota();
+    if (qRes.statusCode === 200) {
+      const qData = JSON.parse(qRes.body);
+      if (qData.d && qData.d.DailyQuota) {
+        quotaLimit = qData.d.DailyQuota;
       }
-    } catch (err) {
-      console.log(`   ❌ Error: ${err.message}`);
     }
+  } catch (e) {}
+
+  const urlsToSubmit = urls.slice(0, quotaLimit);
+  console.log(`🚀 Submitting top ${urlsToSubmit.length} URLs (Quota Limit: ${quotaLimit})...\n`);
+
+  try {
+    const res = await submitBatch(urlsToSubmit);
+    if (res.statusCode === 200) {
+      console.log(`   ✅ Successfully submitted ${urlsToSubmit.length} URLs to Bing!`);
+    } else {
+      console.log(`   ❌ HTTP ${res.statusCode}: ${res.body}`);
+    }
+  } catch (err) {
+    console.log(`   ❌ Error: ${err.message}`);
   }
 
   // 4. Summary
