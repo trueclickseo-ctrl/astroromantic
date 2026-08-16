@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import ExploreAstrologyPanel from "@/components/explore-astrology-panel";
-import { Sparkles, CheckCircle2, HelpCircle, BookOpen, ArrowRight } from "lucide-react";
+import { Sparkles, CheckCircle2, HelpCircle, BookOpen, ArrowRight, ChevronRight, Home } from "lucide-react";
 
 const SITE_URL = "https://www.astroromantic.com";
 const SLUG = "/western/zodiac-signs";
@@ -65,6 +65,18 @@ export default function GuidePage() {
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10 box-border">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs font-mono text-zinc-600 bg-white border-2 border-black rounded-xl px-4 py-2 shadow-[2px_2px_0px_#000000]">
+          <a href="/" className="flex items-center space-x-1 hover:text-black transition-colors">
+            <Home className="w-3.5 h-3.5" />
+            <span>Home</span>
+          </a>
+          <ChevronRight className="w-3 h-3 text-zinc-400" />
+          <a href="/astrology-guides/" className="hover:text-black transition-colors">Explore Astrology Hub</a>
+          <ChevronRight className="w-3 h-3 text-zinc-400" />
+          <span className="font-bold text-black">Western Zodiac Signs: The 12 Sun Signs Explained</span>
+        </nav>
+
         {/* Header Section */}
         <header className="bg-white border-3 border-black rounded-2xl p-6 sm:p-10 shadow-[6px_6px_0px_#000000] text-center space-y-4">
           <div className="inline-flex items-center space-x-2 bg-rose-200 border-2 border-black rounded-full px-4 py-1 text-xs font-mono font-bold uppercase text-black">
