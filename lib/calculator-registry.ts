@@ -92,27 +92,34 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
 
   "nakshatra": {
     slug: "nakshatra",
-    name: "Nakshatra Calculator",
+    name: "Baby Name Nakshatra Calculator",
     category: "Astrology",
     categorySlug: "astrology",
     iconName: "Star",
-    shortDescription: "Calculate your birth Nakshatra (lunar mansion), Pada, planetary lord, and deity characteristics.",
-    seoTitle: "Nakshatra Calculator — Birth Star & Pada Finder | AstroRomantic",
-    metaDescription: "Calculate your birth Nakshatra, Pada, Nakshatra lord, and planetary characteristics using exact Vedic astronomical calculations.",
-    h1: "Nakshatra (Birth Star) Calculator",
-    directAnswer: "A Nakshatra is one of 27 lunar mansions in Vedic astrology. Each Nakshatra spans 13°20' of the ecliptic and is divided into 4 Padas of 3°20' each, revealing deep karmic blueprints.",
+    shortDescription: "Discover your baby's Janma Nakshatra (birth star), Pada, and traditional naming syllable based on birth date, time, and place.",
+    seoTitle: "Baby Name Nakshatra Calculator — Auspicious Starting Letter Finder | AstroRomantic",
+    metaDescription: "Enter your baby's birth date, time, and place to find their Janma Nakshatra, Pada, and traditional naming syllable for Namkaran Sanskar.",
+    h1: "Baby Name Nakshatra Calculator — Find the Auspicious Starting Letter for Your Baby's Name",
+    directAnswer: "In Vedic astrology, naming a child isn't left to preference alone — it follows the Moon. The Moon's exact position at the moment of birth determines your baby's Nakshatra (birth star) and Pada (quarter within that star), and each of the 108 possible Pada positions carries a specific naming syllable. This calculator finds your baby's Nakshatra-Pada and gives you the recommended starting sound for a name that's aligned with their cosmic blueprint, in keeping with the traditional Namkaran (naming ceremony) practice.",
     howItWorks: [
-      { step: "1", title: "Enter Birth Details", text: "Input birth date, exact time, and city." },
-      { step: "2", title: "Compute Moon Longitude", text: "The Moon's sidereal degree is calculated." },
-      { step: "3", title: "Map to 27 Mansions", text: "View your Nakshatra name, Pada (1-4), Nakshatra lord, and symbolic deity." }
+      { step: "1", title: "Enter Birth Details", text: "Enter exact birth date, time, and place. Precision matters — a 15–20 minute error in birth time can shift the result into a neighboring Pada with a different syllable." },
+      { step: "2", title: "Compute Moon Longitude", text: "The Moon's exact longitude at birth is calculated, pinpointing which of the 27 Nakshatras it occupied at that precise moment." },
+      { step: "3", title: "Identify Pada (Quarter)", text: "The Nakshatra is divided into its 4 Padas of 3°20' each, and the calculator identifies exactly which Pada the Moon fell into." },
+      { step: "4", title: "Return Naming Syllable", text: "That Pada's assigned syllable is returned as the traditional recommended starting sound for the baby's name." }
     ],
     faqs: [
-      { question: "How many Nakshatras exist in Vedic astrology?", answer: "There are 27 primary Nakshatras spanning the 360-degree zodiac, starting from Ashwini and ending at Revati." },
-      { question: "What is a Pada?", answer: "Each Nakshatra is split into 4 equal parts called Padas (quarters) of 3°20' each, corresponding to the 9 divisional steps of a Navamsa." }
+      { question: "How is a baby's Nakshatra determined?", answer: "It's based on the Moon's exact longitude at the moment of birth — the 27 Nakshatras divide the zodiac into equal 13°20′ segments, and whichever segment the Moon occupies at birth becomes the baby's Janma Nakshatra (birth star)." },
+      { question: "Why does birth time matter so much for this specific calculation?", answer: "The Moon moves about 13° across the zodiac per day, meaning it can shift from one Pada — and therefore one naming syllable — to another within just a couple of hours. An accurate birth time is essential for a reliable result." },
+      { question: "Is Nakshatra naming only for Hindu families?", answer: "The tradition is rooted in Hindu Vedic astrology and the Namkaran Sanskar specifically, though the underlying Nakshatra system is used more broadly across Vedic/Jyotish astrology in India, Nepal, Sri Lanka, and other regions with shared traditions." },
+      { question: "Can this calculator suggest full names, not just the starting syllable?", answer: "The core calculation returns the Nakshatra, Pada, and required starting syllable — many parents then browse a name list starting with that syllable separately, filtering further by meaning, gender, and personal preference." },
+      { question: "Is Nakshatra naming the same as choosing a name based on the zodiac (Rashi) sign?", answer: "They're related but distinct — Rashi (Moon sign) covers a broader 30° segment of the zodiac and is sometimes used as a simpler naming guide, while Nakshatra-Pada naming is more precise, narrowing the guidance down to a 3°20′ window and a specific syllable." }
     ],
-    educationalTitle: "The Power of Lunar Mansions",
+    educationalTitle: "About Nakshatra-Based Baby Naming",
     educationalBody: [
-      "In ancient Vedic lore, the 27 Nakshatras are considered the daughters of King Daksha and the wives of the Moon. Your birth Nakshatra governs your mental tendencies, instincts, and the starting phase of your Vimshottari Dasha."
+      "The practice of choosing a baby's first name letter from their birth star is called Namkaran Sanskar — one of the sixteen traditional Samskaras (sacred rites of passage) in Hindu tradition. The Vedic zodiac divides the sky into 27 Nakshatras (lunar constellations), each spanning exactly 13°20′ of the ecliptic. Each Nakshatra is further split into 4 Padas of 3°20′ each, giving 27 × 4 = 108 total Padas across the zodiac.",
+      "Every one of those 108 Padas is linked to a specific Sanskrit syllable, a mapping that traces back to classical Jyotish texts like the Brihat Parashara Hora Shastra. Each Pada also corresponds to one of the 12 zodiac signs in the Navamsa (D9 divisional chart), tying the baby's name syllable to two layers of the birth chart at once. A name beginning with the correct sound creates a harmonious vibration supporting the child's nature.",
+      "Nakshatra & Naming Syllable Reference (Padas 1–4):\n• Ashwini: Chu, Che, Cho, La\n• Bharani: Li, Lu, Le, Lo\n• Krittika: A, I, U, E\n• Rohini: O, Va, Vi, Vu\n• Mrigashira: Ve, Vo, Ka, Ki\n• Ardra: Ku, Gha, Ng, Chha\n• Punarvasu: Ke, Ko, Ha, Hi\n• Pushya: Hu, He, Ho, Da\n• Ashlesha: Di, Du, De, Do\n• Magha: Ma, Mi, Mu, Me\n• Purva Phalguni: Mo, Ta, Ti, Tu\n• Uttara Phalguni: Te, To, Pa, Pi\n• Hasta: Pu, Sha, Na, Tha\n• Chitra: Pe, Po, Ra, Ri\n• Swati: Ru, Re, Ro, Ta\n• Vishakha: Ti, Tu, Te, To\n• Anuradha: Na, Ni, Nu, Ne\n• Jyeshtha: No, Ya, Yi, Yu\n• Mula: Ye, Yo, Ba, Bi\n• Purva Ashadha: Bu, Dha, Pha, Da\n• Uttara Ashadha: Be, Bo, Ja, Ji\n• Shravana: Ju, Je, Jo, Kha\n• Dhanishta: Ga, Gi, Gu, Ge\n• Shatabhisha: Go, Sa, Si, Su\n• Purva Bhadrapada: Se, So, Da, Di\n• Uttara Bhadrapada: Du, Tha, Jha, Da\n• Revati: De, Do, Cha, Chi",
+      "Beyond the Syllable — Adding Numerology:\nNakshatra gives you the required starting sound — but many parents layer in a second check: Vedic numerology (Ank Shastra). Every candidate name has a numerical value calculated via the Chaldean system. Ideally, this Name Number harmonizes with the baby's Mulank (root number, derived from birth day) and Bhagyank (destiny number, derived from full birth date). A name satisfying both Nakshatra and numerology is considered the strongest possible match."
     ],
     relatedCalculators: [
       { name: "Moon Sign Calculator", href: "/calculators/moon-sign/" },
@@ -855,22 +862,31 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     category: "Numerology",
     categorySlug: "numerology",
     iconName: "Hash",
-    shortDescription: "Calculate the home energy vibration of your house, flat, or apartment unit number.",
-    seoTitle: "House Number Calculator — Home Energy & Living Atmosphere | AstroRomantic",
-    metaDescription: "Calculate the numerology number of your house or apartment unit to discover the domestic atmosphere and living space energy.",
-    h1: "House Number Calculator",
-    directAnswer: "House Number Numerology reduces your home or unit number to a single digit (1-9) to reveal the living space atmosphere and family harmony.",
+    shortDescription: "Calculate the house number numerology vibration for your home address or apartment unit.",
+    seoTitle: "House Number Numerology Calculator — Is Your Home's Address Lucky? | AstroRomantic",
+    metaDescription: "Discover the energy your house or apartment unit number carries and whether it supports your personal Life Path and lifestyle goals.",
+    h1: "House Number Numerology Calculator — Is Your Home's Address Lucky?",
+    directAnswer: "Numerology holds that a house isn't just an address — it's a vibration you live inside every day. Your house number, reduced to a single digit from 1 to 9 (with 11, 22, and 33 kept as Master Numbers), sets a tone for the home the same way a birth date sets a tone for a person. This calculator reduces your address to its core number and tells you what that number actually means for the household living there.",
     howItWorks: [
-      { step: "1", title: "Enter House Number", text: "Input door number, street number, or unit letter." },
-      { step: "2", title: "Reduce Digits", text: "Sum numbers and letter values." },
-      { step: "3", title: "View Living Atmosphere", text: "Read your home's energetic environment report." }
+      { step: "1", title: "Take Numeric Address", text: "Take the numeric part of your address. Ignore street names and letters unless your building uses lettered units (e.g., '12B')." },
+      { step: "2", title: "Add Every Digit", text: "Add every digit together. For house number 1543: 1 + 5 + 4 + 3 = 13." },
+      { step: "3", title: "Reduce to Single Digit", text: "Reduce 13 → 1 + 3 = 4." },
+      { step: "4", title: "Check Master Numbers", text: "If your total lands on 11, 22, or 33 at any reduction stage, stop there — these carry distinct Master Number meanings." }
     ],
     faqs: [
-      { question: "What if my address has letters like 4B?", answer: "Convert 'B' to 2 (Pythagorean), add 4 + 2 = 6." }
+      { question: "How do I calculate my house number in numerology?", answer: "Add every digit of your house or flat number together, then keep reducing the sum until you reach a single digit from 1–9, unless the total lands on a Master Number (11, 22, or 33), which is left unreduced." },
+      { question: "Do apartment or unit numbers count differently from house numbers?", answer: "Yes — for apartment dwellers, numerologists generally treat the unit number as the primary influence on daily life, since it's the number actually lived in, even though the building's overall address number still carries background influence." },
+      { question: "Is house number 4 unlucky?", answer: "In Western numerology, 4 represents stability and structure — a solid, grounding number, not an unlucky one. (In some East Asian traditions, the number 4 carries separate phonetic associations)." },
+      { question: "Can I change my house number to improve its energy?", answer: "Some numerologists recommend a name plate or secondary number display calculated to add a more favorable vibration alongside the official address, though this is a matter of personal tradition." },
+      { question: "Does house number numerology account for the street name too?", answer: "Most traditional systems focus on the house/apartment number itself rather than the street name, since the number is what's personally identified with the residence." }
     ],
-    educationalTitle: "Sacred Space & House Vibrations",
+    educationalTitle: "About House Number Numerology",
     educationalBody: [
-      "Your home environment affects your rest, creativity, and family relationships. Number 2 promotes peace, 3 joy, 4 stability, 6 family warmth, and 8 abundance."
+      "In numerology, every number from 1 to 9 carries a distinct energetic signature, and your house number is read as a personal number for the property itself. A '5 house' behaves differently from an '8 house', because numerological tradition maps consistent living themes onto each number.",
+      "Numerology looks purely at the address number; Vastu Shastra and Feng Shui look at the physical layout, direction, and placement of the structure itself. A number can be numerologically excellent and sit in a Vastu-imperfect layout — they are separate complementary lenses.",
+      "House Number Meanings Summary:\n• 1: New beginnings, independence, fresh starts (Entrepreneurs, singles starting over)\n• 2: Partnership, harmony, emotional sensitivity (Couples, togetherness)\n• 3: Creativity, self-expression, social energy (Artists, writers, entertainers)\n• 4: Stability, structure, hard work (Long-term family homes, steady routines)\n• 5: Change, freedom, adventure (Frequent movers, travelers, dynamic households)\n• 6: Love, family, nurturing (Caregivers, multi-generational homes)\n• 7: Introspection, spirituality, solitude (Quiet, study, meditation, inner work)\n• 8: Abundance, power, financial growth (Career-focused households, business owners)\n• 9: Compassion, service, humanitarian energy (Healers, community-oriented households)\n• 11/22/33 (Master): Heightened intuition, master building, and grand selfless service.",
+      "Is 13 Really Unlucky?\nNumerologically, 13 reduces cleanly to 4 (1+3=4), a number associated with stability and hard-earned structure, not misfortune. The 'unlucky 13' reputation is a cultural inheritance rather than a numerological one.",
+      "Matching House Number to Personal Number:\nYour personal numbers describe you; your house number describes the environment. A 1-energy person living in a 6-energy home isn't a red flag — it can be balancing, giving an independent person a home base that encourages rest and connection."
     ],
     relatedCalculators: [
       { name: "Life Path Calculator", href: "/calculators/life-path/" },
@@ -972,22 +988,30 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     category: "Numerology",
     categorySlug: "numerology",
     iconName: "Heart",
-    shortDescription: "Compare Life Path and Expression numbers between two partners for deep numerology harmony.",
-    seoTitle: "Numerology Love Compatibility Calculator | AstroRomantic",
-    metaDescription: "Calculate numerology love compatibility between two partners by comparing Life Path numbers and Expression vibrations.",
-    h1: "Numerology Love Compatibility",
-    directAnswer: "Numerology Love Compatibility compares the Life Path numbers and Expression names of two partners to reveal natural harmony and growth areas.",
+    shortDescription: "Compare Life Path numbers between partners to reveal relationship harmony and growth dynamics.",
+    seoTitle: "Numerology Love Compatibility Calculator — Life Path Pairing | AstroRomantic",
+    metaDescription: "Enter both birth dates to discover how your Life Path numbers interact — where you naturally sync and where your relationship will ask you to grow.",
+    h1: "Numerology Love Compatibility Calculator — What Your Life Path Numbers Reveal About Your Relationship",
+    directAnswer: "Every birth date reduces to a single-digit Life Path number, and every Life Path number has a documented relationship with every other. This calculator compares your Life Path number with your partner's, drawing on the classical numerology tradition that's mapped these pairings for generations — not to hand you a pass/fail score, but to show you the actual dynamic at play between your two numbers.",
     howItWorks: [
-      { step: "1", title: "Enter Person 1 Birth Date & Name", text: "Calculate Person 1 core numbers." },
-      { step: "2", title: "Enter Person 2 Birth Date & Name", text: "Calculate Person 2 core numbers." },
-      { step: "3", title: "Analyze Harmony", text: "Get compatibility percentage and relationship insights." }
+      { step: "1", title: "Reduce Birth Dates", text: "Reduce each partner's full birth date to a Life Path number (e.g. June 12, 1994 → 6+1+2+1+9+9+4 = 32 → 3+2 = 5)." },
+      { step: "2", title: "Check Master Numbers", text: "If reduction lands on 11, 22, or 33, it's kept as a Master Number and read with distinct intensity." },
+      { step: "3", title: "Compare Matrix", text: "Compare the two Life Path numbers against the traditional compatibility matrix mapping interactions across core numbers." },
+      { step: "4", title: "Read Growth Dynamics", text: "Read both natural strengths and specific growth points rather than chasing a raw score." }
     ],
     faqs: [
-      { question: "Which Life Path numbers are naturally compatible?", answer: "1-5-7 (individualists), 2-4-8 (practical builders), and 3-6-9 (creatives and nurturers) share strong natural affinity." }
+      { question: "Is numerology compatibility the same as zodiac compatibility?", answer: "No — Life Path numerology is calculated from a full birth date reduced to a single digit, while zodiac compatibility is based on the calendar month. They are separate systems that complement each other." },
+      { question: "Can two people with 'incompatible' Life Path numbers have a successful relationship?", answer: "Yes — numerology compatibility describes natural tendencies and likely friction points, not a hard limit. Awareness of the dynamic matters more than the raw score." },
+      { question: "Do I need my partner's exact birth time for a compatibility reading?", answer: "No — Life Path number compatibility only requires the full date of birth (day, month, year), not the exact time." },
+      { question: "What is a Master Number in compatibility readings?", answer: "Master Numbers (11, 22, 33) carry intensified versions of their root number's energy — someone with a Master Number Life Path experiences relationships with heightened intensity." },
+      { question: "Should I only date someone with a 'perfect' compatibility score?", answer: "No — a 'perfect' score describes ease, not depth. Some of the most transformative relationships come from pairings with real friction that pushes both people to grow." }
     ],
-    educationalTitle: "Harmonizing Vibrational Frequencies in Relationships",
+    educationalTitle: "About Numerology Love Compatibility",
     educationalBody: [
-      "When Life Path numbers interact, they create a unique combined vibration that highlights ease and growth potential."
+      "Numerology compatibility rests on one idea: your date of birth isn't just a timestamp, it's a blueprint. Reduce your full birth date down to a single digit (1 through 9, or a Master Number — 11, 22, 33) and you get your Life Path number, which represents the broad theme of your life's journey.",
+      "What separates a genuinely useful compatibility reading from a generic one is resisting the urge to hand out 'perfect scores.' Some pairings — a 5 and a 6, say — sit at opposite emotional poles: freedom versus responsibility, spontaneity versus roots. On paper that reads as friction. In practice, it's often exactly the stretch that makes two people grow.",
+      "Life Path Compatibility Chart Highlights:\n• 1 & 1 (★★★☆☆): Two independent leaders — exciting, but compromise is key.\n• 1 & 2 (★★★★☆): Initiator & peacemaker — 1 leads, 2 supports, both feel valued.\n• 1 & 5 (★★★★★): Two freedom-lovers who never bore each other.\n• 2 & 6 (★★★★★): Deeply nurturing and harmonious — both prioritize partnership.\n• 3 & 5 (★★★★☆): Playful, social, spontaneous — fun match needing an anchor.\n• 4 & 8 (★★★★☆): Two builders — disciplined, ambitious, structured.\n• 5 & 6 (★★★☆☆): Freedom meets responsibility — real friction & growth.\n• 6 & 9 (★★★★★): Deeply compassionate and giving — naturally warm pairing.",
+      "What a 'Difficult' Number Pairing Actually Means:\nA lower-starred pairing in numerology isn't a verdict that the relationship won't work — it's a description of where friction will show up so you can work through it deliberately instead of being surprised by it."
     ],
     relatedCalculators: [
       { name: "Kundli Matching", href: "/calculators/kundli-matching/" },
