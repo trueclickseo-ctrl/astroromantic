@@ -314,7 +314,22 @@ export function MangalDoshaComp() {
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className={`border-3 border-black rounded-2xl p-6 text-center space-y-4 shadow-[4px_4px_0px_#000000] ${result.isManglik ? "bg-rose-100" : "bg-emerald-100"}`}>
           <span className="text-xs uppercase text-black font-bold">Mangal Dosha Status</span>
           <div className="text-3xl sm:text-4xl font-extrabold text-black">{result.isManglik ? "Manglik Dosha Present" : "No Manglik Dosha"}</div>
+          <div className="grid grid-cols-3 gap-2 text-xs font-mono font-bold py-2 border-y border-black">
+            <div className="bg-white/80 p-2 rounded-lg border border-black">Lagna: House {result.marsHouseFromLagna}</div>
+            <div className="bg-white/80 p-2 rounded-lg border border-black">Moon: House {result.marsHouseFromMoon}</div>
+            <div className="bg-white/80 p-2 rounded-lg border border-black">Venus: House {result.marsHouseFromVenus}</div>
+          </div>
           <p className="text-xs text-zinc-900 font-sans leading-relaxed">{result.explanation}</p>
+          {result.mitigationFactors && result.mitigationFactors.length > 0 && (
+            <div className="text-left bg-white/90 border border-black rounded-xl p-3 text-xs space-y-1">
+              <span className="font-bold text-black block">Cancellation / Mitigation Factors:</span>
+              <ul className="list-disc pl-4 text-zinc-800 space-y-1 font-sans">
+                {result.mitigationFactors.map((m: string, i: number) => (
+                  <li key={i}>{m}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </motion.div>
       )}
     </div>

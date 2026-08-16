@@ -392,25 +392,29 @@ export function calculateMangalDosha(chart: BirthChart): {
   severity: "High" | "Moderate" | "Low" | "None";
   marsHouseFromLagna: number;
   marsHouseFromMoon: number;
+  marsHouseFromVenus: number;
   mitigationFactors: string[];
   explanation: string;
 } {
   const marsSid = chart.planets["Mars"].siderealLongitude;
   const lagnaSid = chart.lagna.siderealLongitude;
   const moonSid = chart.planets["Moon"].siderealLongitude;
+  const venusSid = chart.planets["Venus"].siderealLongitude;
 
   const houseFromLagna = (Math.floor(marsSid / 30) - Math.floor(lagnaSid / 30) + 12) % 12 + 1;
   const houseFromMoon = (Math.floor(marsSid / 30) - Math.floor(moonSid / 30) + 12) % 12 + 1;
+  const houseFromVenus = (Math.floor(marsSid / 30) - Math.floor(venusSid / 30) + 12) % 12 + 1;
 
-  const doshaHouses = [1, 4, 7, 8, 12];
+  const doshaHouses = [1, 2, 4, 7, 8, 12];
   const isManglikLagna = doshaHouses.includes(houseFromLagna);
   const isManglikMoon = doshaHouses.includes(houseFromMoon);
+  const isManglikVenus = doshaHouses.includes(houseFromVenus);
 
-  const isManglik = isManglikLagna || isManglikMoon;
+  const isManglik = isManglikLagna || isManglikMoon || isManglikVenus;
 
   const mitigationFactors: string[] = [];
   if (chart.planets["Mars"].rashi === "Aries" || chart.planets["Mars"].rashi === "Scorpio") {
-    mitigationFactors.push("Mars is in its own sign (Aries/Scorpio), cancelling severe afflictions.");
+    mitigationFactors.push("Mars is in its own sign (Aries/Scorpio), neutralizing severe afflictions.");
   }
   if (chart.planets["Mars"].rashi === "Capricorn") {
     mitigationFactors.push("Mars is exalted in Capricorn, significantly softening negative influences.");
@@ -420,15 +424,19 @@ export function calculateMangalDosha(chart: BirthChart): {
   }
 
   let severity: "High" | "Moderate" | "Low" | "None" = "None";
-  if (isManglikLagna && isManglikMoon) severity = "High";
-  else if (isManglikLagna || isManglikMoon) severity = "Moderate";
+  const manglikCount = (isManglikLagna ? 1 : 0) + (isManglikMoon ? 1 : 0) + (isManglikVenus ? 1 : 0);
+
+  if (manglikCount === 3) severity = "High";
+  else if (manglikCount === 2) severity = "Moderate";
+  else if (manglikCount === 1) severity = "Low";
+
   if (mitigationFactors.length > 0 && isManglik) severity = "Low";
 
   let explanation = "";
   if (!isManglik) {
-    explanation = `Mars is comfortably placed in House ${houseFromLagna} from Lagna and House ${houseFromMoon} from Moon, indicating no Mangal Dosha presence.`;
+    explanation = `Mars is comfortably placed in House ${houseFromLagna} from Lagna, House ${houseFromMoon} from Moon, and House ${houseFromVenus} from Venus, indicating no Mangal Dosha presence.`;
   } else {
-    explanation = `Mars is positioned in House ${houseFromLagna} from Ascendant (Lagna) and House ${houseFromMoon} from Moon. Traditional Vedic astrology recognizes this placement as Mangal Dosha. ${mitigationFactors.length ? 'However, notable cancellation/mitigation factors exist in your chart.' : ''}`;
+    explanation = `Mars is positioned in House ${houseFromLagna} from Ascendant (Lagna), House ${houseFromMoon} from Moon, and House ${houseFromVenus} from Venus. Traditional Vedic astrology recognizes this placement as Mangal Dosha. ${mitigationFactors.length ? 'However, notable classical cancellation/mitigation factors exist in your chart.' : ''}`;
   }
 
   return {
@@ -436,6 +444,7 @@ export function calculateMangalDosha(chart: BirthChart): {
     severity,
     marsHouseFromLagna: houseFromLagna,
     marsHouseFromMoon: houseFromMoon,
+    marsHouseFromVenus: houseFromVenus,
     mitigationFactors,
     explanation
   };
