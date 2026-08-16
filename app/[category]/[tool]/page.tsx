@@ -41,7 +41,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     : `Free online ${toolTitle} tool. Get instant results.`;
   const catLabel = categoryLabels[category] || category;
   const pageTitle = `${toolTitle} — Free ${catLabel} Tool | AstroRomantic`;
-  const canonicalUrl = `${SITE_URL}/${category}/${tool}/`;
+  let canonicalUrl = `${SITE_URL}/${category}/${tool}/`;
+  if (category === "relationship" && tool === "soulmate-calculator") {
+    canonicalUrl = `${SITE_URL}/soulmate-calculator/`;
+  } else if (category === "relationship" && tool === "relationship-compatibility-calculator") {
+    canonicalUrl = `${SITE_URL}/love/relationship-compatibility-calculator/`;
+  } else if (category === "relationship" && tool === "marriage-compatibility-calculator") {
+    canonicalUrl = `${SITE_URL}/love/marriage-compatibility-calculator/`;
+  }
 
   return {
     title: pageTitle,
@@ -96,6 +103,10 @@ export function generateStaticParams() {
     { category: "relationship", tool: "relationship-duration" },
     { category: "relationship", tool: "love-language-quiz" },
     { category: "relationship", tool: "relationship-health-score" },
+    // Relationship legacy aliases (for clean 200 OK & 301 redirect mapping)
+    { category: "relationship", tool: "relationship-compatibility-calculator" },
+    { category: "relationship", tool: "marriage-compatibility-calculator" },
+    { category: "relationship", tool: "soulmate-calculator" },
     // AI Generators
     { category: "ai-generators", tool: "love-letter-generator" },
     { category: "ai-generators", tool: "romantic-message-generator" },
@@ -110,6 +121,15 @@ export default async function ToolPage({ params }: PageProps) {
   const resolvedParams = await params;
   const toolSlug = resolvedParams.tool;
   const category = resolvedParams.category;
+
+  let redirectUrl: string | null = null;
+  if (category === "relationship" && toolSlug === "soulmate-calculator") {
+    redirectUrl = "/soulmate-calculator/";
+  } else if (category === "relationship" && toolSlug === "relationship-compatibility-calculator") {
+    redirectUrl = "/love/relationship-compatibility-calculator/";
+  } else if (category === "relationship" && toolSlug === "marriage-compatibility-calculator") {
+    redirectUrl = "/love/marriage-compatibility-calculator/";
+  }
 
   const toolConfig = toolRegistry[toolSlug];
 
@@ -260,28 +280,37 @@ export default async function ToolPage({ params }: PageProps) {
   }
 
   return (
-    <ToolLayout
-      title={toolConfig.title}
-      description={toolConfig.description}
-      directAnswer={toolConfig.directAnswer}
-      category={toolConfig.category}
-      toolSlug={toolSlug}
-      howItWorks={toolConfig.howItWorks}
-      faqs={toolConfig.faqs}
-      relatedTools={toolConfig.relatedTools}
-      educationalContent={
-        toolConfig.educationalTitle ? (
-          <div className="space-y-4">
-            <h3 className="text-xl sm:text-2xl font-mono font-extrabold text-black border-b-2 border-black pb-2">{toolConfig.educationalTitle}</h3>
-            <div>{toolConfig.educationalBody}</div>
-          </div>
-        ) : (
-          toolConfig.educationalBody
-        )
-      }
-      closingContent={(toolConfig as any).closingBody}
-    >
-      {calculatorNode}
-    </ToolLayout>
+    <>
+      {redirectUrl && (
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if (typeof window !== 'undefined') { window.location.replace('${redirectUrl}'); }`,
+          }}
+        />
+      )}
+      <ToolLayout
+        title={toolConfig.title}
+        description={toolConfig.description}
+        directAnswer={toolConfig.directAnswer}
+        category={toolConfig.category}
+        toolSlug={toolSlug}
+        howItWorks={toolConfig.howItWorks}
+        faqs={toolConfig.faqs}
+        relatedTools={toolConfig.relatedTools}
+        educationalContent={
+          toolConfig.educationalTitle ? (
+            <div className="space-y-4">
+              <h3 className="text-xl sm:text-2xl font-mono font-extrabold text-black border-b-2 border-black pb-2">{toolConfig.educationalTitle}</h3>
+              <div>{toolConfig.educationalBody}</div>
+            </div>
+          ) : (
+            toolConfig.educationalBody
+          )
+        }
+        closingContent={(toolConfig as any).closingBody}
+      >
+        {calculatorNode}
+      </ToolLayout>
+    </>
   );
 }

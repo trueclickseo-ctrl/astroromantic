@@ -1271,7 +1271,7 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     educationalTitle: "Relationship Pillars",
     educationalBody: ["Successful relationships balance emotional and lifestyle goals."],
     relatedCalculators: [],
-    customHref: "/relationship/relationship-compatibility-calculator/"
+    customHref: "/love/relationship-compatibility-calculator/"
   },
   "marriage-compatibility-calculator": {
     slug: "marriage-compatibility-calculator",
@@ -1289,7 +1289,7 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     educationalTitle: "Marital Foundations",
     educationalBody: ["Marriage compatibility looks at long-term stability."],
     relatedCalculators: [],
-    customHref: "/relationship/marriage-compatibility-calculator/"
+    customHref: "/love/marriage-compatibility-calculator/"
   },
   "soulmate-calculator": {
     slug: "soulmate-calculator",
@@ -1307,7 +1307,7 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     educationalTitle: "Soul Connections",
     educationalBody: ["Soulmates share deep spiritual and destiny alignment."],
     relatedCalculators: [],
-    customHref: "/relationship/soulmate-calculator/"
+    customHref: "/soulmate-calculator/"
   },
   "couple-name-combiner": {
     slug: "couple-name-combiner",
