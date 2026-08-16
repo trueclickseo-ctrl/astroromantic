@@ -10,9 +10,12 @@ const CATEGORIES = [
   "Dosha & Dasha",
   "Compatibility",
   "KP Astrology",
-  "Recommendations",
-  "Panchang & Tools",
-  "Numerology"
+  "Remedies",
+  "Panchang & Lifestyle",
+  "Numerology",
+  "Lucky Number Checks",
+  "Love & Couple Tools",
+  "AI Creative Tools"
 ];
 
 const ICON_MAP: Record<string, any> = {

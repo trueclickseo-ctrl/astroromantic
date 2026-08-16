@@ -2,10 +2,22 @@
 // Contains metadata, SEO titles, descriptions, H1 headings, how-it-works steps, FAQs,
 // educational articles, and contextual internal linking.
 
+export type CalculatorCategory =
+  | "Astrology"
+  | "Dosha & Dasha"
+  | "Compatibility"
+  | "KP Astrology"
+  | "Remedies"
+  | "Panchang & Lifestyle"
+  | "Numerology"
+  | "Lucky Number Checks"
+  | "Love & Couple Tools"
+  | "AI Creative Tools";
+
 export interface CalculatorItem {
   slug: string;
   name: string;
-  category: "Astrology" | "Dosha & Dasha" | "Compatibility" | "KP Astrology" | "Recommendations" | "Panchang & Tools" | "Numerology";
+  category: CalculatorCategory;
   categorySlug: string;
   iconName: string;
   shortDescription: string;
@@ -599,12 +611,12 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     ]
   },
 
-  // --- CATEGORY 5: RECOMMENDATIONS ---
+  // --- CATEGORY 5: REMEDIES ---
   "gemstone-recommender": {
     slug: "gemstone-recommender",
     name: "Gemstone Recommender",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "Remedies",
+    categorySlug: "remedies",
     iconName: "Gem",
     shortDescription: "Discover traditional gemstone recommendations (Life Stone, Lucky Stone, Fortune Stone) based on your Lagna lord.",
     seoTitle: "Gemstone Recommender — Life, Lucky & Fortune Stones | AstroRomantic",
@@ -632,8 +644,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "rudraksha-recommender": {
     slug: "rudraksha-recommender",
     name: "Rudraksha Recommender",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "Remedies",
+    categorySlug: "remedies",
     iconName: "ShieldCheck",
     shortDescription: "Find your traditional Rudraksha recommendation (1 to 14 Mukhi) based on birth chart planetary lords.",
     seoTitle: "Rudraksha Recommender — Find Your Mukhi Bead | AstroRomantic",
@@ -658,12 +670,12 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     ]
   },
 
-  // --- CATEGORY 6: PANCHANG & OTHER ASTROLOGY TOOLS ---
+  // --- CATEGORY 6: PANCHANG & LIFESTYLE ---
   "baby-name": {
     slug: "baby-name",
     name: "Baby Name Suggestions",
-    category: "Panchang & Tools",
-    categorySlug: "panchang-tools",
+    category: "Panchang & Lifestyle",
+    categorySlug: "panchang-lifestyle",
     iconName: "Sparkles",
     shortDescription: "Calculate recommended baby name starting letters (Aksharas) based on birth Nakshatra and Pada.",
     seoTitle: "Baby Name Calculator — Nakshatra & Pada Letter Suggestions | AstroRomantic",
@@ -691,8 +703,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "birth-panchang": {
     slug: "birth-panchang",
     name: "Birth Panchang Calculator",
-    category: "Panchang & Tools",
-    categorySlug: "panchang-tools",
+    category: "Panchang & Lifestyle",
+    categorySlug: "panchang-lifestyle",
     iconName: "BookOpen",
     shortDescription: "Calculate the 5 traditional elements of Panchang: Tithi, Vara, Nakshatra, Yoga, and Karana at birth.",
     seoTitle: "Birth Panchang Calculator — Tithi, Vara, Nakshatra, Yoga, Karana | AstroRomantic",
@@ -720,8 +732,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "ayanamsa": {
     slug: "ayanamsa",
     name: "Ayanamsa Calculator",
-    category: "Panchang & Tools",
-    categorySlug: "panchang-tools",
+    category: "Panchang & Lifestyle",
+    categorySlug: "panchang-lifestyle",
     iconName: "Compass",
     shortDescription: "Calculate Lahiri, Raman, and KP Ayanamsa values and compare Tropical vs Sidereal longitudes.",
     seoTitle: "Ayanamsa Calculator — Lahiri, Raman & KP Values | AstroRomantic",
@@ -776,7 +788,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
       { name: "Lo Shu Grid Calculator", href: "/calculators/lo-shu-grid/" },
       { name: "Personal Year Calculator", href: "/calculators/personal-year/" }
     ],
-    isPopular: true
+    isPopular: true,
+    customHref: "/life-path-calculator/"
   },
 
   "name-numerology": {
@@ -806,14 +819,16 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
       { name: "Life Path Calculator", href: "/calculators/life-path/" },
       { name: "Name Correction Calculator", href: "/calculators/name-correction/" }
     ],
-    isPopular: true
+    isPopular: true,
+    customHref: "/destiny-number-calculator/"
   },
 
+  // --- CATEGORY 8: LUCKY NUMBER CHECKS ---
   "mobile-number": {
     slug: "mobile-number",
     name: "Mobile Number Calculator",
-    category: "Numerology",
-    categorySlug: "numerology",
+    category: "Lucky Number Checks",
+    categorySlug: "lucky-number-checks",
     iconName: "Hash",
     shortDescription: "Calculate the total numerological vibration of your mobile phone number (100% private, 0 data stored).",
     seoTitle: "Mobile Number Numerology Calculator — Phone Number Vibration | AstroRomantic",
@@ -841,8 +856,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "vehicle-number": {
     slug: "vehicle-number",
     name: "Vehicle Number Calculator",
-    category: "Numerology",
-    categorySlug: "numerology",
+    category: "Lucky Number Checks",
+    categorySlug: "lucky-number-checks",
     iconName: "Hash",
     shortDescription: "Analyze the numerological vibration and road safety energy of your vehicle registration plate.",
     seoTitle: "Vehicle Number Calculator — Car & Bike Plate Numerology | AstroRomantic",
@@ -870,8 +885,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "house-number": {
     slug: "house-number",
     name: "House Number Calculator",
-    category: "Numerology",
-    categorySlug: "numerology",
+    category: "Lucky Number Checks",
+    categorySlug: "lucky-number-checks",
     iconName: "Hash",
     shortDescription: "Calculate the house number numerology vibration for your home address or apartment unit.",
     seoTitle: "House Number Numerology Calculator — Is Your Home's Address Lucky? | AstroRomantic",
@@ -908,8 +923,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "business-name": {
     slug: "business-name",
     name: "Business Name Calculator",
-    category: "Numerology",
-    categorySlug: "numerology",
+    category: "Lucky Number Checks",
+    categorySlug: "lucky-number-checks",
     iconName: "Hash",
     shortDescription: "Evaluate the commercial numerology vibration of your business name and owner Life Path compatibility.",
     seoTitle: "Business Name Calculator — Commercial Numerology & Brand Fit | AstroRomantic",
@@ -1297,8 +1312,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "couple-name-combiner": {
     slug: "couple-name-combiner",
     name: "Couple Name Combiner",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
     iconName: "Heart",
     shortDescription: "Blend two partner names into cute, romantic combined couple names.",
     seoTitle: "Couple Name Combiner | AstroRomantic",
@@ -1315,8 +1330,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "ship-name-generator": {
     slug: "ship-name-generator",
     name: "Ship Name Generator",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
     iconName: "Sparkles",
     shortDescription: "Generate fun, cute ship names for couples and social media profiles.",
     seoTitle: "Ship Name Generator | AstroRomantic",
@@ -1333,8 +1348,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "nickname-generator": {
     slug: "nickname-generator",
     name: "Cute Nickname Generator",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
     iconName: "Heart",
     shortDescription: "Generate sweet and affectionate romantic nicknames for your partner.",
     seoTitle: "Cute Nickname Generator | AstroRomantic",
@@ -1351,8 +1366,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "couple-hashtag-generator": {
     slug: "couple-hashtag-generator",
     name: "Couple Hashtag Generator",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
     iconName: "Sparkles",
     shortDescription: "Generate unique romantic hashtags for wedding photos, Instagram, and TikTok.",
     seoTitle: "Couple Hashtag Generator | AstroRomantic",
@@ -1369,8 +1384,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "couple-username-generator": {
     slug: "couple-username-generator",
     name: "Couple Username Generator",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
     iconName: "User",
     shortDescription: "Create joint social media handles and shared couple account usernames.",
     seoTitle: "Couple Username Generator | AstroRomantic",
@@ -1384,11 +1399,157 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     relatedCalculators: [],
     customHref: "/couple-names/couple-username-generator/"
   },
+  "wedding-hashtag-generator": {
+    slug: "wedding-hashtag-generator",
+    name: "Wedding Hashtag Generator",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
+    iconName: "Sparkles",
+    shortDescription: "Generate personalized wedding hashtags based on bride and groom names.",
+    seoTitle: "Wedding Hashtag Generator | AstroRomantic",
+    metaDescription: "Create custom wedding hashtags.",
+    h1: "Wedding Hashtag Generator",
+    directAnswer: "Draft social media hashtags for your wedding.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Wedding Hashtags",
+    educationalBody: ["Hashtags collect photo memories."],
+    relatedCalculators: [],
+    customHref: "/wedding/wedding-hashtag-generator/"
+  },
+  "wedding-date-numerology": {
+    slug: "wedding-date-numerology",
+    name: "Wedding Date Numerology",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
+    iconName: "Clock",
+    shortDescription: "Analyze the auspicious vibration of your wedding date.",
+    seoTitle: "Wedding Date Numerology | AstroRomantic",
+    metaDescription: "Check wedding date numerology.",
+    h1: "Wedding Date Numerology",
+    directAnswer: "Calculate the energetic number of your wedding day.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Wedding Date Vibration",
+    educationalBody: ["Wedding dates carry numeric frequencies."],
+    relatedCalculators: [],
+    customHref: "/wedding/wedding-date-numerology/"
+  },
+  "wedding-countdown": {
+    slug: "wedding-countdown",
+    name: "Wedding Countdown Calculator",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
+    iconName: "Clock",
+    shortDescription: "Track exact days, hours, and minutes remaining until your big wedding day.",
+    seoTitle: "Wedding Countdown Calculator | AstroRomantic",
+    metaDescription: "Count down to your wedding day.",
+    h1: "Wedding Countdown Calculator",
+    directAnswer: "Calculate remaining time before your wedding.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Wedding Planning Timeline",
+    educationalBody: ["Track countdown milestones."],
+    relatedCalculators: [],
+    customHref: "/wedding/wedding-countdown/"
+  },
+  "wedding-budget": {
+    slug: "wedding-budget",
+    name: "Wedding Budget Calculator",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
+    iconName: "Sparkles",
+    shortDescription: "Calculate recommended wedding expense breakdowns across venue, catering, and attire.",
+    seoTitle: "Wedding Budget Calculator | AstroRomantic",
+    metaDescription: "Plan your wedding budget allocation.",
+    h1: "Wedding Budget Calculator",
+    directAnswer: "Calculate category breakdowns for your wedding expenses.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Wedding Budgeting",
+    educationalBody: ["Allocate funds across ceremony priorities."],
+    relatedCalculators: [],
+    customHref: "/wedding/wedding-budget/"
+  },
+  "anniversary-calculator": {
+    slug: "anniversary-calculator",
+    name: "Anniversary Milestone Calculator",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
+    iconName: "Clock",
+    shortDescription: "Calculate years celebrated and traditional landmark gift recommendations.",
+    seoTitle: "Anniversary Calculator | AstroRomantic",
+    metaDescription: "Track relationship milestones and traditional gifts.",
+    h1: "Anniversary Calculator",
+    directAnswer: "View anniversary milestones and gift registers.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Anniversary Milestones",
+    educationalBody: ["Celebrate relationship longevity."],
+    relatedCalculators: [],
+    customHref: "/relationship/anniversary-calculator/"
+  },
+  "relationship-duration": {
+    slug: "relationship-duration",
+    name: "Relationship Duration Calculator",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
+    iconName: "Clock",
+    shortDescription: "Calculate total time together broken down into days, hours, and minutes.",
+    seoTitle: "Relationship Duration Calculator | AstroRomantic",
+    metaDescription: "Calculate exact time together as a couple.",
+    h1: "Relationship Duration Calculator",
+    directAnswer: "See exact elapsed time in your relationship.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Time Together",
+    educationalBody: ["Measure the time spent building a shared bond."],
+    relatedCalculators: [],
+    customHref: "/relationship/relationship-duration/"
+  },
+  "love-language-quiz": {
+    slug: "love-language-quiz",
+    name: "Love Language Assessment",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
+    iconName: "Heart",
+    shortDescription: "Discover your primary love language across words of affirmation, quality time, and touch.",
+    seoTitle: "Love Language Assessment | AstroRomantic",
+    metaDescription: "Assess your primary love language.",
+    h1: "Love Language Assessment",
+    directAnswer: "Discover your relationship love language profile.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "5 Love Languages",
+    educationalBody: ["Understand how you give and receive love."],
+    relatedCalculators: [],
+    customHref: "/relationship/love-language-quiz/"
+  },
+  "relationship-health-score": {
+    slug: "relationship-health-score",
+    name: "Relationship Health Assessment",
+    category: "Love & Couple Tools",
+    categorySlug: "love-couple-tools",
+    iconName: "Heart",
+    shortDescription: "Assess communication, trust, and shared values for a healthy partnership.",
+    seoTitle: "Relationship Health Assessment | AstroRomantic",
+    metaDescription: "Evaluate relationship health and trust.",
+    h1: "Relationship Health Assessment",
+    directAnswer: "Check key health metrics in your partnership.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Relationship Wellness",
+    educationalBody: ["Evaluate trust, communication, and support."],
+    relatedCalculators: [],
+    customHref: "/relationship/relationship-health-score/"
+  },
+
+  // --- CATEGORY 10: AI CREATIVE TOOLS ---
   "wedding-vow-generator": {
     slug: "wedding-vow-generator",
     name: "AI Wedding Vow Generator",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "AI Creative Tools",
+    categorySlug: "ai-creative-tools",
     iconName: "Sparkles",
     shortDescription: "Generate heartfelt, romantic wedding vows tailored to your love story.",
     seoTitle: "AI Wedding Vow Generator | AstroRomantic",
@@ -1400,13 +1561,13 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     educationalTitle: "Writing Wedding Vows",
     educationalBody: ["Express your lifelong commitment."],
     relatedCalculators: [],
-    customHref: "/wedding/wedding-vow-generator/"
+    customHref: "/ai-generators/wedding-vow-generator/"
   },
   "love-letter-generator": {
     slug: "love-letter-generator",
     name: "AI Love Letter Generator",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "AI Creative Tools",
+    categorySlug: "ai-creative-tools",
     iconName: "Heart",
     shortDescription: "Craft touching, poetic AI-generated love letters for anniversaries and special dates.",
     seoTitle: "AI Love Letter Generator | AstroRomantic",
@@ -1423,8 +1584,8 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
   "romantic-message-generator": {
     slug: "romantic-message-generator",
     name: "AI Romantic Message Generator",
-    category: "Recommendations",
-    categorySlug: "recommendations",
+    category: "AI Creative Tools",
+    categorySlug: "ai-creative-tools",
     iconName: "Sparkles",
     shortDescription: "Generate sweet good morning texts, love notes, and romantic messages.",
     seoTitle: "AI Romantic Message Generator | AstroRomantic",
@@ -1437,5 +1598,41 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     educationalBody: ["Small romantic notes build daily connection."],
     relatedCalculators: [],
     customHref: "/ai-generators/romantic-message-generator/"
+  },
+  "anniversary-wish-generator": {
+    slug: "anniversary-wish-generator",
+    name: "AI Anniversary Wish Generator",
+    category: "AI Creative Tools",
+    categorySlug: "ai-creative-tools",
+    iconName: "Sparkles",
+    shortDescription: "Generate touching anniversary wishes for your spouse or partner.",
+    seoTitle: "AI Anniversary Wish Generator | AstroRomantic",
+    metaDescription: "Generate custom anniversary wishes.",
+    h1: "AI Anniversary Wish Generator",
+    directAnswer: "Write romantic anniversary messages.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Anniversary Messages",
+    educationalBody: ["Express appreciation on your special date."],
+    relatedCalculators: [],
+    customHref: "/ai-generators/anniversary-wish-generator/"
+  },
+  "proposal-speech-generator": {
+    slug: "proposal-speech-generator",
+    name: "AI Proposal Speech Generator",
+    category: "AI Creative Tools",
+    categorySlug: "ai-creative-tools",
+    iconName: "Sparkles",
+    shortDescription: "Craft unforgettable, heartfelt marriage proposal speeches.",
+    seoTitle: "AI Proposal Speech Generator | AstroRomantic",
+    metaDescription: "Generate marriage proposal speeches.",
+    h1: "AI Proposal Speech Generator",
+    directAnswer: "Draft your marriage proposal speech.",
+    howItWorks: [],
+    faqs: [],
+    educationalTitle: "Proposal Speeches",
+    educationalBody: ["Make your proposal moment memorable."],
+    relatedCalculators: [],
+    customHref: "/ai-generators/proposal-speech-generator/"
   }
 };

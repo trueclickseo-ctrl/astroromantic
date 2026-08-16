@@ -517,28 +517,28 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
   const isBudgetBased = !isQuiz && slug.includes("budget");
 
   return (
-    <div className="space-y-4 max-w-md mx-auto">
+    <div className="space-y-4 max-w-md mx-auto font-sans text-black">
       <form onSubmit={handleRun} className="space-y-4">
         {isNameBased && (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.firstName}</label>
+              <label className="block text-xs font-mono font-bold text-black uppercase tracking-wider mb-2">{t.firstName}</label>
               <input
                 type="text"
                 required
                 placeholder="Name 1"
                 onChange={(e) => handleInputChange("name1", e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
+                className="w-full bg-white border-2 border-black rounded-xl py-3 px-4 text-black font-mono outline-none focus:bg-amber-50 transition-all text-sm shadow-[2px_2px_0px_#000000]"
               />
             </div>
             <div>
-              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.secondName}</label>
+              <label className="block text-xs font-mono font-bold text-black uppercase tracking-wider mb-2">{t.secondName}</label>
               <input
                 type="text"
                 required
                 placeholder="Name 2"
                 onChange={(e) => handleInputChange("name2", e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
+                className="w-full bg-white border-2 border-black rounded-xl py-3 px-4 text-black font-mono outline-none focus:bg-amber-50 transition-all text-sm shadow-[2px_2px_0px_#000000]"
               />
             </div>
           </div>
@@ -546,7 +546,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
 
         {isSingleName && (
           <div>
-            <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
+            <label className="block text-xs font-mono font-bold text-black uppercase tracking-wider mb-2">
               {slug.includes("baby")
                 ? t.babyNameLabel
                 : slug.includes("lucky")
@@ -554,13 +554,13 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
                 : t.birthNameLabel}
             </label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
+              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-600 pointer-events-none z-10" />
               <input
                 type="text"
                 required
                 placeholder={slug.includes("baby") ? "E.g., Oliver" : slug.includes("lucky") ? "E.g., John" : "E.g., John Oliver Smith"}
                 onChange={(e) => handleInputChange("name1", e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 pr-4 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm padded-input"
+                className="w-full bg-white border-2 border-black rounded-xl py-3 pl-11 pr-4 text-black font-mono outline-none focus:bg-amber-50 transition-all text-sm shadow-[2px_2px_0px_#000000]"
               />
             </div>
           </div>
@@ -568,12 +568,12 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
 
         {isDateBased && (
           <div>
-            <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.importantDate}</label>
+            <label className="block text-xs font-mono font-bold text-black uppercase tracking-wider mb-2">{t.importantDate}</label>
             <input
               type="date"
               required
               onChange={(e) => handleInputChange("date", e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
+              className="w-full bg-white border-2 border-black rounded-xl py-3 px-4 text-black font-mono outline-none focus:bg-amber-50 transition-all text-sm shadow-[2px_2px_0px_#000000]"
             />
           </div>
         )}
@@ -581,21 +581,21 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
         {isBudgetBased && (
           <div className="grid grid-cols-3 gap-4">
             <div className="col-span-2">
-              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.totalBudget}</label>
+              <label className="block text-xs font-mono font-bold text-black uppercase tracking-wider mb-2">{t.totalBudget}</label>
               <input
                 type="number"
                 required
                 min="1"
                 placeholder="e.g. 20000"
                 onChange={(e) => handleInputChange("budget", e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
+                className="w-full bg-white border-2 border-black rounded-xl py-3 px-4 text-black font-mono outline-none focus:bg-amber-50 transition-all text-sm shadow-[2px_2px_0px_#000000]"
               />
             </div>
             <div>
-              <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t.currency}</label>
+              <label className="block text-xs font-mono font-bold text-black uppercase tracking-wider mb-2">{t.currency}</label>
               <select
                 onChange={(e) => handleInputChange("currency", e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-3 text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-all text-sm"
+                className="w-full bg-white border-2 border-black rounded-xl py-3 px-3 text-black font-mono outline-none focus:bg-amber-50 transition-all text-sm shadow-[2px_2px_0px_#000000]"
               >
                 <option value="$">USD ($)</option>
                 <option value="€">EUR (€)</option>
@@ -609,11 +609,11 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
         {isQuiz && (
           <div className="space-y-4">
             {getQuizQuestions(slug, language).map((q) => (
-              <div key={q.id} className="border border-white/10 rounded-2xl p-4 bg-white/5 space-y-2 text-left">
-                <span className="text-[10px] font-mono uppercase text-amber-400 tracking-wider">
+              <div key={q.id} className="border-2 border-black rounded-2xl p-4 bg-white space-y-2 text-left shadow-[3px_3px_0px_#000000]">
+                <span className="text-[10px] font-mono font-bold uppercase text-amber-800 tracking-wider">
                   {language === "es" ? `Pregunta ${q.id} de 3` : language === "fr" ? `Question ${q.id} sur 3` : `Question ${q.id} of 3`}
                 </span>
-                <p className="text-zinc-200 text-xs font-semibold leading-relaxed">{q.question}</p>
+                <p className="text-black text-xs font-bold font-sans leading-relaxed">{q.question}</p>
                 <div className="space-y-1.5 pt-1">
                   {q.options.map((opt) => {
                     const selected = answers[q.id] === opt.key;
@@ -622,10 +622,10 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
                         key={opt.key}
                         type="button"
                         onClick={() => setAnswers(prev => ({ ...prev, [q.id]: opt.key }))}
-                        className={`w-full text-left text-xs py-2 px-3 border rounded-xl font-mono transition-all leading-normal ${
+                        className={`w-full text-left text-xs py-2 px-3 border-2 border-black rounded-xl font-mono transition-all leading-normal ${
                           selected
-                            ? "bg-amber-500 text-black border-amber-500 font-bold"
-                            : "bg-white/5 text-zinc-300 border-white/15 hover:bg-white/10"
+                            ? "bg-amber-300 text-black font-bold shadow-[2px_2px_0px_#000000]"
+                            : "bg-[#FAF7F2] text-black hover:bg-amber-100"
                         }`}
                       >
                         {opt.key}) {opt.text}
@@ -641,9 +641,9 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 bg-gradient-to-r from-amber-500 to-indigo-500 hover:from-amber-600 hover:to-indigo-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-2"
+          className="calculator-card-btn w-full py-3.5 px-6 rounded-xl font-mono font-bold text-sm uppercase text-black flex items-center justify-center space-x-2"
         >
-          {loading ? <RefreshCw className="w-4 h-4 animate-spin text-white" /> : <Sparkles className="w-4 h-4 text-amber-200" />}
+          {loading ? <RefreshCw className="w-4 h-4 animate-spin text-black" /> : <Sparkles className="w-4 h-4 text-black" />}
           <span>{t.generateResults}</span>
         </button>
       </form>
@@ -653,19 +653,19 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-4 border-2 border-black bg-[#fcfbf9] p-3 text-center space-y-3 shadow-md"
+            className="mt-6 border-3 border-black bg-amber-100 rounded-2xl p-6 text-center space-y-4 shadow-[4px_4px_0px_#000000]"
           >
-            <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold font-mono">{t.generatedOptions}</span>
+            <span className="text-[10px] uppercase tracking-widest text-black font-bold font-mono">{t.generatedOptions}</span>
             {Array.isArray(result) ? (
-              <div className="flex flex-col gap-1.5 text-xs font-mono text-left max-w-sm mx-auto">
+              <div className="flex flex-col gap-2 text-xs font-mono text-left max-w-sm mx-auto">
                 {result.map((r, idx) => (
-                  <div key={idx} className="border border-black/25 bg-black/[0.02] py-1.5 px-3 flex items-center justify-between text-black">
-                    <span className="font-semibold text-black select-all">{r}</span>
+                  <div key={idx} className="border-2 border-black bg-white rounded-xl py-2 px-3 flex items-center justify-between text-black shadow-[2px_2px_0px_#000000]">
+                    <span className="font-bold text-black select-all">{r}</span>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-black text-xs font-mono leading-relaxed max-w-sm mx-auto border border-black/25 bg-black/[0.02] p-2.5 select-all">{result}</p>
+              <p className="text-black text-xs font-mono leading-relaxed max-w-sm mx-auto border-2 border-black bg-white rounded-xl p-3 select-all shadow-[2px_2px_0px_#000000]">{result}</p>
             )}
             
             {/* Copy Button */}
@@ -677,7 +677,7 @@ export function GenericCalculatorComponent({ slug }: GenericCalculatorProps) {
                   navigator.clipboard.writeText(textToCopy);
                   alert(t.copiedAlert);
                 }}
-                className="win-btn text-[9px] py-1 px-3 font-bold flex items-center justify-center space-x-1 transition-all text-black bg-white"
+                className="calculator-card-btn text-xs py-2 px-4 font-bold flex items-center justify-center space-x-1 transition-all text-black bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#000000]"
                 style={{ borderWidth: "2px" }}
               >
                 <Copy className="w-3 h-3 text-black" />
@@ -894,9 +894,9 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 rounded-2xl text-white font-medium text-sm transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-2"
+          className="calculator-card-btn w-full py-3.5 px-6 rounded-xl font-mono font-bold text-sm uppercase text-black flex items-center justify-center space-x-2"
         >
-          {loading ? <RefreshCw className="w-4 h-4 animate-spin text-white" /> : <Wand2 className="w-4 h-4 text-amber-200 animate-pulse" />}
+          {loading ? <RefreshCw className="w-4 h-4 animate-spin text-black" /> : <Wand2 className="w-4 h-4 text-black" />}
           <span>{t.generateLetter}</span>
         </button>
       </form>
@@ -906,12 +906,12 @@ export function AiGeneratorComponent({ slug }: { slug: string }) {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-8 border border-amber-500/25 bg-amber-500/5 rounded-3xl p-6 text-left space-y-4"
+            className="mt-6 border-3 border-black bg-amber-100 rounded-2xl p-6 text-left space-y-4 shadow-[4px_4px_0px_#000000]"
           >
-            <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold block text-center">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-black block text-center">
               {language === "es" ? "Resultado Generado por IA" : "AI Crafted Result"}
             </span>
-            <div className="text-zinc-200 text-xs sm:text-sm whitespace-pre-line leading-relaxed font-serif bg-black/20 p-4 rounded-xl border border-white/5">
+            <div className="text-black text-xs sm:text-sm whitespace-pre-line leading-relaxed font-sans bg-white p-4 rounded-xl border-2 border-black shadow-[2px_2px_0px_#000000]">
               {output}
             </div>
           </motion.div>
