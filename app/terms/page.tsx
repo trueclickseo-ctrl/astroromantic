@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms of Service | AstroRomantic",
   description: "Terms of Service for using AstroRomantic astrology, numerology, and relationship calculators.",
-  alternates: { canonical: "https://astroromantic.com/terms/" },
+  alternates: { canonical: "https://www.astroromantic.com/terms/" },
 };
 
 export default function TermsPage() {

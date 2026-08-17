@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About AstroRomantic — Our Story & Mission",
   description: "AstroRomantic is a free platform offering retro-themed love calculators, numerology tools, couple name generators, and AI-powered romantic content.",
-  alternates: { canonical: "https://astroromantic.com/about/" },
+  alternates: { canonical: "https://www.astroromantic.com/about/" },
 };
 
 export default function AboutPage() {

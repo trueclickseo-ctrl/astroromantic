@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us | AstroRomantic",
   description: "Get in touch with the AstroRomantic team. Questions, feedback, or partnership inquiries welcome.",
-  alternates: { canonical: "https://astroromantic.com/contact/" },
+  alternates: { canonical: "https://www.astroromantic.com/contact/" },
 };
 
 export default function ContactPage() {
@@ -20,7 +20,7 @@ export default function ContactPage() {
         <h2 className="text-xl font-bold text-black pt-4">Get in Touch</h2>
         <div className="bg-white border-3 border-black rounded-xl p-6 space-y-3 shadow-[4px_4px_0px_#000000]">
           <p><strong>Email:</strong> hello@astroromantic.com</p>
-          <p><strong>Website:</strong> <a href="https://astroromantic.com/" className="underline text-blue-600">astroromantic.com</a></p>
+          <p><strong>Website:</strong> <a href="https://www.astroromantic.com/" className="underline text-blue-600">astroromantic.com</a></p>
         </div>
 
         <h2 className="text-xl font-bold text-black pt-4">Feedback</h2>

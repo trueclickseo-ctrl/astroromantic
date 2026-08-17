@@ -1,25 +1,25 @@
 RewriteEngine On
 
-# 1. Force HTTPS and astroromantic.com domain (non-www)
+# 1. Force HTTPS and www.astroromantic.com domain (aligned with Hostinger hPanel)
 RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\.astroromantic\.com$ [NC]
-RewriteRule ^(.*)$ https://astroromantic.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^www\.astroromantic\.com$ [NC]
+RewriteRule ^(.*)$ https://www.astroromantic.com/$1 [R=301,L]
 
 # 2. Prevent direct client access to /out/ directory (SEO canonicalization)
 # Uses %{THE_REQUEST} so it ONLY matches external client requests, NEVER internal rewrites or mod_dir lookups
 RewriteCond %{THE_REQUEST} \s/out/([^\s\?]*) [NC]
-RewriteRule ^out/(.*)$ https://astroromantic.com/$1 [R=301,L]
+RewriteRule ^out/(.*)$ https://www.astroromantic.com/$1 [R=301,L]
 
 # 2b. 301 redirects for duplicate standalone love calculator URLs to canonical target
-RewriteRule ^love-calculator/?$ https://astroromantic.com/love/love-calculator/ [R=301,L]
-RewriteRule ^calculators/love-calculator/?$ https://astroromantic.com/love/love-calculator/ [R=301,L]
+RewriteRule ^love-calculator/?$ https://www.astroromantic.com/love/love-calculator/ [R=301,L]
+RewriteRule ^calculators/love-calculator/?$ https://www.astroromantic.com/love/love-calculator/ [R=301,L]
 
 # 3. Force trailing slashes on clean page/directory URLs (excluding files with extensions)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{DOCUMENT_ROOT}/out/$1 !-f
 RewriteCond %{REQUEST_URI} !/[^/]+\.[^/]+$
 RewriteCond %{REQUEST_URI} !(.*)/$
-RewriteRule ^(.*)$ https://astroromantic.com/$1/ [R=301,L]
+RewriteRule ^(.*)$ https://www.astroromantic.com/$1/ [R=301,L]
 
 # 4. Internal Rewrite: Route clean URLs to the static export in /out/
 RewriteCond %{REQUEST_URI} !^/out/

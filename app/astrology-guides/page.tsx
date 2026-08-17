@@ -4,7 +4,7 @@ import { ASTROLOGY_GUIDES } from "@/lib/astrology-guides-config";
 import ExploreAstrologyPanel from "@/components/explore-astrology-panel";
 import { Sparkles, Compass, Sun, FileText, ArrowRight, CheckCircle2, HelpCircle, BookOpen, ChevronRight, Home } from "lucide-react";
 
-const SITE_URL = "https://astroromantic.com";
+const SITE_URL = "https://www.astroromantic.com";
 
 export const metadata: Metadata = {
   title: "All Astrology Guides – Vedic, Western & Reports | AstroRomantic",

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { NameNumerologyCalculator } from "@/components/calculators";
 import { Sparkles, CheckCircle2, HelpCircle, BookOpen, ArrowRight } from "lucide-react";
 
-const SITE_URL = "https://astroromantic.com";
+const SITE_URL = "https://www.astroromantic.com";
 const SLUG = "destiny-number-calculator";
 
 export const metadata: Metadata = {

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { GenericCalculatorComponent } from "@/components/calculators/generic";
 import { Sparkles, CheckCircle2, HelpCircle, BookOpen, ExternalLink, ArrowRight } from "lucide-react";
 
-const SITE_URL = "https://astroromantic.com";
+const SITE_URL = "https://www.astroromantic.com";
 const SLUG = "soulmate-calculator";
 
 export const metadata: Metadata = {

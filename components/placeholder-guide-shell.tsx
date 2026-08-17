@@ -15,7 +15,7 @@ export function generatePlaceholderMetadata(id: string): Metadata {
 
   const title = `${item.title} Guide — ${item.columnLabel} Astrology | AstroRomantic`;
   const description = item.shortDesc;
-  const url = `https://astroromantic.com${item.slug}/`;
+  const url = `https://www.astroromantic.com${item.slug}/`;
 
   return {
     title,

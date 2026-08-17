@@ -4,7 +4,7 @@ import ExploreAstrologyPanel from "@/components/explore-astrology-panel";
 import { Sparkles, BookOpen, ArrowRight } from "lucide-react";
 import { ASTROLOGY_GUIDES } from "@/lib/astrology-guides-config";
 
-const SITE_URL = "https://astroromantic.com";
+const SITE_URL = "https://www.astroromantic.com";
 
 export const metadata: Metadata = {
   title: "Astrology & Relationship Blog – Insights & Articles | AstroRomantic",

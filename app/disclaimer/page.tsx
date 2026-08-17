@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Disclaimer | AstroRomantic",
   description: "Astrological and numerology disclaimer for AstroRomantic calculations and tools.",
-  alternates: { canonical: "https://astroromantic.com/disclaimer/" },
+  alternates: { canonical: "https://www.astroromantic.com/disclaimer/" },
 };
 
 export default function DisclaimerPage() {

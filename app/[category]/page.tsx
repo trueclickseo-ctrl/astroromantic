@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Sparkles, Heart, Star, Compass, Layers, Users } from "lucide-react";
 
-const SITE_URL = "https://astroromantic.com";
+const SITE_URL = "https://www.astroromantic.com";
 
 const categoryMeta: Record<string, { title: string; description: string }> = {
   numerology: {
