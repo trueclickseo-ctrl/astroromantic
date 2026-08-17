@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import ExploreAstrologyPanel from "@/components/explore-astrology-panel";
 import { Sparkles, CheckCircle2, HelpCircle, BookOpen, ArrowRight, ChevronRight, Home } from "lucide-react";
 
-const SITE_URL = "https://www.astroromantic.com";
+const SITE_URL = "https://astroromantic.com";
 const SLUG = "/reports/saturn";
 
 export const metadata: Metadata = {

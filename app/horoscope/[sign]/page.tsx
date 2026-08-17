@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${data.name} Horoscope Today — Daily Astrology Prediction | AstroRomantic`,
     description: `Read today's free ${data.name} daily horoscope: detailed astrology predictions for love, career, health, lucky numbers, and planetary transits for ${data.dates}.`,
-    alternates: { canonical: `https://www.astroromantic.com/horoscope/${data.id}/` }
+    alternates: { canonical: `https://astroromantic.com/horoscope/${data.id}/` }
   };
 }
 

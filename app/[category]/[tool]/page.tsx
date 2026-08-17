@@ -19,7 +19,7 @@ interface PageProps {
   }>;
 }
 
-const SITE_URL = "https://www.astroromantic.com";
+const SITE_URL = "https://astroromantic.com";
 
 const categoryLabels: Record<string, string> = {
   numerology: "Numerology",

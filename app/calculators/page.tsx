@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import CalculatorsHubClient from "./hub-client";
 
-const SITE_URL = "https://www.astroromantic.com";
+const SITE_URL = "https://astroromantic.com";
 
 export const metadata: Metadata = {
   title: "Astrology & Numerology Calculators Directory | AstroRomantic",

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { LoveCalculatorComponent } from "@/components/calculators";
 import { Sparkles, CheckCircle2, HelpCircle, BookOpen, ArrowRight } from "lucide-react";
 
-const SITE_URL = "https://www.astroromantic.com";
+const SITE_URL = "https://astroromantic.com";
 const SLUG = "love-calculator";
 
 export const metadata: Metadata = {
@@ -292,19 +292,19 @@ export default function LoveCalculatorPage() {
               Explore More Compatibility Calculators
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <a href="/soulmate-calculator" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
+              <a href="/soulmate-calculator/" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
                 <span>Soulmate Compatibility Calculator</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="/life-path-calculator" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
+              <a href="/life-path-calculator/" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
                 <span>Check Life Path Number</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="/destiny-number-calculator" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
+              <a href="/destiny-number-calculator/" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
                 <span>Calculate Destiny Number</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="/chaldean-numerology-calculator" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
+              <a href="/chaldean-numerology-calculator/" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
                 <span>Chaldean Numerology System</span>
                 <ArrowRight className="w-4 h-4" />
               </a>

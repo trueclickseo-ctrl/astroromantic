@@ -104,19 +104,19 @@ export default function ToolLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.astroromantic.com/"
+        "item": "https://astroromantic.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": category.charAt(0).toUpperCase() + category.slice(1),
-        "item": `https://www.astroromantic.com/${category}/`
+        "item": `https://astroromantic.com/${category}/`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": displayTitle,
-        "item": `https://www.astroromantic.com/${category}/${toolSlug}/`
+        "item": `https://astroromantic.com/${category}/${toolSlug}/`
       }
     ]
   };

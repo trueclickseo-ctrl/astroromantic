@@ -6,7 +6,7 @@ import { CALCULATORS_REGISTRY } from "@/lib/calculator-registry";
 import { toolRegistry } from "@/lib/tool-registry";
 import { ASTROLOGY_GUIDES } from "@/lib/astrology-guides-config";
 
-const SITE_URL = "https://www.astroromantic.com";
+const SITE_URL = "https://astroromantic.com";
 
 const ZODIAC_SIGNS = [
   "aries", "taurus", "gemini", "cancer", "leo", "virgo",

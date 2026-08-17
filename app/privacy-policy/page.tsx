@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy | AstroRomantic",
   description: "AstroRomantic privacy policy. Learn how we handle your data when you use our free love calculators and numerology tools.",
-  alternates: { canonical: "https://www.astroromantic.com/privacy-policy/" },
+  alternates: { canonical: "https://astroromantic.com/privacy-policy/" },
 };
 
 export default function PrivacyPolicyPage() {

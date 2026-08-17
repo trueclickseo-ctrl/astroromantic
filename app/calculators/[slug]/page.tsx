@@ -21,7 +21,7 @@ import {
 } from "@/components/calculators/numerology-calculators";
 import { LoveCalculatorComponent } from "@/components/calculators";
 
-const SITE_URL = "https://www.astroromantic.com";
+const SITE_URL = "https://astroromantic.com";
 
 interface PageProps {
   params: Promise<{

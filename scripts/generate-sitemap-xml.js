@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SITE_URL = "https://www.astroromantic.com";
+const SITE_URL = "https://astroromantic.com";
 const currentDate = new Date().toISOString().split("T")[0];
 
 // Dynamic imports / manual lists derived from codebase

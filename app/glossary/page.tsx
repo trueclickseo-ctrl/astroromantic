@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import ExploreAstrologyPanel from "@/components/explore-astrology-panel";
 import { Sparkles, BookOpen, CheckCircle2, HelpCircle, ArrowRight, ChevronRight, Home } from "lucide-react";
 
-const SITE_URL = "https://www.astroromantic.com";
+const SITE_URL = "https://astroromantic.com";
 
 export const metadata: Metadata = {
   title: "Astrology Glossary – Vedic & Western Terms Explained | AstroRomantic",
