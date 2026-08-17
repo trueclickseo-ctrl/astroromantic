@@ -146,8 +146,20 @@ const publicSitemapPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
 fs.writeFileSync(publicSitemapPath, xml, 'utf8');
 console.log(`✅ Generated public/sitemap.xml with ${count} canonical URLs.`);
 
+const rootHtaccess = path.join(__dirname, '..', '.htaccess');
+const publicHtaccess = path.join(__dirname, '..', 'public', '.htaccess');
+if (fs.existsSync(rootHtaccess)) {
+  fs.copyFileSync(rootHtaccess, publicHtaccess);
+  console.log(`✅ Synced public/.htaccess.`);
+}
+
 const outDir = path.join(__dirname, '..', 'out');
 if (fs.existsSync(outDir)) {
   fs.writeFileSync(path.join(outDir, 'sitemap.xml'), xml, 'utf8');
   console.log(`✅ Synced out/sitemap.xml with ${count} canonical URLs.`);
+  if (fs.existsSync(rootHtaccess)) {
+    fs.copyFileSync(rootHtaccess, path.join(outDir, '.htaccess'));
+    console.log(`✅ Synced out/.htaccess.`);
+  }
 }
+
