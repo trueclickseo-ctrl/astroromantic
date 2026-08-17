@@ -14,7 +14,13 @@ export const metadata: Metadata = {
   description: "Free retro-themed love calculators, numerology tools, compatibility tests, couple name generators, and AI-powered romantic content. Instant results.",
   metadataBase: new URL("https://www.astroromantic.com"),
   alternates: { canonical: "https://www.astroromantic.com/" },
-  icons: { icon: "/icon.svg" },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "AstroRomantic — Free Love, Numerology & Astrology Calculators",
     description: "Free retro-themed love calculators, numerology tools, compatibility tests, couple name generators, and AI-powered romantic content.",
@@ -60,6 +66,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <link rel="shortcut icon" href="/icon.svg" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
