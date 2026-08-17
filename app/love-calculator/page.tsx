@@ -9,11 +9,11 @@ const SLUG = "love-calculator";
 export const metadata: Metadata = {
   title: "Love Calculator – Free Love Compatibility Test by Name",
   description: "Try our free love calculator to find your love compatibility percentage by name or birth date. Instant results, no sign-up, fun and shareable.",
-  alternates: { canonical: `${SITE_URL}/${SLUG}/` },
+  alternates: { canonical: `${SITE_URL}/love/${SLUG}/` },
   openGraph: {
     title: "Love Calculator – Free Love Compatibility Test by Name",
     description: "Try our free love calculator to find your love compatibility percentage by name or birth date. Instant results, no sign-up, fun and shareable.",
-    url: `${SITE_URL}/${SLUG}/`,
+    url: `${SITE_URL}/love/${SLUG}/`,
     siteName: "AstroRomantic",
     type: "article",
   },
@@ -84,6 +84,11 @@ const schemaGraph = {
 export default function LoveCalculatorPage() {
   return (
     <div className="w-full min-h-screen bg-[#f4f3ef] text-black font-sans box-border overflow-x-hidden">
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `if (typeof window !== 'undefined') { window.location.replace('/love/love-calculator/'); }`,
+        }}
+      />
       {/* Schema Script */}
       <script
         type="application/ld+json"

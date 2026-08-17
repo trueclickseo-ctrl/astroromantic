@@ -36,7 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/soulmate-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/life-path-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/destiny-number-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE_URL}/love-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/chaldean-numerology-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
   ];
 

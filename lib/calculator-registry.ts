@@ -429,7 +429,7 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     ],
     relatedCalculators: [
       { name: "Mangal Dosha Calculator", href: "/calculators/mangal-dosha/" },
-      { name: "Love Calculator", href: "/calculators/love-calculator/" },
+      { name: "Love Calculator", href: "/love/love-calculator/" },
       { name: "Numerology Love Compatibility", href: "/calculators/numerology-love-compatibility/" }
     ],
     isPopular: true
@@ -437,6 +437,7 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
 
   "love-calculator": {
     slug: "love-calculator",
+    customHref: "/love/love-calculator/",
     name: "Love Calculator",
     category: "Compatibility",
     categorySlug: "compatibility",
@@ -1041,7 +1042,7 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
     ],
     relatedCalculators: [
       { name: "Kundli Matching", href: "/calculators/kundli-matching/" },
-      { name: "Love Calculator", href: "/calculators/love-calculator/" }
+      { name: "Love Calculator", href: "/love/love-calculator/" }
     ],
     isPopular: true
   },

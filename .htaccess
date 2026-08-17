@@ -10,6 +10,10 @@ RewriteRule ^(.*)$ https://www.astroromantic.com/$1 [R=301,L]
 RewriteCond %{THE_REQUEST} \s/out/([^\s\?]*) [NC]
 RewriteRule ^out/(.*)$ https://www.astroromantic.com/$1 [R=301,L]
 
+# 2b. 301 redirects for duplicate standalone love calculator URLs to canonical target
+RewriteRule ^love-calculator/?$ https://www.astroromantic.com/love/love-calculator/ [R=301,L]
+RewriteRule ^calculators/love-calculator/?$ https://www.astroromantic.com/love/love-calculator/ [R=301,L]
+
 # 3. Force trailing slashes on clean page/directory URLs (excluding files with extensions)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{DOCUMENT_ROOT}/out/$1 !-f

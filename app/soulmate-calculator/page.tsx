@@ -345,7 +345,7 @@ export default function SoulmateCalculatorPage() {
                 <span>Calculate Destiny Number</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="/love-calculator" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
+              <a href="/love/love-calculator/" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
                 <span>Love Compatibility Percentage</span>
                 <ArrowRight className="w-4 h-4" />
               </a>

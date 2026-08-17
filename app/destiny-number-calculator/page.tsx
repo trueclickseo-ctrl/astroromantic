@@ -369,7 +369,7 @@ export default function DestinyNumberCalculatorPage() {
                 <span>Soulmate Compatibility Test</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="/love-calculator" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
+              <a href="/love/love-calculator/" className="p-3 bg-white border-2 border-black rounded-lg font-mono text-xs font-bold flex items-center justify-between hover:bg-amber-200">
                 <span>Love Percentage Calculator</span>
                 <ArrowRight className="w-4 h-4" />
               </a>

@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/25-zuqwdb2dzi.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"category","param":{"type":"d","key":"ai-generators","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"tool","param":{"type":"d","key":"anniversary-wish-generator","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"dltm_zvPT388i_C8kiGQP"}
+:HL["/_next/static/chunks/2imsgu4wxx-pp.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"category","param":{"type":"d","key":"ai-generators","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"tool","param":{"type":"d","key":"anniversary-wish-generator","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"V5vRj9i0oQtsY8aNc_VfR"}
