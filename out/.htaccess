@@ -10,22 +10,26 @@ RewriteRule ^love-calculator/?$ https://www.astroromantic.com/love/love-calculat
 RewriteRule ^calculators/love-calculator/?$ https://www.astroromantic.com/love/love-calculator/ [R=301,L]
 RewriteRule ^calculators/navamsa-chart/?$ https://www.astroromantic.com/d9-chart-calculator/ [R=301,L]
 
-# 3. Hostinger Git Repo Root Routing: Serve from out/ directory if request matches static export
-RewriteCond %{THE_REQUEST} !^GET\ /out/ [NC]
-RewriteCond %{DOCUMENT_ROOT}/out/$1/index.html -f
-RewriteRule ^(.*)/$ out/$1/index.html [L]
-
-RewriteCond %{THE_REQUEST} !^GET\ /out/ [NC]
-RewriteCond %{DOCUMENT_ROOT}/out/$1.html -f
-RewriteRule ^(.*)$ out/$1.html [L]
-
-# 4. Direct out/ or root export folder fallback routing
+# 3. Direct Directory & Index.html Routing (Primary for Hostinger static deployments)
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME}/index.html -f
 RewriteRule ^(.*)$ $1/index.html [L]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.*)$ $1/index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*)$ $1.html [L]
+
+# 4. Sub-folder fallback (if DocumentRoot points to repo root containing out/)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/out/$1/index.html -f
+RewriteRule ^(.*)$ out/$1/index.html [L]
 
 # 5. Clean 404 Handling
 ErrorDocument 404 /404.html
