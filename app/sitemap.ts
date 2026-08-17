@@ -37,6 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/life-path-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/destiny-number-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/chaldean-numerology-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE_URL}/assamese-calendar-2026-2027/`, lastModified: currentDate, changeFrequency: "daily", priority: 0.9 },
+    { url: `${SITE_URL}/bengali-calendar-2026-2027/`, lastModified: currentDate, changeFrequency: "daily", priority: 0.9 },
+    { url: `${SITE_URL}/bangla-calendar-2026-2027/`, lastModified: currentDate, changeFrequency: "daily", priority: 0.9 },
+    { url: `${SITE_URL}/shubh-muhurat-today/`, lastModified: currentDate, changeFrequency: "daily", priority: 0.95 },
+    { url: `${SITE_URL}/d9-chart-calculator/`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.95 },
+    { url: `${SITE_URL}/vedic-transit-calculator/`, lastModified: currentDate, changeFrequency: "daily", priority: 0.95 },
   ];
 
   // 3. Calculators from CALCULATORS_REGISTRY (Single Source of Truth)

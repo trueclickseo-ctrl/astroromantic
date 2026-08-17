@@ -193,51 +193,11 @@ export function LagnaCalculatorComp() {
   );
 }
 
+import { D9ChartComponent } from "./d9-chart-component";
+
 // 5. NAVAMSA CHART CALCULATOR
 export function NavamsaChartComp() {
-  const [date, setDate] = useState("1995-08-15");
-  const [time, setTime] = useState("10:30");
-  const [city, setCity] = useState<CityData>(getCityDefault());
-  const [result, setResult] = useState<any>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const d = parseDateTime(date, time);
-    const chart = calculateBirthChart(d, city.lat, city.lng, city.utcOffset);
-    const navamsa: Record<string, any> = {};
-    for (const [pName, pPos] of Object.entries(chart.planets)) {
-      const d9 = calculateNavamsaPosition(pPos.siderealLongitude);
-      navamsa[pName] = { d9Rashi: d9.rashi };
-    }
-    setResult(navamsa);
-  };
-
-  return (
-    <div className="space-y-6 max-w-2xl mx-auto font-mono text-xs">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div><label className="block text-xs font-bold text-zinc-900 uppercase tracking-wider mb-1">Date of Birth</label><input type="date" required value={date} onChange={(e) => setDate(e.target.value)} className="w-full bg-white border-2 border-black rounded-xl p-3 text-black outline-none focus:bg-[#FAF7F2] shadow-[2px_2px_0px_#000000]" /></div>
-          <div><label className="block text-xs font-bold text-zinc-900 uppercase tracking-wider mb-1">Exact Birth Time</label><input type="time" required value={time} onChange={(e) => setTime(e.target.value)} className="w-full bg-white border-2 border-black rounded-xl p-3 text-black outline-none focus:bg-[#FAF7F2] shadow-[2px_2px_0px_#000000]" /></div>
-        </div>
-        <LocationInput selectedCity={city} onSelectCity={setCity} />
-        <button type="submit" className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-black font-bold uppercase rounded-xl border-2 border-black transition-all shadow-[4px_4px_0px_#000000]">Generate Navamsa (D9) Positions</button>
-      </form>
-
-      {result && (
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
-          <h3 className="text-sm font-bold uppercase text-black text-center">Navamsa (D9) Divisional Positions</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {Object.entries(result).map(([planet, d9]: [string, any]) => (
-              <div key={planet} className="bg-white border-2 border-black rounded-xl p-3 text-center shadow-[2px_2px_0px_#000000]">
-                <span className="block text-[10px] text-zinc-600 font-bold uppercase">{planet}</span>
-                <span className="text-lg font-extrabold text-black">{d9.d9Rashi}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      )}
-    </div>
-  );
+  return <D9ChartComponent />;
 }
 
 // 6. MOON PHASE CALCULATOR

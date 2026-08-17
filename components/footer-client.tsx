@@ -21,14 +21,15 @@ const ZODIAC_SIGNS_LIST = [
 ];
 
 const GUIDES_LIST = [
+  { name: "Vedic Transit Calculator", href: "/vedic-transit-calculator/" },
+  { name: "Shubh Muhurat Today", href: "/shubh-muhurat-today/" },
+  { name: "Assamese Calendar 2026–27", href: "/assamese-calendar-2026-2027/" },
+  { name: "Bengali Calendar 2026–27", href: "/bengali-calendar-2026-2027/" },
+  { name: "Bangla Calendar 2026–27", href: "/bangla-calendar-2026-2027/" },
   { name: "Explore Astrology Hub", href: "/astrology-guides/" },
   { name: "Vedic Zodiac Signs", href: "/vedic/zodiac-signs/" },
-  { name: "Western Zodiac Signs", href: "/western/zodiac-signs/" },
   { name: "Life Insights Report", href: "/reports/life-insights/" },
   { name: "Dasha Analysis Guide", href: "/reports/dasha/" },
-  { name: "Gemstone & Remedies", href: "/reports/gemstone/" },
-  { name: "Mangal Dosha Explainer", href: "/reports/mangal-dosha/" },
-  { name: "Kaal Sarp Dosha Guide", href: "/reports/kalsarp-dosha/" },
   { name: "Astrology Glossary", href: "/glossary/" },
   { name: "Cosmic Blog", href: "/blog/" },
 ];

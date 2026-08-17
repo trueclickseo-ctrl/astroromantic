@@ -35,15 +35,69 @@ export default function Header() {
           <div className="relative group">
             <a
               href="/calculators/"
-              className="flex items-center space-x-1 hover:text-rose-600 py-1 transition-colors"
+              className="flex items-center space-x-1 hover:text-rose-600 font-semibold py-1 transition-colors"
             >
               <span>Calculators</span>
-              <ChevronDown className="w-3.5 h-3.5 opacity-70" />
+              <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180" />
             </a>
+
+            {/* Dropdown Menu */}
+            <div className="absolute left-0 top-full hidden group-hover:block w-64 bg-white border-2 border-black rounded-xl shadow-[4px_4px_0px_#000000] p-2 space-y-1 z-50">
+              <a href="/vedic-transit-calculator/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                🧭 Vedic Transit Calculator
+              </a>
+              <a href="/d9-chart-calculator/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                💎 D9 Navamsa Chart Calculator
+              </a>
+              <a href="/shubh-muhurat-today/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                ☀️ Shubh Muhurat Today
+              </a>
+              <a href="/calculators/birth-panchang/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                📜 Daily Panchang Tool
+              </a>
+              <a href="/calculators/kundli-matching/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                💍 Kundli Matching / Gun Milan
+              </a>
+              <div className="border-t border-zinc-200 pt-1 mt-1">
+                <a href="/calculators/" className="block p-2 rounded-lg bg-amber-400 font-mono text-xs font-bold text-black text-center uppercase">
+                  View All 60+ Tools →
+                </a>
+              </div>
+            </div>
           </div>
 
-          <a href="/astrology-guides/" className="hover:text-rose-600 font-semibold py-1 transition-colors flex items-center space-x-1 text-black">
-            <span>Explore Astrology</span>
+          {/* Regional Calendars & Transits Dropdown */}
+          <div className="relative group">
+            <a
+              href="/shubh-muhurat-today/"
+              className="flex items-center space-x-1 hover:text-rose-600 font-semibold py-1 transition-colors text-black"
+            >
+              <span>Calendars &amp; Transits</span>
+              <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180" />
+            </a>
+
+            {/* Dropdown Menu */}
+            <div className="absolute left-0 top-full hidden group-hover:block w-64 bg-white border-2 border-black rounded-xl shadow-[4px_4px_0px_#000000] p-2 space-y-1 z-50">
+              <a href="/vedic-transit-calculator/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                ⚡ Vedic Transit Calculator
+              </a>
+              <a href="/shubh-muhurat-today/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                ☀️ Shubh Muhurat Today
+              </a>
+              <a href="/assamese-calendar-2026-2027/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                📅 Assamese Calendar 2026–27
+              </a>
+              <a href="/bengali-calendar-2026-2027/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                📅 Bengali Calendar 2026–27
+              </a>
+              <a href="/bangla-calendar-2026-2027/" className="block p-2 rounded-lg hover:bg-amber-100 font-mono text-xs font-bold text-black">
+                📅 Bangla Calendar 2026–27
+              </a>
+            </div>
+          </div>
+
+          <a href="/astrology-guides/" className="hover:text-rose-600 font-semibold py-1 transition-colors text-zinc-700">
+            Explore Astrology
           </a>
 
           <a href="/numerology/" className="hover:text-rose-600 py-1 transition-colors">

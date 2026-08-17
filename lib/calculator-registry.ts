@@ -174,14 +174,15 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
 
   "navamsa-chart": {
     slug: "navamsa-chart",
-    name: "Navamsa / D9 Chart Calculator",
+    customHref: "/d9-chart-calculator/",
+    name: "D9 Chart Calculator",
     category: "Astrology",
     categorySlug: "astrology",
     iconName: "Layers",
     shortDescription: "Generate your D9 Navamsa divisional chart positions for planets, Lagna, and marriage destiny.",
-    seoTitle: "Navamsa Chart Calculator — D9 Chart & Planetary Placements | AstroRomantic",
-    metaDescription: "Calculate your D9 Navamsa chart positions for all planets and Lagna to analyze marriage suitability and inner spiritual potential.",
-    h1: "Navamsa (D9) Chart Calculator",
+    seoTitle: "D9 Chart Calculator | Free Navamsa Chart Online",
+    metaDescription: "Generate your Vedic Navamsa (D9) chart from birth date, exact time & place. Explore Navamsa Lagna, planetary placements, Vargottama planets and marriage insights.",
+    h1: "D9 Chart Calculator — Free Navamsa Chart Online",
     directAnswer: "The Navamsa (D9) chart is the most vital divisional chart in Vedic astrology. It reveals inner soul strength, marital destiny, and planetary fruitfulness after age 30.",
     howItWorks: [
       { step: "1", title: "Input Natal Birth Data", text: "Enter birth date, exact time, and location." },
@@ -199,6 +200,37 @@ export const CALCULATORS_REGISTRY: Record<string, CalculatorItem> = {
       { name: "Lagna Calculator", href: "/calculators/lagna/" },
       { name: "Ishta Devata Calculator", href: "/calculators/ishta-devata/" },
       { name: "Kundli Matching", href: "/calculators/kundli-matching/" }
+    ]
+  },
+
+  "vedic-transit-calculator": {
+    slug: "vedic-transit-calculator",
+    customHref: "/vedic-transit-calculator/",
+    name: "Vedic Transit Calculator",
+    category: "Astrology",
+    categorySlug: "astrology",
+    iconName: "Compass",
+    shortDescription: "Track real-time planetary positions, Gochar transits, Sade Sati, Nakshatra transits, and natal chart overlays.",
+    seoTitle: "Vedic Transit Calculator | Planetary Transits & Gochar",
+    metaDescription: "Use AstroRomantic's Vedic Transit Calculator to track planetary positions, Gochar, Nakshatra, retrogrades, house transits, Sade Sati and upcoming transits.",
+    h1: "Vedic Transit Calculator — Planetary Transits & Gochar",
+    directAnswer: "The Vedic Transit Calculator tracks live celestial positions in the sidereal zodiac and calculates house activations when overlaid on your natal birth chart.",
+    howItWorks: [
+      { step: "1", title: "Select Mode", text: "Choose Mode 1 for current sky or Mode 2 for natal chart overlay." },
+      { step: "2", title: "Enter Details", text: "Input date, time, and city location." },
+      { step: "3", title: "Analyze Transits", text: "View real-time planetary positions, Sade Sati status, aspects, and house activations." }
+    ],
+    faqs: [
+      { question: "What is Gochar?", answer: "Gochar refers to the continuous movement of transiting planets through the sidereal zodiac." }
+    ],
+    educationalTitle: "Understanding Vedic Transits & Gochar",
+    educationalBody: [
+      "Gochar transits act as the real-time trigger for natal planetary promises in Vedic astrology."
+    ],
+    relatedCalculators: [
+      { name: "D9 Chart Calculator", href: "/d9-chart-calculator/" },
+      { name: "Shubh Muhurat Today", href: "/shubh-muhurat-today/" },
+      { name: "Sade Sati Calculator", href: "/calculators/sade-sati/" }
     ]
   },
 

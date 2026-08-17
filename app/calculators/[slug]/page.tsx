@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { CALCULATORS_REGISTRY, CalculatorItem } from "@/lib/calculator-registry";
 import { CalculatorLayout } from "@/components/calculators/shared-ui";
 import {
@@ -78,7 +78,7 @@ export default async function CalculatorPage({ params }: PageProps) {
     case "sun-sign": componentNode = <SunSignCalculatorComp />; break;
     case "nakshatra": componentNode = <NakshatraCalculatorComp />; break;
     case "lagna": componentNode = <LagnaCalculatorComp />; break;
-    case "navamsa-chart": componentNode = <NavamsaChartComp />; break;
+    case "navamsa-chart": redirect("/d9-chart-calculator/");
     case "moon-phase": componentNode = <MoonPhaseComp />; break;
     case "mangal-dosha": componentNode = <MangalDoshaComp />; break;
     case "kaal-sarp-dosha": componentNode = <KaalSarpDoshaComp />; break;
