@@ -23,22 +23,15 @@ export default function Header() {
         </a>
 
         {/* Primary Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-zinc-700">
-          <a
-            href="/"
-            className="relative text-rose-600 font-semibold py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-rose-500 after:rounded-full"
-          >
-            Home
-          </a>
-
-          {/* Calculators Dropdown */}
+        <nav className="hidden md:flex items-center space-x-5 lg:space-x-7 text-sm font-medium text-zinc-800">
+          {/* 1. Calculators Dropdown */}
           <div className="relative group">
             <a
               href="/calculators/"
-              className="flex items-center space-x-1 hover:text-rose-600 font-semibold py-1 transition-colors"
+              className="flex items-center space-x-1 font-semibold py-1 text-zinc-900 hover:text-[#EE5265] transition-colors"
             >
               <span>Calculators</span>
-              <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180" />
+              <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180 text-zinc-500" />
             </a>
 
             {/* Dropdown Menu */}
@@ -66,14 +59,22 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Regional Calendars & Transits Dropdown */}
+          {/* 2. Astrology */}
+          <a
+            href="/astrology-guides/"
+            className="font-semibold py-1 text-zinc-900 hover:text-[#EE5265] transition-colors"
+          >
+            Astrology
+          </a>
+
+          {/* 3. Calendars & Transits Dropdown */}
           <div className="relative group">
             <a
               href="/shubh-muhurat-today/"
-              className="flex items-center space-x-1 hover:text-rose-600 font-semibold py-1 transition-colors text-black"
+              className="flex items-center space-x-1 font-semibold py-1 text-zinc-900 hover:text-[#EE5265] transition-colors"
             >
-              <span>Calendars &amp; Transits</span>
-              <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180" />
+              <span>Calendars &amp; Muhurat</span>
+              <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180 text-zinc-500" />
             </a>
 
             {/* Dropdown Menu */}
@@ -96,23 +97,35 @@ export default function Header() {
             </div>
           </div>
 
-          <a href="/astrology-guides/" className="hover:text-rose-600 font-semibold py-1 transition-colors text-zinc-700">
-            Explore Astrology
-          </a>
-
-          <a href="/numerology/" className="hover:text-rose-600 py-1 transition-colors">
+          {/* 4. Numerology */}
+          <a
+            href="/numerology/"
+            className="font-semibold py-1 text-zinc-900 hover:text-[#EE5265] transition-colors"
+          >
             Numerology
           </a>
 
-          <a href="/love/" className="hover:text-rose-600 py-1 transition-colors">
+          {/* 5. Love */}
+          <a
+            href="/love/"
+            className="font-semibold py-1 text-zinc-900 hover:text-[#EE5265] transition-colors"
+          >
             Love
           </a>
 
-          <a href="/relationship/" className="hover:text-rose-600 py-1 transition-colors">
+          {/* 6. Relationship */}
+          <a
+            href="/relationship/"
+            className="font-semibold py-1 text-zinc-900 hover:text-[#EE5265] transition-colors"
+          >
             Relationship
           </a>
 
-          <a href="/ai-generators/" className="hover:text-rose-600 py-1 transition-colors">
+          {/* 7. AI Tools */}
+          <a
+            href="/ai-generators/"
+            className="font-semibold py-1 text-[#7C3AED] hover:text-[#5B21B6] transition-colors"
+          >
             AI Tools
           </a>
         </nav>
