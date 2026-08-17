@@ -16,10 +16,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.astroromantic.com/" },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" }
     ],
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "AstroRomantic — Free Love, Numerology & Astrology Calculators",
@@ -66,9 +68,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-        <link rel="shortcut icon" href="/icon.svg" />
-        <link rel="apple-touch-icon" href="/icon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

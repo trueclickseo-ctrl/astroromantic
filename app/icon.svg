@@ -1,10 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-  <!-- Outer container with rich dark indigo background -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="16" fill="#1E1B4B"/>
   <rect x="2" y="2" width="60" height="60" rx="14" stroke="#FDE68A" stroke-width="2" stroke-opacity="0.6"/>
-  <!-- Vibrant Rose Heart -->
   <path d="M32 52 L14 32 C8 24 8 16 16 12 C24 8 30 14 32 18 C34 14 40 8 48 12 C56 16 56 24 50 32 Z" fill="#EE5265"/>
-  <!-- Gold Cosmic Sparkle Stars -->
   <path d="M48 8 L49.5 14 L55.5 15.5 L49.5 17 L48 23 L46.5 17 L40.5 15.5 L46.5 14 Z" fill="#F5A623"/>
   <path d="M16 6 L17 10 L21 11 L17 12 L16 16 L15 12 L11 11 L15 10 Z" fill="#FDE68A" opacity="0.8"/>
 </svg>
