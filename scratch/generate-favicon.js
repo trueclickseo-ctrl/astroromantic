@@ -4,11 +4,8 @@ const path = require('path');
 // 32x32 RGBA PNG icon payload encoded as raw Buffer
 // Red/Indigo background with Rose heart & Gold sparkle
 const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#1E1B4B"/>
-  <rect x="2" y="2" width="60" height="60" rx="14" stroke="#FDE68A" stroke-width="2" stroke-opacity="0.6"/>
-  <path d="M32 52 L14 32 C8 24 8 16 16 12 C24 8 30 14 32 18 C34 14 40 8 48 12 C56 16 56 24 50 32 Z" fill="#EE5265"/>
-  <path d="M48 8 L49.5 14 L55.5 15.5 L49.5 17 L48 23 L46.5 17 L40.5 15.5 L46.5 14 Z" fill="#F5A623"/>
-  <path d="M16 6 L17 10 L21 11 L17 12 L16 16 L15 12 L11 11 L15 10 Z" fill="#FDE68A" opacity="0.8"/>
+  <circle cx="32" cy="32" r="30" fill="#FFE4E6" stroke="#FDA4AF" stroke-width="2"/>
+  <path d="M32 46 L18 32 C13 26 13 18 20 14 C27 10 31 16 32 19 C33 16 37 10 44 14 C51 18 51 26 46 32 Z" fill="#EE5265"/>
 </svg>`;
 
 const publicIconPath = path.join(__dirname, '..', 'public', 'icon.svg');
@@ -19,27 +16,16 @@ fs.writeFileSync(appIconPath, svgContent, 'utf8');
 // Simple valid 16x16 / 32x32 ICO binary generator in Node.js
 function createIcoFromPng(pngBuf) {
   const header = Buffer.alloc(22);
-  // Reserved (2 bytes) = 0
   header.writeUInt16LE(0, 0);
-  // Image type (2 bytes) = 1 (ICO)
   header.writeUInt16LE(1, 2);
-  // Number of images (2 bytes) = 1
   header.writeUInt16LE(1, 4);
-  // Width (1 byte) = 32
   header.writeUInt8(32, 6);
-  // Height (1 byte) = 32
   header.writeUInt8(32, 7);
-  // Color palette (1 byte) = 0
   header.writeUInt8(0, 8);
-  // Reserved (1 byte) = 0
   header.writeUInt8(0, 9);
-  // Color planes (2 bytes) = 1
   header.writeUInt16LE(1, 10);
-  // Bits per pixel (2 bytes) = 32
   header.writeUInt16LE(32, 12);
-  // Image data size (4 bytes)
   header.writeUInt32LE(pngBuf.length, 14);
-  // Image data offset (4 bytes) = 22
   header.writeUInt32LE(22, 18);
 
   return Buffer.concat([header, pngBuf]);
@@ -62,23 +48,31 @@ function generate32x32Png() {
       const dy = y - 16;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      // Heart / Star shape distance check
-      const nx = (x - 16) / 14;
-      const ny = (y - 14) / 14;
+      // Heart / Circle distance check
+      const nx = (x - 16) / 7.5;
+      const ny = (y - 14) / 7.5;
       const inHeart = (Math.pow(nx*nx + ny*ny - 1, 3) - nx*nx*ny*ny*ny) <= 0;
 
       if (inHeart) {
-        // Deep Rose #EE5265
+        // Vibrant Hot Pink Heart #EE5265
         rawData[pxOffset] = 238;     // R
         rawData[pxOffset + 1] = 82;  // G
         rawData[pxOffset + 2] = 101; // B
         rawData[pxOffset + 3] = 255; // A
-      } else if (dist < 14) {
-        // Dark Indigo #1E1B4B
-        rawData[pxOffset] = 30;      // R
-        rawData[pxOffset + 1] = 27;  // G
-        rawData[pxOffset + 2] = 75;  // B
-        rawData[pxOffset + 3] = 255; // A
+      } else if (dist <= 15) {
+        if (dist >= 14) {
+          // Delicate Pink Border #FDA4AF
+          rawData[pxOffset] = 253;     // R
+          rawData[pxOffset + 1] = 164; // G
+          rawData[pxOffset + 2] = 175; // B
+          rawData[pxOffset + 3] = 255; // A
+        } else {
+          // Soft Pink Fill #FFE4E6
+          rawData[pxOffset] = 255;     // R
+          rawData[pxOffset + 1] = 228; // G
+          rawData[pxOffset + 2] = 230; // B
+          rawData[pxOffset + 3] = 255; // A
+        }
       } else {
         // Transparent
         rawData[pxOffset] = 0;
