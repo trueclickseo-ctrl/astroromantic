@@ -1,28 +1,31 @@
 RewriteEngine On
 
-# 1. Force HTTPS and www.astroromantic.com domain (aligned with Hostinger hPanel)
+# 1. Force HTTPS and www.astroromantic.com domain
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\.astroromantic\.com$ [NC]
 RewriteRule ^(.*)$ https://www.astroromantic.com/$1 [R=301,L]
 
-# 2. Prevent direct client access to /out/ directory (SEO canonicalization)
-# Uses %{THE_REQUEST} so it ONLY matches external client requests, NEVER internal rewrites or mod_dir lookups
-RewriteCond %{THE_REQUEST} \s/out/([^\s\?]*) [NC]
-RewriteRule ^out/(.*)$ https://www.astroromantic.com/$1 [R=301,L]
-
-# 2b. 301 redirects for duplicate standalone love calculator URLs to canonical target
+# 2. 301 Redirects for duplicate & legacy URLs to canonical target
 RewriteRule ^love-calculator/?$ https://www.astroromantic.com/love/love-calculator/ [R=301,L]
 RewriteRule ^calculators/love-calculator/?$ https://www.astroromantic.com/love/love-calculator/ [R=301,L]
+RewriteRule ^calculators/navamsa-chart/?$ https://www.astroromantic.com/d9-chart-calculator/ [R=301,L]
 
-# 3. Force trailing slashes on clean page/directory URLs (excluding files with extensions)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{DOCUMENT_ROOT}/out/$1 !-f
-RewriteCond %{REQUEST_URI} !/[^/]+\.[^/]+$
-RewriteCond %{REQUEST_URI} !(.*)/$
-RewriteRule ^(.*)$ https://www.astroromantic.com/$1/ [R=301,L]
+# 3. Hostinger Git Repo Root Routing: Serve from out/ directory if request matches static export
+RewriteCond %{THE_REQUEST} !^GET\ /out/ [NC]
+RewriteCond %{DOCUMENT_ROOT}/out/$1/index.html -f
+RewriteRule ^(.*)/$ out/$1/index.html [L]
 
-# 4. Internal Rewrite: Route clean URLs to the static export in /out/
-RewriteCond %{REQUEST_URI} !^/out/
-RewriteRule ^(.*)$ /out/$1 [L]
+RewriteCond %{THE_REQUEST} !^GET\ /out/ [NC]
+RewriteCond %{DOCUMENT_ROOT}/out/$1.html -f
+RewriteRule ^(.*)$ out/$1.html [L]
 
+# 4. Direct out/ or root export folder fallback routing
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)$ $1/index.html [L]
 
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 5. Clean 404 Handling
+ErrorDocument 404 /404.html
